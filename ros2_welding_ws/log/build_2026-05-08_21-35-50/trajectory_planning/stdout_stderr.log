@@ -1,0 +1,8 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[ 33%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+/usr/bin/ld: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o: in function `trajectory_planning(std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >, std::vector<pcl::PointXYZ, std::allocator<pcl::PointXYZ> >, sensor_msgs::msg::PointCloud2_<std::allocator<void> >, std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> >, std::allocator<void> > >, std::shared_ptr<rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> >, std::allocator<void> > >, rclcpp::Rate&)':
+running_flow.cpp:(.text+0x2365): undefined reference to `Ultimate_6DOF_TrajectoryGeneration(std::vector<geometry_msgs::msg::Pose_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Pose_<std::allocator<void> > > >&, std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >, std::vector<cv::Point3_<float>, std::allocator<cv::Point3_<float> > >)'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:4793: trajectory_planning_node] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

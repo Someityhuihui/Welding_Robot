@@ -1,0 +1,44 @@
+[0.030s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[0.249s] [ 16%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[0.251s] [ 33%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[0.254s] [ 50%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o[0m
+[0.256s] [ 66%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o[0m
+[7.447s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[7.447s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:191:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[7.448s]   191 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+[7.448s]       |                                                  [01;35m[K~~~~^[m[K
+[7.484s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[7.484s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:410:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[7.485s]   410 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+[7.485s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.496s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[7.496s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:553:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[7.496s]   553 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+[7.496s]       |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.571s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[7.571s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:793:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[7.571s]   793 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+[7.571s]       |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[29.872s] [ 83%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+[65.189s] [100%] Built target trajectory_planning_node
+[65.208s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[65.227s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[65.243s] -- Install configuration: ""
+[65.245s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node
+[65.260s] -- Set non-toolchain portion of runtime path of "/home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node" to ""
+[65.261s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/package_run_dependencies/trajectory_planning
+[65.262s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/parent_prefix_path/trajectory_planning
+[65.263s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.sh
+[65.263s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.dsv
+[65.263s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.sh
+[65.264s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.dsv
+[65.264s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.bash
+[65.265s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.sh
+[65.265s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.zsh
+[65.266s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.dsv
+[65.266s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.dsv
+[65.267s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/packages/trajectory_planning
+[65.268s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig.cmake
+[65.268s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig-version.cmake
+[65.269s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.xml
+[65.273s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning

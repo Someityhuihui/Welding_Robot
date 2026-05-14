@@ -1,0 +1,29 @@
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:178:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  178 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+      |                                                  [01;35m[K~~~~^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:397:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  397 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:540:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  540 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:780:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  780 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+      |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:852:1:[m[K [01;31m[Kerror: [m[Kinvalid declarator before ‘[01m[KUltimate_6DOF_TrajectoryGeneration[m[K’
+  852 | [01;31m[KUltimate_6DOF_TrajectoryGeneration[m[K(std::vector< geometry_msgs::msg::Pose > &Welding_Trajectory,
+      | [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:118: CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:90: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:104: CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o] Interrupt
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[1]: *** wait: No child processes.  Stop.
+gmake[1]: *** Waiting for unfinished jobs....
+gmake[1]: *** wait: No child processes.  Stop.
+gmake: *** [Makefile:146: all] Error 2

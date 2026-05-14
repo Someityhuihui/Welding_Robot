@@ -1,0 +1,13 @@
+In file included from /home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27,
+                 from /home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:8:
+/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8: warning: "_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp: In function ‘int main(int, char**)’:
+/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:441:45: error: expected unqualified-id before ‘=’ token
+  441 |             pcl::PointXYZ /*realsense_pos*/ = read_realtime_pointcloud_frame(
+      |                                             ^
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

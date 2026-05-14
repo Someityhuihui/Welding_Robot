@@ -1,0 +1,157 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found rclpy: 7.1.11 (/opt/ros/jazzy/share/rclpy/cmake)
+-- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+-- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found visualization_msgs: 5.3.7 (/opt/ros/jazzy/share/visualization_msgs/cmake)
+-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+-- Found image_transport: 5.1.7 (/opt/ros/jazzy/share/image_transport/cmake)
+-- Found pcl_conversions: 2.6.4 (/opt/ros/jazzy/share/pcl_conversions/cmake)
+[33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:29 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+-- Found flann version 1.9.2
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Found Qhull version 8.0.2
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)
+-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)
+-- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[33mCMake Warning (dev) at CMakeLists.txt:38 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system thread filesystem 
+-- Configuring done (123.8s)
+-- Generating done (0.3s)
+-- Build files have been written to: /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[ 14%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[ 42%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o[0m
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:1:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    1 | #define _USE_MATH_DEFINES
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:7[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/motion_planning.cpp:16[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:191:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  191 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+      |                                                  [01;35m[K~~~~^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:410:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  410 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:553:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  553 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:793:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  793 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+      |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[ 71%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/seam_location.cpp.o[0m
+[ 85%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o[0m
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K SurfaceProfile_Reconstruction[m[K(float, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZRGB>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:134:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kradius[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  134 | void SurfaceProfile_Reconstruction([01;35m[Kfloat radius[m[K,
+      |                                    [01;35m[K~~~~~~^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:[m[K In function ‘[01m[Kstd::vector<cv::Point3_<float> >[01;32m[K Pointnormal_Direction_Unify[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZRGB>::Ptr, std::vector<cv::Point3_<float> >, cv::Point3f)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:243:61:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcloud_ptr_show[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  243 |                                             [01;35m[KPointCloud::Ptr cloud_ptr_show[m[K,
+      |                                             [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:5[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:312:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeometry_msgs[m[K’ does not name a type
+  312 | [01;31m[Kgeometry_msgs[m[K::msg::Pose weldingPathPointToPose(const WeldingPathPoint& point);
+      | [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KEigen::MatrixXf LMICP::[01;32m[KcomputeJacobian[m[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:201:66:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktarget[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  201 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, [01;35m[KCloudPtr target[m[K,
+      |                                                         [01;35m[K~~~~~~~~~^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[Kbool LMICP::[01;32m[KalignWithInitial[m[K(CloudPtr, CloudPtr, const Eigen::Matrix4f&, Eigen::Matrix4f&, int, float)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:263:10:[m[K [01;31m[Kerror: [m[K‘[01m[KtransformPointCloud[m[K’ is not a member of ‘[01m[Kpcl[m[K’; did you mean ‘[01m[KtransformPoint[m[K’?
+  263 |     pcl::[01;31m[KtransformPointCloud[m[K(*source, *current_source, initial_transform);
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |          [32m[KtransformPoint[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:300:89:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KEigen::AngleAxis<float>::QuaternionType[m[K’ {aka ‘[01m[KEigen::Quaternion<float>[m[K’} to non-scalar type ‘[01m[KEigen::Matrix3f[m[K’ {aka ‘[01m[KEigen::Matrix<float, 3, 3>[m[K’} requested
+  299 |         Eigen::Matrix3f R_delta = Eigen::[01;31m[KAngleAxis<float>(rx, Eigen::Vector3f::UnitX()) *[m[K
+      |                                          [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+  300 | [01;31m[K                                  Eigen::AngleAxis<float>(ry, Eigen::Vector3f::UnitY()) *[m[K
+      |                                   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+  301 | [01;31m[K                                  Eigen::AngleAxis<float>(rz, Eigen::Vector3f::UnitZ())[m[K;
+      |                                   [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:308:14:[m[K [01;31m[Kerror: [m[K‘[01m[KtransformPointCloud[m[K’ is not a member of ‘[01m[Kpcl[m[K’; did you mean ‘[01m[KtransformPoint[m[K’?
+  308 |         pcl::[01;31m[KtransformPointCloud[m[K(*source, *current_source, transform);
+      |              [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |              [32m[KtransformPoint[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PointCloudStitcher::[01;32m[KfuseClouds[m[K(CloudPtr, CloudPtr, const Eigen::Matrix4f&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:364:10:[m[K [01;31m[Kerror: [m[K‘[01m[KtransformPointCloud[m[K’ is not a member of ‘[01m[Kpcl[m[K’; did you mean ‘[01m[KtransformPoint[m[K’?
+  364 |     pcl::[01;31m[KtransformPointCloud[m[K(*cloud2, *transformed_cloud2, transform);
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |          [32m[KtransformPoint[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointClouds[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:811:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  811 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1088:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeometry_msgs[m[K’ does not name a type
+ 1088 | [01;31m[Kgeometry_msgs[m[K::msg::Pose weldingPathPointToPose(const WeldingPathPoint& point) {
+      | [01;31m[K^~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:146: CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

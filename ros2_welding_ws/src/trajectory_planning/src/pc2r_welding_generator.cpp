@@ -1,0 +1,1445 @@
+// ============================================
+// pc2r_welding_generator.cpp
+// ============================================
+
+#include "pc2r_welding_generator.hpp"
+#include <pcl/search/kdtree.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl_conversions/pcl_conversions.h>
+#include <algorithm>
+#include <fstream>
+#include <chrono>
+#include <random>
+#include <numeric>
+
+// ============================================
+// IBNN 实现
+// ============================================
+
+IBNN::IBNN() : root_(nullptr) {}
+
+IBNN::~IBNN() {
+    if (root_) deleteOctree(root_);
+}
+
+OctreeNode* IBNN::buildOctree(CloudPtr cloud, const Eigen::Vector3f& min_pt,
+                               const Eigen::Vector3f& max_pt, int max_depth) {
+    OctreeNode* node = new OctreeNode();
+    node->min_pt = min_pt;
+    node->max_pt = max_pt;
+    
+    if (max_depth == 0 || node->point_indices.size() <= 10) {
+        node->is_leaf = true;
+        return node;
+    }
+    
+    Eigen::Vector3f center = (min_pt + max_pt) * 0.5f;
+    
+    for (int i = 0; i < 8; i++) {
+        Eigen::Vector3f child_min, child_max;
+        child_min.x() = (i & 1) ? center.x() : min_pt.x();
+        child_max.x() = (i & 1) ? max_pt.x() : center.x();
+        child_min.y() = (i & 2) ? center.y() : min_pt.y();
+        child_max.y() = (i & 2) ? max_pt.y() : center.y();
+        child_min.z() = (i & 4) ? center.z() : min_pt.z();
+        child_max.z() = (i & 4) ? max_pt.z() : center.z();
+        
+        node->children[i] = buildOctree(cloud, child_min, child_max, max_depth - 1);
+    }
+    node->is_leaf = false;
+    
+    return node;
+}
+
+void IBNN::buildOctreeWithPoints(OctreeNode* node, CloudPtr cloud, int max_depth) {
+    if (!node) return;
+    
+    for (size_t i = 0; i < cloud->points.size(); i++) {
+        const auto& p = cloud->points[i];
+        if (p.x >= node->min_pt.x() && p.x <= node->max_pt.x() &&
+            p.y >= node->min_pt.y() && p.y <= node->max_pt.y() &&
+            p.z >= node->min_pt.z() && p.z <= node->max_pt.z()) {
+            node->point_indices.push_back(i);
+        }
+    }
+    
+    if (max_depth > 0 && node->point_indices.size() > 10) {
+        node->is_leaf = false;
+        Eigen::Vector3f center = (node->min_pt + node->max_pt) * 0.5f;
+        
+        for (int i = 0; i < 8; i++) {
+            Eigen::Vector3f child_min, child_max;
+            child_min.x() = (i & 1) ? center.x() : node->min_pt.x();
+            child_max.x() = (i & 1) ? node->max_pt.x() : center.x();
+            child_min.y() = (i & 2) ? center.y() : node->min_pt.y();
+            child_max.y() = (i & 2) ? node->max_pt.y() : center.y();
+            child_min.z() = (i & 4) ? center.z() : node->min_pt.z();
+            child_max.z() = (i & 4) ? node->max_pt.z() : center.z();
+            
+            node->children[i] = new OctreeNode();
+            node->children[i]->min_pt = child_min;
+            node->children[i]->max_pt = child_max;
+            buildOctreeWithPoints(node->children[i], cloud, max_depth - 1);
+        }
+        node->point_indices.clear();
+    } else {
+        node->is_leaf = true;
+    }
+}
+
+void IBNN::deleteOctree(OctreeNode* node) {
+    if (!node) return;
+    if (!node->is_leaf) {
+        for (int i = 0; i < 8; i++) {
+            deleteOctree(node->children[i]);
+        }
+    }
+    delete node;
+}
+
+std::vector<int> IBNN::voxelSearch(OctreeNode* node, const Eigen::Vector3f& point, float radius) {
+    std::vector<int> results;
+    if (!node) return results;
+    
+    Eigen::Vector3f closest_pt;
+    closest_pt.x() = std::max(node->min_pt.x(), std::min(point.x(), node->max_pt.x()));
+    closest_pt.y() = std::max(node->min_pt.y(), std::min(point.y(), node->max_pt.y()));
+    closest_pt.z() = std::max(node->min_pt.z(), std::min(point.z(), node->max_pt.z()));
+    
+    float dist_sq = (closest_pt - point).squaredNorm();
+    if (dist_sq > radius * radius) return results;
+    
+    if (node->is_leaf) {
+        results = node->point_indices;
+    } else {
+        for (int i = 0; i < 8; i++) {
+            std::vector<int> child_results = voxelSearch(node->children[i], point, radius);
+            results.insert(results.end(), child_results.begin(), child_results.end());
+        }
+    }
+    
+    return results;
+}
+
+std::vector<CorrespondingPointPair> IBNN::findCorrespondingPoints(
+    CloudPtr source_cloud,
+    CloudPtr target_cloud,
+    float epsilon) {
+    
+    std::vector<CorrespondingPointPair> pairs;
+    target_cloud_ = target_cloud;
+    
+    Eigen::Vector3f min_pt = target_cloud->points[0].getVector3fMap();
+    Eigen::Vector3f max_pt = target_cloud->points[0].getVector3fMap();
+    for (const auto& p : target_cloud->points) {
+        auto v = p.getVector3fMap();
+        min_pt = min_pt.cwiseMin(v);
+        max_pt = max_pt.cwiseMax(v);
+    }
+    
+    root_ = new OctreeNode();
+    root_->min_pt = min_pt;
+    root_->max_pt = max_pt;
+    buildOctreeWithPoints(root_, target_cloud, 8);
+    
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree_target;
+    kdtree_target.setInputCloud(target_cloud);
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree_source;
+    kdtree_source.setInputCloud(source_cloud);
+    
+    std::set<int> used_target_indices;
+    
+    for (size_t i = 0; i < source_cloud->points.size(); i++) {
+        auto v = source_cloud->points[i].getVector3fMap();
+        if (v.x() < min_pt.x() || v.x() > max_pt.x() ||
+            v.y() < min_pt.y() || v.y() > max_pt.y() ||
+            v.z() < min_pt.z() || v.z() > max_pt.z()) {
+            continue;
+        }
+        
+        std::vector<int> target_indices;
+        std::vector<float> target_distances;
+        if (kdtree_target.nearestKSearch(source_cloud->points[i], 1, target_indices, target_distances) > 0) {
+            int target_idx = target_indices[0];
+            float dist = std::sqrt(target_distances[0]);
+            
+            if (dist <= epsilon) {
+                std::vector<int> source_indices;
+                std::vector<float> source_distances;
+                if (kdtree_source.nearestKSearch(target_cloud->points[target_idx], 1, 
+                                                  source_indices, source_distances) > 0) {
+                    if (source_indices[0] == (int)i && 
+                        std::sqrt(source_distances[0]) <= epsilon &&
+                        used_target_indices.find(target_idx) == used_target_indices.end()) {
+                        CorrespondingPointPair pair;
+                        pair.source_idx = i;
+                        pair.target_idx = target_idx;
+                        pair.distance = dist;
+                        pairs.push_back(pair);
+                        used_target_indices.insert(target_idx);
+                    }
+                }
+            }
+        }
+    }
+    
+    deleteOctree(root_);
+    root_ = nullptr;
+    
+    return pairs;
+}
+
+float IBNN::estimateOverlapRegion(CloudPtr source_cloud, CloudPtr target_cloud) {
+    if (source_cloud->points.empty() || target_cloud->points.empty()) return 0.0f;
+    
+    Eigen::Vector3f min_pt = target_cloud->points[0].getVector3fMap();
+    Eigen::Vector3f max_pt = target_cloud->points[0].getVector3fMap();
+    for (const auto& p : target_cloud->points) {
+        auto v = p.getVector3fMap();
+        min_pt = min_pt.cwiseMin(v);
+        max_pt = max_pt.cwiseMax(v);
+    }
+    
+    Eigen::Vector3f expand = (max_pt - min_pt) * 0.1f;
+    min_pt -= expand;
+    max_pt += expand;
+    
+    int inside_count = 0;
+    for (const auto& p : source_cloud->points) {
+        auto v = p.getVector3fMap();
+        if (v.x() >= min_pt.x() && v.x() <= max_pt.x() &&
+            v.y() >= min_pt.y() && v.y() <= max_pt.y() &&
+            v.z() >= min_pt.z() && v.z() <= max_pt.z()) {
+            inside_count++;
+        }
+    }
+    
+    float overlap_ratio = (float)inside_count / source_cloud->points.size();
+    
+    if (overlap_ratio < 0.3f) {
+        std::cout << "[IBNN] Warning: Low overlap ratio: " << overlap_ratio << std::endl;
+    }
+    
+    return overlap_ratio;
+}
+
+float IBNN::adaptiveEpsilon(CloudPtr source_cloud, CloudPtr target_cloud) {
+    float density_source = computePointCloudDensity(source_cloud);
+    float density_target = computePointCloudDensity(target_cloud);
+    float avg_density = (density_source + density_target) * 0.5f;
+    
+    float epsilon = avg_density * 3.0f;
+    return std::clamp(epsilon, 0.005f, 0.03f);
+}
+
+float IBNN::computePointCloudDensity(CloudPtr cloud) {
+    if (cloud->points.size() < 100) return 0.01f;
+    
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(cloud);
+    
+    float total_distance = 0.0f;
+    int samples = std::min(1000, (int)cloud->points.size());
+    
+    for (int i = 0; i < samples; i++) {
+        std::vector<int> indices;
+        std::vector<float> distances;
+        kdtree.nearestKSearch(cloud->points[i], 2, indices, distances);
+        if (distances.size() > 1) {
+            total_distance += std::sqrt(distances[1]);
+        }
+    }
+    
+    return total_distance / samples;
+}
+
+// ============================================
+// LM-ICP 实现
+// ============================================
+
+LMICP::LMICP() {
+    current_transform_ = Eigen::Matrix4f::Identity();
+}
+
+LMICP::~LMICP() {}
+
+Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, CloudPtr target,
+                                       const std::vector<CorrespondingPointPair>& pairs,
+                                       const Eigen::Matrix4f& transform) {
+    (void)target;
+    Eigen::MatrixXf J = Eigen::MatrixXf::Zero(pairs.size() * 3, 6);
+    
+    for (size_t k = 0; k < pairs.size(); k++) {
+        Eigen::Vector3f p = source->points[pairs[k].source_idx].getVector3fMap();
+        Eigen::Vector3f p_transformed = transform.block<3,3>(0,0) * p + transform.block<3,1>(0,3);
+        
+        J(3*k + 0, 0) = 1.0f;
+        J(3*k + 1, 1) = 1.0f;
+        J(3*k + 2, 2) = 1.0f;
+        
+        J(3*k + 0, 3) = 0.0f;
+        J(3*k + 0, 4) = p_transformed.z();
+        J(3*k + 0, 5) = -p_transformed.y();
+        
+        J(3*k + 1, 3) = -p_transformed.z();
+        J(3*k + 1, 4) = 0.0f;
+        J(3*k + 1, 5) = p_transformed.x();
+        
+        J(3*k + 2, 3) = p_transformed.y();
+        J(3*k + 2, 4) = -p_transformed.x();
+        J(3*k + 2, 5) = 0.0f;
+    }
+    
+    return J;
+}
+
+Eigen::VectorXf LMICP::computeResiduals(CloudPtr source, CloudPtr target,
+                                        const std::vector<CorrespondingPointPair>& pairs,
+                                        const Eigen::Matrix4f& transform) {
+    Eigen::VectorXf r = Eigen::VectorXf::Zero(pairs.size() * 3);
+    
+    for (size_t k = 0; k < pairs.size(); k++) {
+        Eigen::Vector3f p = source->points[pairs[k].source_idx].getVector3fMap();
+        Eigen::Vector3f p_transformed = transform.block<3,3>(0,0) * p + transform.block<3,1>(0,3);
+        Eigen::Vector3f q = target->points[pairs[k].target_idx].getVector3fMap();
+        Eigen::Vector3f residual = p_transformed - q;
+        
+        r(3*k + 0) = residual.x();
+        r(3*k + 1) = residual.y();
+        r(3*k + 2) = residual.z();
+    }
+    
+    return r;
+}
+
+bool LMICP::align(CloudPtr source, CloudPtr target,
+                  Eigen::Matrix4f& transformation,
+                  int max_iterations, float tolerance) {
+    return alignWithInitial(source, target, Eigen::Matrix4f::Identity(), 
+                           transformation, max_iterations, tolerance);
+}
+
+bool LMICP::alignWithInitial(CloudPtr source, CloudPtr target,
+                            const Eigen::Matrix4f& initial_transform,
+                            Eigen::Matrix4f& final_transform,
+                            int max_iterations, float tolerance) {
+
+    float overlap = ibnn_.estimateOverlapRegion(source, target);
+    std::cout << "[LM-ICP] Estimated overlap ratio: " << overlap << std::endl;
+    
+    if (overlap < 0.25f) {
+        RCLCPP_WARN(rclcpp::get_logger("LMICP"), 
+                   "Low overlap (%f) may cause registration failure", overlap);
+    }
+    float adaptive_eps = ibnn_.adaptiveEpsilon(source, target);
+    std::cout << "[LM-ICP] Adaptive epsilon: " << adaptive_eps << std::endl;
+
+    CloudPtr current_source(new Cloud);
+    pcl::transformPointCloud(*source, *current_source, initial_transform);
+    
+    Eigen::Matrix4f transform = initial_transform;
+    float prev_error = std::numeric_limits<float>::max();
+    
+    for (int iter = 0; iter < max_iterations; iter++) {
+        std::vector<CorrespondingPointPair> pairs = ibnn_.findCorrespondingPoints(
+            current_source, target, 0.01f);
+        
+        if (pairs.size() < 10) {
+            RCLCPP_WARN(rclcpp::get_logger("LMICP"), 
+                       "Too few correspondences: %zu", pairs.size());
+            break;
+        }
+        
+        Eigen::VectorXf residuals = computeResiduals(current_source, target, pairs, transform);
+        Eigen::MatrixXf J = computeJacobian(current_source, target, pairs, transform);
+        
+        float lambda = 0.01f;
+        Eigen::MatrixXf JtJ = J.transpose() * J;
+        Eigen::VectorXf Jtr = J.transpose() * residuals;
+        
+        for (int d = 0; d < 6; d++) {
+            JtJ(d, d) += lambda;
+        }
+        
+        Eigen::VectorXf delta = JtJ.ldlt().solve(-Jtr);
+        
+        if (delta.norm() < tolerance) {
+            break;
+        }
+        
+        float rx = delta(3);
+        float ry = delta(4);
+        float rz = delta(5);
+        Eigen::Matrix3f R_delta = (Eigen::AngleAxis<float>(rx, Eigen::Vector3f::UnitX()) *
+                           Eigen::AngleAxis<float>(ry, Eigen::Vector3f::UnitY()) *
+                           Eigen::AngleAxis<float>(rz, Eigen::Vector3f::UnitZ())).toRotationMatrix();
+        
+        Eigen::Matrix4f delta_transform = Eigen::Matrix4f::Identity();
+        delta_transform.block<3,1>(0,3) = delta.segment<3>(0);
+        delta_transform.block<3,3>(0,0) = R_delta;
+        
+        transform = delta_transform * transform;
+        pcl::transformPointCloud(*source, *current_source, transform);
+        
+        float current_error = residuals.squaredNorm();
+        if (std::abs(prev_error - current_error) < tolerance) {
+            break;
+        }
+        prev_error = current_error;
+    }
+    
+    final_transform = transform;
+    return true;
+}
+
+// ============================================
+// PointCloudStitcher 实现
+// ============================================
+
+PointCloudStitcher::PointCloudStitcher() {}
+PointCloudStitcher::~PointCloudStitcher() {}
+
+void PointCloudStitcher::addPointCloud(CloudPtr cloud, const std::string& name) {
+    CloudData data;
+    data.cloud = cloud;
+    data.name = name;
+    clouds_.push_back(data);
+}
+
+void PointCloudStitcher::setStitchingOrder(const std::vector<int>& order) {
+    stitching_order_ = order;
+}
+
+bool PointCloudStitcher::hasSufficientOverlap(CloudPtr cloud1, CloudPtr cloud2, float overlap_threshold) {
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(cloud1);
+    
+    int sample_size = std::min(1000, (int)cloud2->points.size());
+    int overlap_count = 0;
+    
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, cloud2->points.size() - 1);
+    
+    for (int i = 0; i < sample_size; i++) {
+        int idx = dis(gen);
+        std::vector<int> indices;
+        std::vector<float> distances;
+        if (kdtree.radiusSearch(cloud2->points[idx], 0.01f, indices, distances) > 0) {
+            overlap_count++;
+        }
+    }
+    
+    return (float)overlap_count / sample_size >= overlap_threshold;
+}
+
+CloudPtr PointCloudStitcher::fuseClouds(CloudPtr cloud1, CloudPtr cloud2, const Eigen::Matrix4f& transform) {
+    CloudPtr transformed_cloud2(new Cloud);
+    pcl::transformPointCloud(*cloud2, *transformed_cloud2, transform);
+    
+    CloudPtr fused_cloud(new Cloud);
+    *fused_cloud += *cloud1;
+    *fused_cloud += *transformed_cloud2;
+    
+    pcl::VoxelGrid<pcl::PointXYZ> voxel;
+    voxel.setLeafSize(0.002f, 0.002f, 0.002f);
+    CloudPtr filtered_cloud(new Cloud);
+    voxel.setInputCloud(fused_cloud);
+    voxel.filter(*filtered_cloud);
+    
+    return filtered_cloud;
+}
+
+CloudPtr PointCloudStitcher::stitch() {
+    if (clouds_.empty()) {
+        return CloudPtr(new Cloud);
+    }
+    
+    if (stitching_order_.empty()) {
+        for (size_t i = 0; i < clouds_.size(); i++) {
+            stitching_order_.push_back(i);
+        }
+    }
+    
+    CloudPtr result = clouds_[stitching_order_[0]].cloud;
+    
+    for (size_t idx = 1; idx < stitching_order_.size(); idx++) {
+        int cloud_idx = stitching_order_[idx];
+        CloudPtr current_cloud = clouds_[cloud_idx].cloud;
+        
+        if (!hasSufficientOverlap(result, current_cloud, 0.2f)) {
+            RCLCPP_WARN(rclcpp::get_logger("Stitcher"), 
+                       "Insufficient overlap for cloud %d", cloud_idx);
+            continue;
+        }
+        
+        Eigen::Matrix4f transform;
+        if (lmicp_.align(current_cloud, result, transform)) {
+            result = fuseClouds(result, current_cloud, transform);
+        } else {
+            RCLCPP_WARN(rclcpp::get_logger("Stitcher"), 
+                       "Failed to align cloud %d", cloud_idx);
+        }
+    }
+    
+    return result;
+}
+
+// ============================================
+// EdgeIntensityDetector 实现
+// ============================================
+
+EdgeIntensityDetector::EdgeIntensityDetector() 
+    : radius_(0.005f), min_neighbors_(5), epsilon_(3.0f), sigma_(1.0f) {}
+
+EdgeIntensityDetector::~EdgeIntensityDetector() {}
+
+float EdgeIntensityDetector::computeIntensity(CloudPtr cloud, int idx, float r) {
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(cloud);
+    
+    std::vector<int> indices;
+    std::vector<float> distances;
+    
+    float search_r = (r > 0) ? r : radius_;
+    int max_attempts = 5;
+    for (int attempt = 0; attempt < max_attempts; attempt++) {
+        kdtree.radiusSearch(cloud->points[idx], search_r, indices, distances);
+        if (indices.size() >= (size_t)min_neighbors_) break;
+        search_r += 0.002f;
+    }
+    
+    if (indices.size() < 3) return 0.0f;
+    
+    Eigen::Vector3f centroid(0, 0, 0);
+    for (int j : indices) {
+        centroid += cloud->points[j].getVector3fMap();
+    }
+    centroid /= indices.size();
+    
+    Eigen::Vector3f pi = cloud->points[idx].getVector3fMap();
+    float intensity = (pi - centroid).norm() / search_r;
+    
+    return intensity;
+}
+
+float EdgeIntensityDetector::computeResponse(CloudPtr cloud, int idx) {
+    // 简化版：直接使用强度作为响应值
+    float intensity = computeIntensity(cloud, idx, radius_);
+    return intensity;
+}
+
+CloudPtr EdgeIntensityDetector::extractEdgePoints(CloudPtr cloud, float threshold) {
+    if (cloud->points.size() < 100) {
+        return cloud;
+    }
+    
+    size_t total_points = cloud->points.size();
+    
+    // 采样：点云过大时随机采样
+    CloudPtr working_cloud = cloud;
+    size_t max_points = 15000;
+    if (total_points > max_points) {
+        RCLCPP_WARN(rclcpp::get_logger("EdgeDetector"), 
+                   "点云规模过大 (%zu 点)，随机采样到 %zu 点", total_points, max_points);
+        
+        working_cloud.reset(new Cloud);
+        std::vector<int> indices(total_points);
+        std::iota(indices.begin(), indices.end(), 0);
+        std::shuffle(indices.begin(), indices.end(), std::mt19937{std::random_device{}()});
+        
+        for (size_t i = 0; i < max_points && i < total_points; i++) {
+            working_cloud->push_back(cloud->points[indices[i]]);
+        }
+        total_points = working_cloud->points.size();
+    }
+    
+    RCLCPP_INFO(rclcpp::get_logger("EdgeDetector"), 
+               "开始边缘检测: %zu 点, radius=%.3f", total_points, radius_);
+    
+    auto start_time = std::chrono::steady_clock::now();
+    
+    // 计算每个点的响应值（强度）
+    std::vector<float> responses(total_points, 0.0f);
+    
+    for (size_t i = 0; i < total_points; i++) {
+        responses[i] = computeResponse(working_cloud, i);
+    }
+    
+    // 动态阈值
+    std::vector<float> sorted_responses = responses;
+    std::sort(sorted_responses.begin(), sorted_responses.end(), std::greater<float>());
+    
+    int target_edge_count = std::min(800, (int)(total_points * 0.05f));
+    float response_threshold = sorted_responses[std::min(target_edge_count, (int)total_points - 1)];
+    response_threshold = std::max(response_threshold, threshold);
+    
+    RCLCPP_INFO(rclcpp::get_logger("EdgeDetector"), 
+               "阈值: %.4f, 目标保留 %d 点", response_threshold, target_edge_count);
+    
+    // 提取边缘点
+    CloudPtr edge_points(new Cloud);
+    
+    for (size_t i = 0; i < total_points; i++) {
+        if (responses[i] < response_threshold) continue;
+        edge_points->push_back(working_cloud->points[i]);
+    }
+    
+    auto total_elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::steady_clock::now() - start_time).count();
+    
+    RCLCPP_INFO(rclcpp::get_logger("EdgeDetector"), 
+               "边缘检测完成: %zu -> %zu 点, 耗时 %ld 秒",
+               total_points, edge_points->points.size(), total_elapsed);
+    
+    return edge_points;
+}
+
+// ============================================
+// PC2RWeldingGenerator 参数设置
+// ============================================
+
+void PC2RWeldingGenerator::setEdgeDetectionParams(float radius, float epsilon, 
+                                                   float threshold, int min_neighbors) {
+    edge_detector_.setRadius(radius);
+    edge_detector_.setEpsilon(epsilon);
+    edge_detector_.setIntensityThreshold(threshold);
+    edge_detector_.setMinNeighbors(min_neighbors);
+    
+    std::cout << "[PC2RGenerator] 边缘检测参数: radius=" << radius 
+              << ", epsilon=" << epsilon << ", threshold=" << threshold 
+              << ", min_neighbors=" << min_neighbors << std::endl;
+}
+
+void PC2RWeldingGenerator::setWSRParams(float cylinder_radius) {
+    wsr_cylinder_radius_ = cylinder_radius;
+}
+
+void PC2RWeldingGenerator::setSortingParams(float neighbor_radius) {
+    sorting_neighbor_radius_ = neighbor_radius;
+}
+
+// ============================================
+// BSplineFitter 实现
+// ============================================
+
+BSplineFitter::BSplineFitter() : degree_(3), sampling_rate_(0.005f) {}
+BSplineFitter::~BSplineFitter() {}
+
+float BSplineFitter::basisFunction(int i, int k, float u, const std::vector<float>& knots) {
+    if (k == 0) {
+        return (u >= knots[i] && u < knots[i+1]) ? 1.0f : 0.0f;
+    }
+    
+    float denom1 = knots[i+k] - knots[i];
+    float denom2 = knots[i+k+1] - knots[i+1];
+    
+    float term1 = 0.0f, term2 = 0.0f;
+    
+    if (denom1 > 1e-6) {
+        term1 = (u - knots[i]) / denom1 * basisFunction(i, k-1, u, knots);
+    }
+    if (denom2 > 1e-6) {
+        term2 = (knots[i+k+1] - u) / denom2 * basisFunction(i+1, k-1, u, knots);
+    }
+    
+    return term1 + term2;
+}
+
+Eigen::Vector3f BSplineFitter::computeCurvePoint(float u, CloudPtr control_points,
+                                                  const std::vector<float>& knots) {
+    int n = control_points->points.size();
+    Eigen::Vector3f point(0, 0, 0);
+    
+    for (int i = 0; i < n; i++) {
+        float basis = basisFunction(i, degree_, u, knots);
+        point += basis * control_points->points[i].getVector3fMap();
+    }
+    
+    return point;
+}
+
+CloudPtr BSplineFitter::fitCurve(CloudPtr control_points) {
+    control_points_ = control_points;
+    int n = control_points->points.size();
+    
+    if (n < degree_ + 1) {
+        RCLCPP_WARN(rclcpp::get_logger("BSpline"), 
+                   "Not enough control points: %d (need at least %d)", n, degree_ + 1);
+        return CloudPtr(new Cloud);
+    }
+    
+    int m = n + degree_ + 1;
+    knot_vector_.resize(m);
+    
+    for (int i = 0; i <= degree_; i++) {
+        knot_vector_[i] = 0.0f;
+        knot_vector_[m - 1 - i] = 1.0f;
+    }
+    
+    float step = 1.0f / (n - degree_);
+    for (int i = 1; i < n - degree_; i++) {
+        knot_vector_[degree_ + i] = i * step;
+    }
+    
+    fitted_curve_ = sampleCurve(sampling_rate_);
+    
+    return fitted_curve_;
+}
+
+CloudPtr BSplineFitter::sampleCurve(float step_size) {
+    CloudPtr sampled_points(new Cloud);
+    
+    int num_samples = (int)(1.0f / step_size) + 1;
+    
+    for (int i = 0; i <= num_samples; i++) {
+        float u = std::min(1.0f, i * step_size);
+        Eigen::Vector3f point = computeCurvePoint(u, control_points_, knot_vector_);
+        
+        pcl::PointXYZ p;
+        p.x = point.x();
+        p.y = point.y();
+        p.z = point.z();
+        sampled_points->push_back(p);
+    }
+    
+    RCLCPP_INFO(rclcpp::get_logger("BSpline"), 
+               "Sampled %zu points from B-spline curve", sampled_points->size());
+    
+    return sampled_points;
+}
+
+// ============================================
+// TorchPoseEstimator 实现
+// ============================================
+
+TorchPoseEstimator::TorchPoseEstimator() 
+    : max_tilt_angle_(15.0f * M_PI / 180.0f), 
+      tilt_period_(1.0f), 
+      tilt_offset_(0.0f),
+      camera_position_(0, 0, 0.5f) {}
+
+TorchPoseEstimator::~TorchPoseEstimator() {}
+
+Eigen::Vector3f TorchPoseEstimator::estimateNormalPCA(CloudPtr cloud, const std::vector<int>& indices) {
+    if (indices.size() < 3) {
+        return Eigen::Vector3f(0, 0, 1);
+    }
+    
+    Eigen::Vector3f centroid(0, 0, 0);
+    for (int idx : indices) {
+        centroid += cloud->points[idx].getVector3fMap();
+    }
+    centroid /= indices.size();
+    
+    Eigen::Matrix3f covariance = Eigen::Matrix3f::Zero();
+    for (int idx : indices) {
+        Eigen::Vector3f diff = cloud->points[idx].getVector3fMap() - centroid;
+        covariance += diff * diff.transpose();
+    }
+    
+    Eigen::SelfAdjointEigenSolver<Eigen::Matrix3f> solver(covariance);
+    Eigen::Vector3f normal = solver.eigenvectors().col(0);
+    
+    return normal.normalized();
+}
+
+Eigen::Vector3f TorchPoseEstimator::estimateNormal(CloudPtr cloud, int idx, float radius) {
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(cloud);
+    
+    std::vector<int> indices;
+    std::vector<float> distances;
+    kdtree.radiusSearch(cloud->points[idx], radius, indices, distances);
+    
+    return estimateNormalPCA(cloud, indices);
+}
+
+float TorchPoseEstimator::computeDihedralAngle(const Eigen::Vector3f& normal1,
+                                                const Eigen::Vector3f& normal2) {
+    float dot = normal1.dot(normal2);
+    dot = std::max(-1.0f, std::min(1.0f, dot));
+    return std::acos(dot);
+}
+
+Eigen::Vector3f TorchPoseEstimator::computeAdvanceDirection(CloudPtr path_points, int idx) {
+    if (idx == 0 && path_points->points.size() > 1) {
+        Eigen::Vector3f p0 = path_points->points[0].getVector3fMap();
+        Eigen::Vector3f p1 = path_points->points[1].getVector3fMap();
+        return (p1 - p0).normalized();
+    } else if (idx == (int)path_points->points.size() - 1 && path_points->points.size() > 1) {
+        Eigen::Vector3f p_prev = path_points->points[idx-1].getVector3fMap();
+        Eigen::Vector3f p_curr = path_points->points[idx].getVector3fMap();
+        return (p_curr - p_prev).normalized();
+    } else if (path_points->points.size() > 2) {
+        Eigen::Vector3f p_prev = path_points->points[idx-1].getVector3fMap();
+        Eigen::Vector3f p_next = path_points->points[idx+1].getVector3fMap();
+        return (p_next - p_prev).normalized();
+    }
+    
+    return Eigen::Vector3f(1, 0, 0);
+}
+
+void TorchPoseEstimator::applyTilt(WeldingPathPoint& point, float progress, bool is_uphill) {
+    float theta = max_tilt_angle_ * sin(2.0f * M_PI / tilt_period_ * progress) + tilt_offset_;
+    
+    if (!is_uphill) {
+        theta = -theta;
+    }
+    
+    Eigen::Matrix3f R_tilt;
+    float cos_theta = cos(theta);
+    float sin_theta = sin(theta);
+    
+    R_tilt << cos_theta, -sin_theta, 0,
+              sin_theta,  cos_theta, 0,
+              0,          0,         1;
+    
+    point.torch_direction = (R_tilt * point.torch_direction).normalized();
+}
+
+float TorchPoseEstimator::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {
+    if (indices.size() < 5) return 0.0f;
+    
+    Eigen::Vector3f centroid(0, 0, 0);
+    for (int idx : indices) {
+        centroid += cloud->points[idx].getVector3fMap();
+    }
+    centroid /= indices.size();
+    
+    Eigen::Matrix3f covariance = Eigen::Matrix3f::Zero();
+    for (int idx : indices) {
+        Eigen::Vector3f diff = cloud->points[idx].getVector3fMap() - centroid;
+        covariance += diff * diff.transpose();
+    }
+    
+    Eigen::SelfAdjointEigenSolver<Eigen::Matrix3f> solver(covariance);
+    Eigen::Vector3f eigenvalues = solver.eigenvalues();
+    float sum = eigenvalues.sum();
+    if (sum < 1e-6) return 0.0f;
+    
+    return eigenvalues[0] / sum;
+}
+
+std::vector<WeldingPathPoint> TorchPoseEstimator::computeTorchPoses(CloudPtr path_points, CloudPtr wsr_cloud) {
+    std::vector<WeldingPathPoint> results;
+    
+    if (path_points->points.empty() || wsr_cloud->points.empty()) {
+        return results;
+    }
+    
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(wsr_cloud);
+    
+    for (size_t i = 0; i < path_points->points.size(); i++) {
+        WeldingPathPoint point;
+        point.position = path_points->points[i].getVector3fMap();
+        
+        point.advance_direction = computeAdvanceDirection(path_points, i);
+        
+        std::vector<int> indices;
+        std::vector<float> distances;
+        kdtree.radiusSearch(path_points->points[i], 0.02f, indices, distances);
+        
+        if (indices.size() < 10) {
+            kdtree.radiusSearch(path_points->points[i], 0.05f, indices, distances);
+            if (indices.size() < 10) {
+                Eigen::Vector3f normal = estimateNormalPCA(wsr_cloud, indices);
+                point.torch_direction = normal;
+                point.dihedral_angle = 0;
+            } else {
+                Eigen::Vector3f normal = estimateNormalPCA(wsr_cloud, indices);
+                point.torch_direction = normal;
+                point.dihedral_angle = 0;
+            }
+        } else {
+            Eigen::Vector3f normal = estimateNormalPCA(wsr_cloud, indices);
+            point.torch_direction = normal;
+            float curvature = computeLocalCurvature(wsr_cloud, indices);
+            point.dihedral_angle = curvature * M_PI;
+        }
+        
+        Eigen::Vector3f vec_to_camera = camera_position_ - point.position;
+        if (point.torch_direction.dot(vec_to_camera) < 0) {
+            point.torch_direction = -point.torch_direction;
+        }
+        
+        float progress = (float)i / path_points->points.size();
+        bool is_uphill = (point.dihedral_angle > 0.3f);
+        
+        float theta = max_tilt_angle_ * sin(2.0f * M_PI / tilt_period_ * progress) + tilt_offset_;
+        
+        if (!is_uphill) {
+            theta = -theta;
+        }
+        
+        Eigen::Matrix3f R_tilt;
+        float cos_theta = cos(theta);
+        float sin_theta = sin(theta);
+        R_tilt << cos_theta, -sin_theta, 0,
+                  sin_theta,  cos_theta, 0,
+                  0,          0,         1;
+        
+        point.torch_direction = (R_tilt * point.torch_direction).normalized();
+        
+        point.normal = point.torch_direction.cross(point.advance_direction);
+        if (point.normal.norm() > 1e-6) {
+            point.normal.normalize();
+        }
+        
+        results.push_back(point);
+    }
+    
+    std::cout << "[TorchPose] Generated " << results.size() << " torch poses" << std::endl;
+    return results;
+}
+
+// ============================================
+// PC2RWeldingGenerator 实现
+// ============================================
+
+PC2RWeldingGenerator::PC2RWeldingGenerator() 
+    : stitch_epsilon_(0.01f), edge_radius_(0.005f), 
+      edge_threshold_(3.0f), bspline_degree_(3) {}
+
+PC2RWeldingGenerator::~PC2RWeldingGenerator() {}
+
+void PC2RWeldingGenerator::initialize(float point_cloud_stitch_epsilon,
+                                       float edge_detection_radius,
+                                       float edge_threshold,
+                                       int bspline_degree) {
+    stitch_epsilon_ = point_cloud_stitch_epsilon;
+    edge_radius_ = edge_detection_radius;
+    edge_threshold_ = edge_threshold;
+    bspline_degree_ = bspline_degree;
+    
+    edge_detector_.setRadius(edge_radius_);
+    edge_detector_.setEpsilon(edge_threshold_);
+    bspline_fitter_.setDegree(bspline_degree_);
+    pose_estimator_.setMaxTiltAngle(15.0f * M_PI / 180.0f);
+}
+
+CloudPtr PC2RWeldingGenerator::step1_StitchPointClouds(
+    const std::vector<CloudPtr>& clouds,
+    const std::vector<Eigen::Vector3f>& camera_poses) {
+    (void)camera_poses;
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), "Step 1: Stitching point clouds...");
+    
+    PointCloudStitcher stitcher;
+    
+    for (size_t i = 0; i < clouds.size(); i++) {
+        std::string name = "cloud_" + std::to_string(i);
+        stitcher.addPointCloud(clouds[i], name);
+    }
+    
+    std::vector<int> order = {0, 1, 2, 3};
+    stitcher.setStitchingOrder(order);
+    
+    CloudPtr stitched = stitcher.stitch();
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Stitched point cloud has %zu points", stitched->points.size());
+    
+    return stitched;
+}
+
+CloudPtr PC2RWeldingGenerator::step2_ExtractWSR(CloudPtr full_cloud) {
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Step 2: Extracting WSR with radius %.3f...", wsr_cylinder_radius_);
+    
+    return cylinderFilter(full_cloud, wsr_cylinder_radius_);
+}
+
+CloudPtr PC2RWeldingGenerator::step3_ExtractWeldSeamFeatures(CloudPtr wsr_cloud) {
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), "Step 3: Extracting weld seam features using EI response...");
+    
+    return edge_detector_.extractEdgePoints(wsr_cloud, 0.02f);
+}
+
+CloudPtr PC2RWeldingGenerator::step4_SortPathPoints(CloudPtr edge_points) {
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Step 4: Sorting path points with radius %.3f...", sorting_neighbor_radius_);
+    
+    if (edge_points->points.size() < 100) {
+        return greedyNearestNeighborSort(edge_points);
+    }
+    
+    return minimumSpanningTreeSort(edge_points, sorting_neighbor_radius_);
+}
+
+CloudPtr PC2RWeldingGenerator::step5_FitBSplineCurve(CloudPtr sorted_points) {
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), "Step 5: Fitting B-spline curve...");
+    
+    return bspline_fitter_.fitCurve(sorted_points);
+}
+
+std::vector<WeldingPathPoint> PC2RWeldingGenerator::step6_EstimateTorchPoses(CloudPtr path_points, CloudPtr wsr_cloud) {
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), "Step 6: Estimating torch poses...");
+    
+    return pose_estimator_.computeTorchPoses(path_points, wsr_cloud);
+}
+
+CloudPtr PC2RWeldingGenerator::passThroughFilter(CloudPtr cloud,
+                                                  const Eigen::Vector3f& center,
+                                                  float radius) {
+    CloudPtr filtered(new Cloud);
+    float radius_sq = radius * radius;
+    
+    for (const auto& p : cloud->points) {
+        Eigen::Vector3f v = p.getVector3fMap();
+        float dist_sq = (v - center).squaredNorm();
+        if (dist_sq <= radius_sq) {
+            filtered->push_back(p);
+        }
+    }
+    
+    return filtered;
+}
+
+CloudPtr PC2RWeldingGenerator::cylinderFilter(CloudPtr cloud, float radius) {
+    CloudPtr filtered(new Cloud);
+    float radius_sq = radius * radius;
+    
+    for (const auto& p : cloud->points) {
+        if (p.x * p.x + p.y * p.y <= radius_sq) {
+            filtered->push_back(p);
+        }
+    }
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Cylinder filter kept %zu points out of %zu", 
+               filtered->points.size(), cloud->points.size());
+    
+    return filtered;
+}
+
+CloudPtr PC2RWeldingGenerator::minimumSpanningTreeSort(CloudPtr points, float neighbor_radius) {
+    if (points->points.size() < 2) {
+        RCLCPP_WARN(rclcpp::get_logger("PC2RGenerator"), 
+                   "Not enough points for MST: %zu", points->points.size());
+        return points;
+    }
+    
+    if (points->points.size() < 500) {
+        return greedyNearestNeighborSort(points);
+    }
+    
+    int n = points->points.size();
+    
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(points);
+    
+    if (neighbor_radius < 0.005f) neighbor_radius = 0.025f;
+    
+    std::vector<bool> visited(n, false);
+    std::vector<int> order;
+    
+    Eigen::Vector3f center(0, 0, 0);
+    for (const auto& p : points->points) {
+        center += p.getVector3fMap();
+    }
+    center /= n;
+    
+    int start_idx = 0;
+    float min_dist = std::numeric_limits<float>::max();
+    for (int i = 0; i < n; i++) {
+        float dist = (points->points[i].getVector3fMap() - center).norm();
+        if (dist < min_dist) {
+            min_dist = dist;
+            start_idx = i;
+        }
+    }
+    
+    order.push_back(start_idx);
+    visited[start_idx] = true;
+    int current_idx = start_idx;
+    int max_iterations = n * 2;
+    int iter = 0;
+    
+    while ((int)order.size() < n && iter < max_iterations) {
+        iter++;
+        
+        std::vector<int> neighbors;
+        std::vector<float> distances;
+        float radius = neighbor_radius;
+        kdtree.radiusSearch(points->points[current_idx], radius, neighbors, distances);
+        
+        int found_idx = -1;
+        float found_dist = std::numeric_limits<float>::max();
+        
+        while (radius <= neighbor_radius * 3 && found_idx == -1) {
+            for (size_t j = 0; j < neighbors.size(); j++) {
+                if (!visited[neighbors[j]] && distances[j] < found_dist) {
+                    found_dist = distances[j];
+                    found_idx = neighbors[j];
+                }
+            }
+            
+            if (found_idx == -1) {
+                radius += neighbor_radius;
+                kdtree.radiusSearch(points->points[current_idx], radius, neighbors, distances);
+            }
+        }
+        
+        if (found_idx != -1) {
+            order.push_back(found_idx);
+            visited[found_idx] = true;
+            current_idx = found_idx;
+        } else {
+            for (int i = 0; i < n; i++) {
+                if (!visited[i]) {
+                    float dist = (points->points[i].getVector3fMap() - 
+                                  points->points[current_idx].getVector3fMap()).norm();
+                    if (dist < found_dist) {
+                        found_dist = dist;
+                        found_idx = i;
+                    }
+                }
+            }
+            if (found_idx != -1) {
+                order.push_back(found_idx);
+                visited[found_idx] = true;
+                current_idx = found_idx;
+            } else {
+                break;
+            }
+        }
+    }
+    
+    CloudPtr sorted_points(new Cloud);
+    for (int idx : order) {
+        sorted_points->push_back(points->points[idx]);
+    }
+    
+    return sorted_points;
+}
+
+CloudPtr PC2RWeldingGenerator::greedyNearestNeighborSort(CloudPtr points) {
+    int n = points->points.size();
+    std::vector<bool> visited(n, false);
+    std::vector<int> order;
+    
+    int start_idx = 0;
+    float max_y = -std::numeric_limits<float>::max();
+    for (int i = 0; i < n; i++) {
+        if (points->points[i].y > max_y) {
+            max_y = points->points[i].y;
+            start_idx = i;
+        }
+    }
+    
+    order.push_back(start_idx);
+    visited[start_idx] = true;
+    int current_idx = start_idx;
+    
+    for (int step = 1; step < n; step++) {
+        int nearest_idx = -1;
+        float min_dist = std::numeric_limits<float>::max();
+        
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                float dist = (points->points[i].getVector3fMap() - 
+                              points->points[current_idx].getVector3fMap()).norm();
+                if (dist < min_dist) {
+                    min_dist = dist;
+                    nearest_idx = i;
+                }
+            }
+        }
+        
+        if (nearest_idx != -1) {
+            order.push_back(nearest_idx);
+            visited[nearest_idx] = true;
+            current_idx = nearest_idx;
+        }
+    }
+    
+    CloudPtr sorted_points(new Cloud);
+    for (int idx : order) {
+        sorted_points->push_back(points->points[idx]);
+    }
+    
+    return sorted_points;
+}
+
+std::vector<WeldingPathPoint> PC2RWeldingGenerator::generateWeldingPath(
+    const std::vector<CloudPtr>& multi_view_clouds,
+    const std::vector<Eigen::Vector3f>& camera_poses,
+    rclcpp::Logger logger,
+    rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+    
+    if (multi_view_clouds.empty()) {
+        RCLCPP_ERROR(logger, "No point clouds provided!");
+        return {};
+    }
+    
+    bool is_single_frame = (multi_view_clouds.size() == 1);
+    
+    if (is_single_frame) {
+        RCLCPP_INFO(logger, "Single frame detected, using single-frame mode");
+        Eigen::Vector3f camera_pose = camera_poses.empty() ? 
+                                       Eigen::Vector3f(0, 0, 0.5f) : camera_poses[0];
+        return generateWeldingPathFromSingleCloud(multi_view_clouds[0], camera_pose, logger);
+    }
+    
+    RCLCPP_INFO(logger, "Multi-frame mode: processing %zu frames", multi_view_clouds.size());
+    
+    if (use_adaptive_) {
+        stitched_cloud_ = step1_StitchPointCloudsAdaptive(multi_view_clouds, camera_poses, pointcloud_publisher);
+    } else {
+        stitched_cloud_ = step1_StitchPointClouds(multi_view_clouds, camera_poses);
+    }
+    
+    if (!stitched_cloud_ || stitched_cloud_->points.empty()) {
+        RCLCPP_ERROR(logger, "Point cloud stitching failed!");
+        return {};
+    }
+    
+    wsr_cloud_ = step2_ExtractWSR(stitched_cloud_);
+    
+    if (wsr_cloud_->points.empty()) {
+        RCLCPP_WARN(logger, "WSR extraction returned empty cloud, using full cloud");
+        wsr_cloud_ = stitched_cloud_;
+    }
+    
+    weld_seam_points_ = step3_ExtractWeldSeamFeatures(wsr_cloud_);
+    
+    if (weld_seam_points_->points.empty()) {
+        RCLCPP_ERROR(logger, "No weld seam features detected!");
+        return {};
+    }
+    
+    sorted_edge_points_ = step4_SortPathPoints(weld_seam_points_);
+    path_points_ = step5_FitBSplineCurve(sorted_edge_points_);
+    
+    if (path_points_->points.empty()) {
+        RCLCPP_WARN(logger, "B-spline fitting failed, using sorted points");
+        path_points_ = sorted_edge_points_;
+    }
+    
+    if (!camera_poses.empty()) {
+        pose_estimator_.setCameraPosition(camera_poses[0]);
+    }
+    
+    std::vector<WeldingPathPoint> welding_path = step6_EstimateTorchPoses(path_points_, wsr_cloud_);
+    
+    if (pointcloud_publisher && stitched_cloud_ && !stitched_cloud_->points.empty()) {
+        sensor_msgs::msg::PointCloud2 pub_msg;
+        pcl::toROSMsg(*stitched_cloud_, pub_msg);
+        pub_msg.header.frame_id = "base_link";
+        pub_msg.header.stamp = rclcpp::Clock().now();
+        pointcloud_publisher->publish(pub_msg);
+        RCLCPP_INFO(logger, "Published stitched point cloud with %zu points", stitched_cloud_->points.size());
+    }
+    
+    if (pointcloud_publisher && wsr_cloud_ && !wsr_cloud_->points.empty()) {
+        sensor_msgs::msg::PointCloud2 pub_msg;
+        pcl::toROSMsg(*wsr_cloud_, pub_msg);
+        pub_msg.header.frame_id = "base_link";
+        pub_msg.header.stamp = rclcpp::Clock().now();
+        pointcloud_publisher->publish(pub_msg);
+        RCLCPP_INFO(logger, "Published WSR point cloud with %zu points", wsr_cloud_->points.size());
+    }
+    
+    if (pointcloud_publisher && weld_seam_points_ && !weld_seam_points_->points.empty()) {
+        sensor_msgs::msg::PointCloud2 pub_msg;
+        pcl::toROSMsg(*weld_seam_points_, pub_msg);
+        pub_msg.header.frame_id = "base_link";
+        pub_msg.header.stamp = rclcpp::Clock().now();
+        pointcloud_publisher->publish(pub_msg);
+        RCLCPP_INFO(logger, "Published weld seam edge points with %zu points", weld_seam_points_->points.size());
+    }
+    
+    if (pointcloud_publisher && path_points_ && !path_points_->points.empty()) {
+        sensor_msgs::msg::PointCloud2 pub_msg;
+        pcl::toROSMsg(*path_points_, pub_msg);
+        pub_msg.header.frame_id = "base_link";
+        pub_msg.header.stamp = rclcpp::Clock().now();
+        pointcloud_publisher->publish(pub_msg);
+        RCLCPP_INFO(logger, "Published B-spline path points with %zu points", path_points_->points.size());
+    }
+    
+    return welding_path;
+}
+
+void PC2RWeldingGenerator::saveIntermediateResults(const std::string& output_dir) {
+    output_dir_ = output_dir;
+    
+    if (stitched_cloud_ && !stitched_cloud_->points.empty()) {
+        pcl::io::savePCDFileBinary(output_dir + "/stitched_cloud.pcd", *stitched_cloud_);
+    }
+    
+    if (wsr_cloud_ && !wsr_cloud_->points.empty()) {
+        pcl::io::savePCDFileBinary(output_dir + "/wsr_cloud.pcd", *wsr_cloud_);
+    }
+    
+    if (weld_seam_points_ && !weld_seam_points_->points.empty()) {
+        pcl::io::savePCDFileBinary(output_dir + "/weld_seam_points.pcd", *weld_seam_points_);
+    }
+    
+    if (path_points_ && !path_points_->points.empty()) {
+        pcl::io::savePCDFileBinary(output_dir + "/path_points.pcd", *path_points_);
+    }
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Saved intermediate results to %s", output_dir.c_str());
+}
+
+void PC2RWeldingGenerator::setAdaptiveConfig(const AdaptiveConfig& config) {
+    adaptive_config_ = config;
+    adaptive_processor_.setConfig(adaptive_config_);
+}
+
+CloudPtr PC2RWeldingGenerator::step1_StitchPointCloudsAdaptive(
+    const std::vector<CloudPtr>& clouds,
+    const std::vector<Eigen::Vector3f>& camera_poses,
+    rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+    (void)camera_poses;
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+                "Step 1: Adaptive Stitching with KeyFrame & Incremental Strategy...");
+    
+    adaptive_processor_.reset();
+    adaptive_processor_.setUseKeyFrameStrategy(true);
+    adaptive_processor_.setUseIncrementalStitching(true);
+    
+    std::vector<CloudPtr> aligned_frames;
+    
+    for (size_t i = 0; i < clouds.size(); i++) {
+        if (!clouds[i] || clouds[i]->points.empty()) {
+            RCLCPP_WARN(rclcpp::get_logger("PC2RGenerator"), 
+                       "Cloud %zu is empty, skipping", i);
+            continue;
+        }
+        
+        CloudPtr downsampled = adaptive_processor_.adaptiveDownsample(clouds[i]);
+        
+        if (!adaptive_processor_.isKeyFrame(downsampled)) {
+            continue;
+        }
+        
+        Eigen::Matrix4f transform;
+        if (adaptive_processor_.incrementalStitch(downsampled, transform)) {
+            RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+                       "Processed frame %zu/%zu", i+1, clouds.size());
+            
+            CloudPtr transformed(new Cloud);
+            pcl::transformPointCloud(*downsampled, *transformed, transform);
+            aligned_frames.push_back(transformed);
+            
+            if (pointcloud_publisher && transformed && !transformed->points.empty()) {
+                pcl::PointCloud<pcl::PointXYZRGB>::Ptr rgb_aligned(new pcl::PointCloud<pcl::PointXYZRGB>);
+                int r = (i * 50) % 255;
+                int g = (i * 100) % 255;
+                int b = (i * 150) % 255;
+                for (const auto& p : transformed->points) {
+                    pcl::PointXYZRGB rgb_p;
+                    rgb_p.x = p.x;
+                    rgb_p.y = p.y;
+                    rgb_p.z = p.z;
+                    rgb_p.r = r;
+                    rgb_p.g = g;
+                    rgb_p.b = b;
+                    rgb_aligned->push_back(rgb_p);
+                }
+                sensor_msgs::msg::PointCloud2 pub_msg;
+                pcl::toROSMsg(*rgb_aligned, pub_msg);
+                pub_msg.header.frame_id = "base_link";
+                pub_msg.header.stamp = rclcpp::Clock().now();
+                pointcloud_publisher->publish(pub_msg);
+            }
+        } else {
+            RCLCPP_WARN(rclcpp::get_logger("PC2RGenerator"), 
+                       "Failed to stitch frame %zu", i);
+        }
+    }
+    
+    if (!aligned_frames.empty()) {
+        aligned_cloud_.reset(new Cloud);
+        for (const auto& frame : aligned_frames) {
+            *aligned_cloud_ += *frame;
+        }
+    }
+    
+    CloudPtr stitched = adaptive_processor_.getGlobalCloud();
+    
+    RCLCPP_INFO(rclcpp::get_logger("PC2RGenerator"), 
+               "Adaptive stitching completed: processed=%d, skipped=%d, final_points=%zu, aligned_frames=%zu",
+               adaptive_processor_.getProcessedFrames(), 
+               adaptive_processor_.getSkippedFrames(),
+               stitched->points.size(),
+               aligned_frames.size());
+    
+    return stitched;
+}
+
+std::vector<WeldingPathPoint> PC2RWeldingGenerator::generateWeldingPathFromSingleCloud(
+    CloudPtr cloud,
+    const Eigen::Vector3f& camera_pose,
+    rclcpp::Logger logger) {
+    
+    std::vector<WeldingPathPoint> welding_path;
+    
+    if (!cloud || cloud->points.empty()) {
+        RCLCPP_ERROR(logger, "No point cloud provided!");
+        return welding_path;
+    }
+    
+    RCLCPP_INFO(logger, "Single cloud mode: processing %zu points", cloud->points.size());
+    
+    CloudPtr downsampled = adaptive_processor_.adaptiveDownsample(cloud);
+    RCLCPP_INFO(logger, "After adaptive downsampling: %zu points", downsampled->points.size());
+    
+    stitched_cloud_ = downsampled;
+    wsr_cloud_ = step2_ExtractWSR(stitched_cloud_);
+    
+    if (wsr_cloud_->points.empty()) {
+        RCLCPP_WARN(logger, "WSR extraction returned empty cloud, using full cloud");
+        wsr_cloud_ = stitched_cloud_;
+    }
+    
+    weld_seam_points_ = step3_ExtractWeldSeamFeatures(wsr_cloud_);
+    
+    if (weld_seam_points_->points.empty()) {
+        RCLCPP_ERROR(logger, "No weld seam features detected!");
+        return welding_path;
+    }
+    
+    sorted_edge_points_ = step4_SortPathPoints(weld_seam_points_);
+    path_points_ = step5_FitBSplineCurve(sorted_edge_points_);
+    
+    if (path_points_->points.empty()) {
+        RCLCPP_WARN(logger, "B-spline fitting failed, using sorted points");
+        path_points_ = sorted_edge_points_;
+    }
+    
+    pose_estimator_.setCameraPosition(camera_pose);
+    welding_path = step6_EstimateTorchPoses(path_points_, wsr_cloud_);
+    
+    RCLCPP_INFO(logger, "Generated %zu welding path points from single cloud", welding_path.size());
+    
+    return welding_path;
+}
+
+geometry_msgs::msg::Pose weldingPathPointToPose(const WeldingPathPoint& point) {
+    geometry_msgs::msg::Pose pose;
+    
+    pose.position.x = point.position.x();
+    pose.position.y = point.position.y();
+    pose.position.z = point.position.z();
+    
+    Eigen::Matrix3f R;
+    R.col(0) = point.normal.normalized();
+    R.col(1) = point.advance_direction.normalized();
+    R.col(2) = point.torch_direction.normalized();
+    
+    Eigen::Quaternionf q(R);
+    
+    pose.orientation.x = q.x();
+    pose.orientation.y = q.y();
+    pose.orientation.z = q.z();
+    pose.orientation.w = q.w();
+    
+    return pose;
+}

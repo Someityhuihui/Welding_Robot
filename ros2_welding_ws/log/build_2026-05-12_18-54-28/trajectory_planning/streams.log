@@ -1,0 +1,245 @@
+[0.015s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/someityhuihui/ros2_welding_ws/src/trajectory_planning -DCMAKE_INSTALL_PREFIX=/home/someityhuihui/ros2_welding_ws/install/trajectory_planning
+[0.085s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.286s] -- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.554s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.565s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.581s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.598s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.670s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.674s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.024s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.300s] -- Found rclpy: 7.1.11 (/opt/ros/jazzy/share/rclpy/cmake)
+[1.300s] -- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.319s] -- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.339s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.364s] -- Found visualization_msgs: 5.3.7 (/opt/ros/jazzy/share/visualization_msgs/cmake)
+[1.393s] -- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+[1.404s] -- Found image_transport: 5.1.7 (/opt/ros/jazzy/share/image_transport/cmake)
+[1.423s] -- Found pcl_conversions: 2.6.4 (/opt/ros/jazzy/share/pcl_conversions/cmake)
+[1.479s] [33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+[1.479s]   Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+[1.479s]   variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+[1.479s]   cmake_policy command to set the policy and suppress this warning.
+[1.479s] 
+[1.480s]   CMake variable FLANN_ROOT is set to:
+[1.480s] 
+[1.480s]     /usr
+[1.480s] 
+[1.480s]   For compatibility, find_package is ignoring the variable, but code in a
+[1.480s]   .cmake module might still use it.
+[1.480s] Call Stack (most recent call first):
+[1.480s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+[1.480s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+[1.480s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+[1.480s]   /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[1.480s]   /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+[1.480s]   CMakeLists.txt:29 (find_package)
+[1.480s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.480s] [0m
+[1.481s] -- Found flann version 1.9.2
+[17.014s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[17.020s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[17.225s] -- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+[34.998s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[35.002s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[49.969s] -- Found Qhull version 8.0.2
+[65.400s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[80.409s] -- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)
+[80.414s] -- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[80.528s] -- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[80.534s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[80.536s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[80.540s] [33mCMake Warning (dev) at CMakeLists.txt:38 (find_package):
+[80.540s]   Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+[80.540s]   Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+[80.540s]   command to set the policy and suppress this warning.
+[80.540s] 
+[80.540s]   CMake variable PCL_ROOT is set to:
+[80.540s] 
+[80.540s]     /usr
+[80.540s] 
+[80.540s]   For compatibility, CMake is ignoring the variable.
+[80.541s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[80.541s] [0m
+[80.647s] -- Configuring done (80.6s)
+[81.162s] -- Generating done (0.3s)
+[81.185s] -- Build files have been written to: /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[81.203s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/someityhuihui/ros2_welding_ws/src/trajectory_planning -DCMAKE_INSTALL_PREFIX=/home/someityhuihui/ros2_welding_ws/install/trajectory_planning
+[81.204s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[81.435s] [ 11%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[81.435s] [ 22%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[81.438s] [ 33%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o[0m
+[81.439s] [ 44%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/welding_config.cpp.o[0m
+[84.814s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:7[m[K:
+[84.814s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[84.814s]     8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+[84.814s]       | 
+[84.814s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+[84.814s]                  from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:8[m[K:
+[84.814s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[84.814s]     8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+[84.814s]       | 
+[84.814s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[84.814s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[88.112s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:5[m[K:
+[88.112s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:351:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[88.112s]   351 |     std::string [01;31m[Koutput_dir_[m[K;
+[88.112s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[88.112s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:344:17:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[88.112s]   344 |     std::string [01;36m[Koutput_dir_[m[K;
+[88.112s]       |                 [01;36m[K^~~~~~~~~~~[m[K
+[88.113s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:352:33:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[88.113s]   352 |     AdaptivePointCloudProcessor [01;31m[Kadaptive_processor_[m[K;
+[88.113s]       |                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[88.113s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:348:33:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[88.113s]   348 |     AdaptivePointCloudProcessor [01;36m[Kadaptive_processor_[m[K;
+[88.113s]       |                                 [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[88.115s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:353:20:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[88.115s]   353 |     AdaptiveConfig [01;31m[Kadaptive_config_[m[K;
+[88.115s]       |                    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[88.115s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:347:20:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[88.116s]   347 |     AdaptiveConfig [01;36m[Kadaptive_config_[m[K;
+[88.116s]       |                    [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[88.116s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:354:26:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[88.116s]   354 |     bool use_adaptive_ = [01;31m[Ktrue[m[K;
+[88.116s]       |                          [01;31m[K^~~~[m[K
+[88.116s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:346:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[88.116s]   346 |     bool [01;36m[Kuse_adaptive_[m[K = true;
+[88.116s]       |          [01;36m[K^~~~~~~~~~~~~[m[K
+[88.361s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KEigen::MatrixXf LMICP::[01;32m[KcomputeJacobian[m[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)[m[K’:
+[88.361s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:278:66:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktarget[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[88.361s]   278 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, [01;35m[KCloudPtr target[m[K,
+[88.361s]       |                                                         [01;35m[K~~~~~~~~~^~~~~~[m[K
+[88.539s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr EdgeIntensityDetector::[01;32m[KextractEdgePoints[m[K(CloudPtr, float)[m[K’:
+[88.539s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:674:28:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[88.539s]   674 |         if ([01;35m[Kindices.size() < min_neighbors_[m[K) continue;
+[88.539s]       |             [01;35m[K~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[88.604s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:731:46:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<int>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[88.604s]   731 |         if (is_local_max && [01;35m[Kneighbors.size() >= min_neighbors_[m[K) {
+[88.604s]       |                             [01;35m[K~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[88.606s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[88.606s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:745:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetEdgeDetectionParams[m[K(float, float, float, int)[m[K’
+[88.606s]   745 | void [01;31m[KPC2RWeldingGenerator[m[K::setEdgeDetectionParams(float radius, float epsilon,
+[88.606s]       |      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.606s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:745:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetEdgeDetectionParams[m[K(float, float, float, int)[m[K’
+[88.606s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:267:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ defined here
+[88.607s]   267 | class [01;36m[KPC2RWeldingGenerator[m[K {
+[88.607s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.607s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:753:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetWSRParams[m[K(float)[m[K’
+[88.607s]   753 | void [01;31m[KPC2RWeldingGenerator[m[K::setWSRParams(float cylinder_radius) {
+[88.607s]       |      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.607s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:753:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetWSRParams[m[K(float)[m[K’
+[88.607s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:267:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ defined here
+[88.607s]   267 | class [01;36m[KPC2RWeldingGenerator[m[K {
+[88.607s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.608s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:757:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetSortingParams[m[K(float)[m[K’
+[88.608s]   757 | void [01;31m[KPC2RWeldingGenerator[m[K::setSortingParams(float neighbor_radius) {
+[88.608s]       |      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.608s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:757:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid PC2RWeldingGenerator::[01;32m[KsetSortingParams[m[K(float)[m[K’
+[88.608s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:267:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ defined here
+[88.608s]   267 | class [01;36m[KPC2RWeldingGenerator[m[K {
+[88.608s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.673s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointClouds[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[88.673s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1139:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[88.673s]  1139 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+[88.673s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[88.699s] In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[88.699s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:27[m[K,
+[88.699s]                  from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171[m[K,
+[88.699s]                  from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:11[m[K:
+[88.699s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep2_ExtractWSR[m[K(CloudPtr)[m[K’:
+[88.700s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1169:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kwsr_cylinder_radius_[m[K’ was not declared in this scope
+[88.700s]  1169 |                "Step 2: Extracting WSR with radius %.3f...", [01;31m[Kwsr_cylinder_radius_[m[K);
+[88.700s]       |                                                              [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.724s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1171:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kwsr_cylinder_radius_[m[K’ was not declared in this scope
+[88.724s]  1171 |     return cylinderFilter(full_cloud, [01;31m[Kwsr_cylinder_radius_[m[K);
+[88.724s]       |                                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[88.756s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep4_SortPathPoints[m[K(CloudPtr)[m[K’:
+[88.756s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1187:67:[m[K [01;31m[Kerror: [m[K‘[01m[Ksorting_neighbor_radius_[m[K’ was not declared in this scope
+[88.756s]  1187 |                "Step 4: Sorting path points with radius %.3f...", [01;31m[Ksorting_neighbor_radius_[m[K);
+[88.756s]       |                                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[88.787s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1193:49:[m[K [01;31m[Kerror: [m[K‘[01m[Ksorting_neighbor_radius_[m[K’ was not declared in this scope
+[88.787s]  1193 |     return minimumSpanningTreeSort(edge_points, [01;31m[Ksorting_neighbor_radius_[m[K);
+[88.787s]       |                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[88.804s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointCloudsAdaptive[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[88.804s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1566:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[88.804s]  1566 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+[88.804s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[91.358s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:8[m[K:
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:351:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[91.358s]   351 |     std::string [01;31m[Koutput_dir_[m[K;
+[91.358s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:344:17:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[91.358s]   344 |     std::string [01;36m[Koutput_dir_[m[K;
+[91.358s]       |                 [01;36m[K^~~~~~~~~~~[m[K
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:352:33:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[91.358s]   352 |     AdaptivePointCloudProcessor [01;31m[Kadaptive_processor_[m[K;
+[91.358s]       |                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:348:33:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[91.358s]   348 |     AdaptivePointCloudProcessor [01;36m[Kadaptive_processor_[m[K;
+[91.358s]       |                                 [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:353:20:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[91.358s]   353 |     AdaptiveConfig [01;31m[Kadaptive_config_[m[K;
+[91.358s]       |                    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[91.358s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:347:20:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[91.358s]   347 |     AdaptiveConfig [01;36m[Kadaptive_config_[m[K;
+[91.361s]       |                    [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[91.361s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:354:26:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[91.362s]   354 |     bool use_adaptive_ = [01;31m[Ktrue[m[K;
+[91.362s]       |                          [01;31m[K^~~~[m[K
+[91.362s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:346:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[91.362s]   346 |     bool [01;36m[Kuse_adaptive_[m[K = true;
+[91.362s]       |          [01;36m[K^~~~~~~~~~~~~[m[K
+[91.519s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[91.519s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:351:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[91.519s]   351 |     std::string [01;31m[Koutput_dir_[m[K;
+[91.519s]       |                 [01;31m[K^~~~~~~~~~~[m[K
+[91.519s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:344:17:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kstd::string PC2RWeldingGenerator::output_dir_[m[K’
+[91.519s]   344 |     std::string [01;36m[Koutput_dir_[m[K;
+[91.519s]       |                 [01;36m[K^~~~~~~~~~~[m[K
+[91.519s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:352:33:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[91.519s]   352 |     AdaptivePointCloudProcessor [01;31m[Kadaptive_processor_[m[K;
+[91.519s]       |                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[91.519s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:348:33:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptivePointCloudProcessor PC2RWeldingGenerator::adaptive_processor_[m[K’
+[91.519s]   348 |     AdaptivePointCloudProcessor [01;36m[Kadaptive_processor_[m[K;
+[91.519s]       |                                 [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[91.519s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:353:20:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[91.520s]   353 |     AdaptiveConfig [01;31m[Kadaptive_config_[m[K;
+[91.520s]       |                    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[91.520s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:347:20:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KAdaptiveConfig PC2RWeldingGenerator::adaptive_config_[m[K’
+[91.520s]   347 |     AdaptiveConfig [01;36m[Kadaptive_config_[m[K;
+[91.520s]       |                    [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[91.520s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:354:26:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[91.520s]   354 |     bool use_adaptive_ = [01;31m[Ktrue[m[K;
+[91.520s]       |                          [01;31m[K^~~~[m[K
+[91.520s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:346:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool PC2RWeldingGenerator::use_adaptive_[m[K’
+[91.520s]   346 |     bool [01;36m[Kuse_adaptive_[m[K = true;
+[91.520s]       |          [01;36m[K^~~~~~~~~~~~~[m[K
+[91.525s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K configurePC2RGenerator[m[K(PC2RWeldingGenerator&)[m[K’:
+[91.525s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:171:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ has no member named ‘[01m[KsetEdgeDetectionParams[m[K’
+[91.525s]   171 |     generator.[01;31m[KsetEdgeDetectionParams[m[K(
+[91.526s]       |               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[91.526s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:179:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ has no member named ‘[01m[KsetWSRParams[m[K’
+[91.526s]   179 |     generator.[01;31m[KsetWSRParams[m[K(g_config.wsr.cylinder_radius);
+[91.527s]       |               [01;31m[K^~~~~~~~~~~~[m[K
+[91.527s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:182:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ has no member named ‘[01m[KsetSortingParams[m[K’
+[91.527s]   182 |     generator.[01;31m[KsetSortingParams[m[K(g_config.sorting.neighbor_radius);
+[91.527s]       |               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[91.575s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[91.575s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:206:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kpointcloud_storageFolder_Callback[m[K’ was not declared in this scope
+[91.575s]   206 |         "pointcloud_storageFolder", 10, [01;31m[Kpointcloud_storageFolder_Callback[m[K);
+[91.576s]       |                                         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[91.592s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:208:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kcolor_Callback[m[K’ was not declared in this scope
+[91.592s]   208 |         "/camera/color/image_raw", 10, [01;31m[Kcolor_Callback[m[K);
+[91.592s]       |                                        [01;31m[K^~~~~~~~~~~~~~[m[K
+[91.608s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:210:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kdepth_Callback[m[K’ was not declared in this scope; did you mean ‘[01m[Komp_atk_fallback[m[K’?
+[91.608s]   210 |         "/camera/aligned_depth_to_color/image_raw", 10, [01;31m[Kdepth_Callback[m[K);
+[91.608s]       |                                                         [01;31m[K^~~~~~~~~~~~~~[m[K
+[91.608s]       |                                                         [32m[Komp_atk_fallback[m[K
+[93.663s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:146: CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o] Error 1
+[93.663s] gmake[2]: *** Waiting for unfinished jobs....
+[95.220s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:90: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o] Error 1
+[96.078s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Error 1
+[96.078s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+[96.079s] gmake: *** [Makefile:146: all] Error 2
+[96.081s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4

@@ -1,0 +1,44 @@
+[0.011s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[0.170s] [ 12%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[2.428s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+[2.428s]                  from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[2.428s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[2.428s]     8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+[2.428s]       | 
+[2.428s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[8.003s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K trajectory_6DOF_generation_pc2r[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, bool&, int&, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&, rclcpp::Logger)[m[K’:
+[8.003s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:548:11:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KtrajectoryPlanning_flag[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.003s]   548 |     [01;35m[Kbool& trajectoryPlanning_flag[m[K,
+[8.003s]       |     [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[8.004s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:549:10:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kreceive_capture_count[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.004s]   549 |     [01;35m[Kint& receive_capture_count[m[K,
+[8.004s]       |     [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[8.004s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:550:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpub_pointcloud[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.004s]   550 |     [01;35m[Ksensor_msgs::msg::PointCloud2 pub_pointcloud[m[K,
+[8.004s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[8.004s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:553:19:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knaptime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.005s]   553 |     [01;35m[Krclcpp::Rate& naptime[m[K,
+[8.005s]       |     [01;35m[K~~~~~~~~~~~~~~^~~~~~~[m[K
+[20.994s] [ 25%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+[53.045s] [100%] Built target trajectory_planning_node
+[53.055s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[53.063s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[53.070s] -- Install configuration: ""
+[53.070s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node
+[53.084s] -- Set non-toolchain portion of runtime path of "/home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node" to ""
+[53.084s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/package_run_dependencies/trajectory_planning
+[53.084s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/parent_prefix_path/trajectory_planning
+[53.084s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.sh
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.dsv
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.sh
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.dsv
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.bash
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.sh
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.zsh
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.dsv
+[53.085s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.dsv
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/packages/trajectory_planning
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig.cmake
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig-version.cmake
+[53.085s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.xml
+[53.087s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning

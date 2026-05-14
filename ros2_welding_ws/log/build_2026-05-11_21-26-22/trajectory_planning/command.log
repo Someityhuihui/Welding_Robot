@@ -1,0 +1,2 @@
+Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '2': /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4

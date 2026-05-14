@@ -1,0 +1,26 @@
+[0.056s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[1.274s] [ 16%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[1.275s] [ 33%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[30.311s] [ 50%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+[72.198s] [100%] Built target trajectory_planning_node
+[72.322s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[72.402s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[72.432s] -- Install configuration: ""
+[72.432s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node
+[72.432s] -- Set non-toolchain portion of runtime path of "/home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node" to ""
+[72.432s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/package_run_dependencies/trajectory_planning
+[72.432s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/parent_prefix_path/trajectory_planning
+[72.435s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.sh
+[72.435s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.dsv
+[72.435s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.sh
+[72.435s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.dsv
+[72.436s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.bash
+[72.436s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.sh
+[72.436s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.zsh
+[72.436s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.dsv
+[72.436s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.dsv
+[72.437s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/packages/trajectory_planning
+[72.438s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig.cmake
+[72.438s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig-version.cmake
+[72.439s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.xml
+[72.451s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning

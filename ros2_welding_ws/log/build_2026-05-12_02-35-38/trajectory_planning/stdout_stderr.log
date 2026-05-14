@@ -1,0 +1,18 @@
+[ 11%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:8[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:390:27:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Krealsense_pos[m[K’ set but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable-Wunused-but-set-variable]8;;[m[K]
+  390 |             pcl::PointXYZ [01;35m[Krealsense_pos[m[K = read_realtime_pointcloud_frame(
+      |                           [01;35m[K^~~~~~~~~~~~~[m[K
+[ 22%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+/usr/bin/ld: CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o: in function `Waypoint_markerName_creation[abi:cxx11](int)':
+transformation.cpp:(.text+0x1339): multiple definition of `Waypoint_markerName_creation[abi:cxx11](int)'; CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o:main.cpp:(.text+0xf2c): first defined here
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:4841: trajectory_planning_node] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

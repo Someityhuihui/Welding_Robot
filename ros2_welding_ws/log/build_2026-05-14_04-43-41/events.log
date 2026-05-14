@@ -1,0 +1,295 @@
+[0.000000] (-) TimerEvent: {}
+[0.000562] (trajectory_planning) JobQueued: {'identifier': 'trajectory_planning', 'dependencies': OrderedDict()}
+[0.000618] (trajectory_planning) JobStarted: {'identifier': 'trajectory_planning'}
+[0.010256] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'cmake'}
+[0.011207] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'build'}
+[0.012085] (trajectory_planning) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', '--', '-j4', '-l4'], 'cwd': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'someityhuihui', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/someityhuihui', 'CONDA_SHLVL': '0', 'OLDPWD': '/home/someityhuihui', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'someityhuihui', 'NAME': 'LAPTOP-9AS1OUJD', 'WSL_INTEROP': '/run/WSL/515_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/home/someityhuihui/miniforge3/condabin:/mnt/d/anaconda4/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/d/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/SIMULIA/Commands:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/d/MATLAB__2023b/bin:/mnt/d/Program Files/MATLAB/MATLAB Runtime/R2023a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/d/GSCAD24.5/GsPlot:/mnt/c/users/lenovo/appdata/local/programs/python/python310/lib/site-packages:/mnt/c/Program Files/dotnet/:/mnt/d/anaconda4:/mnt/d/anaconda4/Scripts/:/mnt/d/anaconda4/Library/bin/:/mnt/d/anaconda4/Library/mingw-w64/bin/:/mnt/c/Program Files (x86)/Autodesk/Backburner/:/mnt/c/Program Files (x86)/NetSarang/Xshell 7/:/mnt/c/Program Files (x86)/NetSarang/Xftp 7/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/d/Program Files/cmake-3.30.3/cmake-3.30.3-windows-x86_64/bin:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files (x86)/NetSarang/Xshell 8/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/PuTTY/:/mnt/d/Programs/Trae CN/bin:/mnt/c/Users/Lenovo/.cargo/bin:/mnt/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm 2023.3.2/bin:/mnt/d/VS_Code/Microsoft VS Code/bin:/mnt/d/VS_Code/mingw64/bin:/mnt/c/Users/Lenovo/.dotnet/tools:/mnt/d/Program Files/JetBrains/IntelliJ IDEA 2024.3.1.1/bin:/mnt/d/Program Files/JetBrains/IntelliJ IDEA Community Edition 2024.3.1.1/bin:/mnt/c/Users/Lenovo/AppData/Local/Programs/Ollama:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'MAMBA_ROOT_PREFIX': '/home/someityhuihui/miniforge3', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'MAMBA_EXE': '/home/someityhuihui/miniforge3/bin/mamba', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': ''}), 'shell': False}
+[0.099887] (-) TimerEvent: {}
+[0.200371] (-) TimerEvent: {}
+[0.258673] (trajectory_planning) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o\x1b[0m\n'}
+[0.303221] (-) TimerEvent: {}
+[0.403796] (-) TimerEvent: {}
+[0.504321] (-) TimerEvent: {}
+[0.604824] (-) TimerEvent: {}
+[0.705232] (-) TimerEvent: {}
+[0.806292] (-) TimerEvent: {}
+[0.907568] (-) TimerEvent: {}
+[1.008822] (-) TimerEvent: {}
+[1.109982] (-) TimerEvent: {}
+[1.211970] (-) TimerEvent: {}
+[1.312957] (-) TimerEvent: {}
+[1.413589] (-) TimerEvent: {}
+[1.514200] (-) TimerEvent: {}
+[1.614740] (-) TimerEvent: {}
+[1.715256] (-) TimerEvent: {}
+[1.815620] (-) TimerEvent: {}
+[1.916211] (-) TimerEvent: {}
+[2.016997] (-) TimerEvent: {}
+[2.117559] (-) TimerEvent: {}
+[2.218825] (-) TimerEvent: {}
+[2.319388] (-) TimerEvent: {}
+[2.419889] (-) TimerEvent: {}
+[2.521087] (-) TimerEvent: {}
+[2.622537] (-) TimerEvent: {}
+[2.723766] (-) TimerEvent: {}
+[2.824971] (-) TimerEvent: {}
+[2.926171] (-) TimerEvent: {}
+[3.027376] (-) TimerEvent: {}
+[3.128652] (-) TimerEvent: {}
+[3.229854] (-) TimerEvent: {}
+[3.331346] (-) TimerEvent: {}
+[3.432404] (-) TimerEvent: {}
+[3.533547] (-) TimerEvent: {}
+[3.634730] (-) TimerEvent: {}
+[3.736018] (-) TimerEvent: {}
+[3.837386] (-) TimerEvent: {}
+[3.938832] (-) TimerEvent: {}
+[4.040116] (-) TimerEvent: {}
+[4.141301] (-) TimerEvent: {}
+[4.242439] (-) TimerEvent: {}
+[4.343782] (-) TimerEvent: {}
+[4.444605] (-) TimerEvent: {}
+[4.545144] (-) TimerEvent: {}
+[4.646846] (-) TimerEvent: {}
+[4.748914] (-) TimerEvent: {}
+[4.850863] (-) TimerEvent: {}
+[4.952624] (-) TimerEvent: {}
+[5.054538] (-) TimerEvent: {}
+[5.156385] (-) TimerEvent: {}
+[5.258368] (-) TimerEvent: {}
+[5.360467] (-) TimerEvent: {}
+[5.462313] (-) TimerEvent: {}
+[5.564142] (-) TimerEvent: {}
+[5.665973] (-) TimerEvent: {}
+[5.768437] (-) TimerEvent: {}
+[5.871042] (-) TimerEvent: {}
+[5.973740] (-) TimerEvent: {}
+[6.075689] (-) TimerEvent: {}
+[6.177746] (-) TimerEvent: {}
+[6.279239] (-) TimerEvent: {}
+[6.381342] (-) TimerEvent: {}
+[6.482633] (-) TimerEvent: {}
+[6.583290] (-) TimerEvent: {}
+[6.683773] (-) TimerEvent: {}
+[6.785113] (-) TimerEvent: {}
+[6.886376] (-) TimerEvent: {}
+[6.986950] (-) TimerEvent: {}
+[7.032602] (trajectory_planning) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking CXX executable trajectory_planning_node\x1b[0m\n'}
+[7.087248] (-) TimerEvent: {}
+[7.187585] (-) TimerEvent: {}
+[7.287940] (-) TimerEvent: {}
+[7.389082] (-) TimerEvent: {}
+[7.490336] (-) TimerEvent: {}
+[7.591630] (-) TimerEvent: {}
+[7.692898] (-) TimerEvent: {}
+[7.793716] (-) TimerEvent: {}
+[7.894939] (-) TimerEvent: {}
+[7.996192] (-) TimerEvent: {}
+[8.097471] (-) TimerEvent: {}
+[8.198740] (-) TimerEvent: {}
+[8.299543] (-) TimerEvent: {}
+[8.400874] (-) TimerEvent: {}
+[8.502246] (-) TimerEvent: {}
+[8.602773] (-) TimerEvent: {}
+[8.703945] (-) TimerEvent: {}
+[8.804380] (-) TimerEvent: {}
+[8.904861] (-) TimerEvent: {}
+[9.005450] (-) TimerEvent: {}
+[9.106186] (-) TimerEvent: {}
+[9.206660] (-) TimerEvent: {}
+[9.307347] (-) TimerEvent: {}
+[9.408204] (-) TimerEvent: {}
+[9.509309] (-) TimerEvent: {}
+[9.610719] (-) TimerEvent: {}
+[9.711843] (-) TimerEvent: {}
+[9.812422] (-) TimerEvent: {}
+[9.913183] (-) TimerEvent: {}
+[10.014535] (-) TimerEvent: {}
+[10.115664] (-) TimerEvent: {}
+[10.216859] (-) TimerEvent: {}
+[10.317875] (-) TimerEvent: {}
+[10.418362] (-) TimerEvent: {}
+[10.519010] (-) TimerEvent: {}
+[10.619812] (-) TimerEvent: {}
+[10.720615] (-) TimerEvent: {}
+[10.821284] (-) TimerEvent: {}
+[10.921843] (-) TimerEvent: {}
+[11.022501] (-) TimerEvent: {}
+[11.123313] (-) TimerEvent: {}
+[11.224578] (-) TimerEvent: {}
+[11.325779] (-) TimerEvent: {}
+[11.426656] (-) TimerEvent: {}
+[11.527828] (-) TimerEvent: {}
+[11.629049] (-) TimerEvent: {}
+[11.730243] (-) TimerEvent: {}
+[11.831431] (-) TimerEvent: {}
+[11.931963] (-) TimerEvent: {}
+[12.033415] (-) TimerEvent: {}
+[12.134611] (-) TimerEvent: {}
+[12.235696] (-) TimerEvent: {}
+[12.336863] (-) TimerEvent: {}
+[12.437861] (-) TimerEvent: {}
+[12.539128] (-) TimerEvent: {}
+[12.640218] (-) TimerEvent: {}
+[12.741473] (-) TimerEvent: {}
+[12.842718] (-) TimerEvent: {}
+[12.943875] (-) TimerEvent: {}
+[13.044264] (-) TimerEvent: {}
+[13.144664] (-) TimerEvent: {}
+[13.245023] (-) TimerEvent: {}
+[13.345895] (-) TimerEvent: {}
+[13.446932] (-) TimerEvent: {}
+[13.548135] (-) TimerEvent: {}
+[13.649347] (-) TimerEvent: {}
+[13.750531] (-) TimerEvent: {}
+[13.851352] (-) TimerEvent: {}
+[13.952429] (-) TimerEvent: {}
+[14.052977] (-) TimerEvent: {}
+[14.153492] (-) TimerEvent: {}
+[14.253953] (-) TimerEvent: {}
+[14.354586] (-) TimerEvent: {}
+[14.455792] (-) TimerEvent: {}
+[14.556955] (-) TimerEvent: {}
+[14.657412] (-) TimerEvent: {}
+[14.758126] (-) TimerEvent: {}
+[14.858765] (-) TimerEvent: {}
+[14.959404] (-) TimerEvent: {}
+[15.059795] (-) TimerEvent: {}
+[15.160213] (-) TimerEvent: {}
+[15.260642] (-) TimerEvent: {}
+[15.361516] (-) TimerEvent: {}
+[15.462116] (-) TimerEvent: {}
+[15.562616] (-) TimerEvent: {}
+[15.663287] (-) TimerEvent: {}
+[15.764484] (-) TimerEvent: {}
+[15.865778] (-) TimerEvent: {}
+[15.966425] (-) TimerEvent: {}
+[16.067044] (-) TimerEvent: {}
+[16.167795] (-) TimerEvent: {}
+[16.269096] (-) TimerEvent: {}
+[16.369534] (-) TimerEvent: {}
+[16.470116] (-) TimerEvent: {}
+[16.570742] (-) TimerEvent: {}
+[16.671380] (-) TimerEvent: {}
+[16.772431] (-) TimerEvent: {}
+[16.873581] (-) TimerEvent: {}
+[16.974811] (-) TimerEvent: {}
+[17.076076] (-) TimerEvent: {}
+[17.177079] (-) TimerEvent: {}
+[17.277538] (-) TimerEvent: {}
+[17.378022] (-) TimerEvent: {}
+[17.479428] (-) TimerEvent: {}
+[17.581022] (-) TimerEvent: {}
+[17.682038] (-) TimerEvent: {}
+[17.783886] (-) TimerEvent: {}
+[17.885921] (-) TimerEvent: {}
+[17.988766] (-) TimerEvent: {}
+[18.090663] (-) TimerEvent: {}
+[18.191887] (-) TimerEvent: {}
+[18.293765] (-) TimerEvent: {}
+[18.395910] (-) TimerEvent: {}
+[18.497831] (-) TimerEvent: {}
+[18.599608] (-) TimerEvent: {}
+[18.701038] (-) TimerEvent: {}
+[18.803033] (-) TimerEvent: {}
+[18.905065] (-) TimerEvent: {}
+[19.007177] (-) TimerEvent: {}
+[19.109117] (-) TimerEvent: {}
+[19.210823] (-) TimerEvent: {}
+[19.311660] (-) TimerEvent: {}
+[19.412132] (-) TimerEvent: {}
+[19.512517] (-) TimerEvent: {}
+[19.613655] (-) TimerEvent: {}
+[19.714920] (-) TimerEvent: {}
+[19.816014] (-) TimerEvent: {}
+[19.917147] (-) TimerEvent: {}
+[20.018336] (-) TimerEvent: {}
+[20.119526] (-) TimerEvent: {}
+[20.220675] (-) TimerEvent: {}
+[20.322063] (-) TimerEvent: {}
+[20.422640] (-) TimerEvent: {}
+[20.523701] (-) TimerEvent: {}
+[20.624921] (-) TimerEvent: {}
+[20.726201] (-) TimerEvent: {}
+[20.826750] (-) TimerEvent: {}
+[20.927918] (-) TimerEvent: {}
+[21.029184] (-) TimerEvent: {}
+[21.130431] (-) TimerEvent: {}
+[21.231490] (-) TimerEvent: {}
+[21.331881] (-) TimerEvent: {}
+[21.432588] (-) TimerEvent: {}
+[21.533009] (-) TimerEvent: {}
+[21.633478] (-) TimerEvent: {}
+[21.734604] (-) TimerEvent: {}
+[21.836575] (-) TimerEvent: {}
+[21.937300] (-) TimerEvent: {}
+[22.037927] (-) TimerEvent: {}
+[22.139909] (-) TimerEvent: {}
+[22.241883] (-) TimerEvent: {}
+[22.343187] (-) TimerEvent: {}
+[22.443645] (-) TimerEvent: {}
+[22.544791] (-) TimerEvent: {}
+[22.645807] (-) TimerEvent: {}
+[22.747036] (-) TimerEvent: {}
+[22.847667] (-) TimerEvent: {}
+[22.949604] (-) TimerEvent: {}
+[23.050279] (-) TimerEvent: {}
+[23.151221] (-) TimerEvent: {}
+[23.251918] (-) TimerEvent: {}
+[23.352338] (-) TimerEvent: {}
+[23.452856] (-) TimerEvent: {}
+[23.553903] (-) TimerEvent: {}
+[23.654391] (-) TimerEvent: {}
+[23.754896] (-) TimerEvent: {}
+[23.856219] (-) TimerEvent: {}
+[23.956793] (-) TimerEvent: {}
+[24.058065] (-) TimerEvent: {}
+[24.159324] (-) TimerEvent: {}
+[24.259999] (-) TimerEvent: {}
+[24.360557] (-) TimerEvent: {}
+[24.461943] (-) TimerEvent: {}
+[24.563871] (-) TimerEvent: {}
+[24.665800] (-) TimerEvent: {}
+[24.767632] (-) TimerEvent: {}
+[24.869502] (-) TimerEvent: {}
+[24.970989] (-) TimerEvent: {}
+[25.073287] (-) TimerEvent: {}
+[25.175167] (-) TimerEvent: {}
+[25.277066] (-) TimerEvent: {}
+[25.379125] (-) TimerEvent: {}
+[25.481137] (-) TimerEvent: {}
+[25.582354] (-) TimerEvent: {}
+[25.683609] (-) TimerEvent: {}
+[25.784057] (-) TimerEvent: {}
+[25.884585] (-) TimerEvent: {}
+[25.985139] (-) TimerEvent: {}
+[26.086295] (-) TimerEvent: {}
+[26.187469] (-) TimerEvent: {}
+[26.288259] (-) TimerEvent: {}
+[26.389334] (-) TimerEvent: {}
+[26.489950] (-) TimerEvent: {}
+[26.493713] (trajectory_planning) StdoutLine: {'line': b'[100%] Built target trajectory_planning_node\n'}
+[26.506809] (trajectory_planning) CommandEnded: {'returncode': 0}
+[26.508107] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'install'}
+[26.518271] (trajectory_planning) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning'], 'cwd': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'someityhuihui', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/someityhuihui', 'CONDA_SHLVL': '0', 'OLDPWD': '/home/someityhuihui', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'someityhuihui', 'NAME': 'LAPTOP-9AS1OUJD', 'WSL_INTEROP': '/run/WSL/515_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/home/someityhuihui/miniforge3/condabin:/mnt/d/anaconda4/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/d/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/SIMULIA/Commands:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/d/MATLAB__2023b/bin:/mnt/d/Program Files/MATLAB/MATLAB Runtime/R2023a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/d/GSCAD24.5/GsPlot:/mnt/c/users/lenovo/appdata/local/programs/python/python310/lib/site-packages:/mnt/c/Program Files/dotnet/:/mnt/d/anaconda4:/mnt/d/anaconda4/Scripts/:/mnt/d/anaconda4/Library/bin/:/mnt/d/anaconda4/Library/mingw-w64/bin/:/mnt/c/Program Files (x86)/Autodesk/Backburner/:/mnt/c/Program Files (x86)/NetSarang/Xshell 7/:/mnt/c/Program Files (x86)/NetSarang/Xftp 7/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/d/Program Files/cmake-3.30.3/cmake-3.30.3-windows-x86_64/bin:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files (x86)/NetSarang/Xshell 8/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/PuTTY/:/mnt/d/Programs/Trae CN/bin:/mnt/c/Users/Lenovo/.cargo/bin:/mnt/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm 2023.3.2/bin:/mnt/d/VS_Code/Microsoft VS Code/bin:/mnt/d/VS_Code/mingw64/bin:/mnt/c/Users/Lenovo/.dotnet/tools:/mnt/d/Program Files/JetBrains/IntelliJ IDEA 2024.3.1.1/bin:/mnt/d/Program Files/JetBrains/IntelliJ IDEA Community Edition 2024.3.1.1/bin:/mnt/c/Users/Lenovo/AppData/Local/Programs/Ollama:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'MAMBA_ROOT_PREFIX': '/home/someityhuihui/miniforge3', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'MAMBA_EXE': '/home/someityhuihui/miniforge3/bin/mamba', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': ''}), 'shell': False}
+[26.525820] (trajectory_planning) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[26.528764] (trajectory_planning) StdoutLine: {'line': b'-- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node\n'}
+[26.533858] (trajectory_planning) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node" to ""\n'}
+[26.534122] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/package_run_dependencies/trajectory_planning\n'}
+[26.534224] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/parent_prefix_path/trajectory_planning\n'}
+[26.534311] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.sh\n'}
+[26.534580] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.dsv\n'}
+[26.534834] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.sh\n'}
+[26.534950] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.dsv\n'}
+[26.535006] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.bash\n'}
+[26.535051] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.sh\n'}
+[26.535113] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.zsh\n'}
+[26.535159] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.dsv\n'}
+[26.535211] (trajectory_planning) StdoutLine: {'line': b'-- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.dsv\n'}
+[26.535356] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/packages/trajectory_planning\n'}
+[26.535517] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig.cmake\n'}
+[26.535587] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig-version.cmake\n'}
+[26.535648] (trajectory_planning) StdoutLine: {'line': b'-- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.xml\n'}
+[26.537376] (trajectory_planning) CommandEnded: {'returncode': 0}
+[26.556004] (trajectory_planning) JobEnded: {'identifier': 'trajectory_planning', 'rc': 0}
+[26.557492] (-) EventReactorShutdown: {}

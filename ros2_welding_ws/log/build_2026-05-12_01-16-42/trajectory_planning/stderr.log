@@ -1,0 +1,163 @@
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:7[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/adaptive_pointcloud_processor.cpp:[m[K In member function ‘[01m[Kbool AdaptivePointCloudProcessor::[01;32m[KfastICP[m[K(CloudPtr, CloudPtr, Eigen::Matrix4f&, CloudPtr&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/adaptive_pointcloud_processor.cpp:195:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ>[m[K’ has no member named ‘[01m[KgetIterations[m[K’
+  195 |                   << ", iterations used: " << icp.[01;31m[KgetIterations[m[K() << std::endl;
+      |                                                   [01;31m[K^~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:160: CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:5[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+  276 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+  276 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+  276 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:5:[m[K [01;31m[Kerror: [m[Kinvalid template-id
+  276 |     [01;31m[Krclcpp[m[K::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ has not been declared
+  276 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher = nullptr  // 新增参数
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:65:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kpointcloud_publisher[m[K’
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr [01;31m[Kpointcloud_publisher[m[K = nullptr  // 新增参数
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:64:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[Kpointcloud_publisher[m[K’
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr[01;31m[K [m[K[32m[Kpointcloud_publisher[m[K = nullptr  // 新增参数
+      |                                                                [01;31m[K^[m[K[32m[K~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                [32m[K)[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:272:54:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K([m[K’
+  272 |     std::vector<WeldingPathPoint> generateWeldingPath[01;36m[K([m[K
+      |                                                      [01;36m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:55:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::[01;31m[KSharedPtr[m[K pointcloud_publisher = nullptr  // 新增参数
+      |                                                       [01;31m[K^~~~~~~~~[m[K
+      |                                                                [32m[K;[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:276:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kpointcloud_publisher[m[K’ does not name a type
+  276 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr [01;31m[Kpointcloud_publisher[m[K = nullptr  // 新增参数
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KEigen::MatrixXf LMICP::[01;32m[KcomputeJacobian[m[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:277:66:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktarget[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  277 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, [01;35m[KCloudPtr target[m[K,
+      |                                                         [01;35m[K~~~~~~~~~^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:595:7:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kfloat EdgeIntensityDetector::[01;32m[KcomputeResponse[m[K(CloudPtr, int)[m[K’
+  595 | float [01;31m[KEdgeIntensityDetector[m[K::computeResponse(CloudPtr cloud, int idx) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:191:24:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kstd::vector<float> EdgeIntensityDetector::[01;32m[KcomputeResponse[m[K(CloudPtr, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’
+  191 |     std::vector<float> [01;36m[KcomputeResponse[m[K(CloudPtr cloud, const std::vector<Eigen::Vector3f>& gradients);
+      |                        [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:179:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass EdgeIntensityDetector[m[K’ defined here
+  179 | class [01;36m[KEdgeIntensityDetector[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr EdgeIntensityDetector::[01;32m[KextractEdgePoints[m[K(CloudPtr, float)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:657:47:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} to ‘[01m[Kconst std::vector<Eigen::Matrix<float, 3, 1> >&[m[K’
+  657 |         responses[i] = computeResponse(cloud, [01;31m[Ki[m[K);
+      |                                               [01;31m[K^[m[K
+      |                                               [01;31m[K|[m[K
+      |                                               [01;31m[Ksize_t {aka long unsigned int}[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:191:92:[m[K [01;36m[Knote: [m[K  initializing argument 2 of ‘[01m[Kstd::vector<float> EdgeIntensityDetector::[01;32m[KcomputeResponse[m[K(CloudPtr, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’
+  191 |     std::vector<float> computeResponse(CloudPtr cloud, [01;36m[Kconst std::vector<Eigen::Vector3f>& gradients[m[K);
+      |                                                        [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[Kstd::vector<WeldingPathPoint> TorchPoseEstimator::[01;32m[KcomputeTorchPoses[m[K(CloudPtr, CloudPtr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:970:31:[m[K [01;31m[Kerror: [m[K‘[01m[KcomputeLocalCurvature[m[K’ was not declared in this scope
+  970 |             float curvature = [01;31m[KcomputeLocalCurvature[m[K(wsr_cloud, indices);
+      |                               [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1015:7:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+ 1015 | float [01;31m[KTorchPoseEstimator[m[K::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1015:7:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:234:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass TorchPoseEstimator[m[K’ defined here
+  234 | class [01;36m[KTorchPoseEstimator[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointClouds[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1070:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+ 1070 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+ 1266 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher) {
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+ 1266 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher) {
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ was not declared in this scope
+ 1266 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2[01;31m[K>[m[K::SharedPtr pointcloud_publisher) {
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:5:[m[K [01;31m[Kerror: [m[Kinvalid template-id
+ 1266 |     [01;31m[Krclcpp[m[K::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:23:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_msgs[m[K’ has not been declared
+ 1266 |     rclcpp::Publisher<[01;31m[Ksensor_msgs[m[K::msg::PointCloud2>::SharedPtr pointcloud_publisher) {
+      |                       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:65:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kpointcloud_publisher[m[K’
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr [01;31m[Kpointcloud_publisher[m[K) {
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:64:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[Kpointcloud_publisher[m[K’
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr[01;31m[K [m[K[32m[Kpointcloud_publisher[m[K) {
+      |                                                                [01;31m[K^[m[K[32m[K~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                [32m[K)[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1262:72:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K([m[K’
+ 1262 | std::vector<WeldingPathPoint> PC2RWeldingGenerator::generateWeldingPath[01;36m[K([m[K
+      |                                                                        [01;36m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1266:65:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kpointcloud_publisher[m[K’
+ 1266 |     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr [01;31m[Kpointcloud_publisher[m[K) {
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointCloudsAdaptive[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1417:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+ 1417 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:387:50:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  387 |                     if ([01;35m[Kmulti_view_buffer.size() >= max_frames[m[K) {
+      |                         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:294:24:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin_frames[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  294 |             static int [01;35m[Kmin_frames[m[K = 2;        // 最少2帧
+      |                        [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K trajectory_6DOF_generation_pc2r[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, bool&, int&, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&, rclcpp::Logger)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:548:11:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KtrajectoryPlanning_flag[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  548 |     [01;35m[Kbool& trajectoryPlanning_flag[m[K,
+      |     [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:549:10:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kreceive_capture_count[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  549 |     [01;35m[Kint& receive_capture_count[m[K,
+      |     [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:550:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpub_pointcloud[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  550 |     [01;35m[Ksensor_msgs::msg::PointCloud2 pub_pointcloud[m[K,
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:553:19:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knaptime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  553 |     [01;35m[Krclcpp::Rate& naptime[m[K,
+      |     [01;35m[K~~~~~~~~~~~~~~^~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:146: CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

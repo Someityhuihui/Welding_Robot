@@ -1,0 +1,10 @@
+[0.046s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[0.388s] [ 16%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[30.975s] [ 33%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+[31.591s] /usr/bin/ld: CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o: in function `Waypoint_markerName_creation[abi:cxx11](int)':
+[31.604s] transformation.cpp:(.text+0x1339): multiple definition of `Waypoint_markerName_creation[abi:cxx11](int)'; CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o:main.cpp:(.text+0xf2c): first defined here
+[76.038s] collect2: error: ld returned 1 exit status
+[76.042s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:4793: trajectory_planning_node] Error 1
+[76.043s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+[76.044s] gmake: *** [Makefile:146: all] Error 2
+[76.047s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4

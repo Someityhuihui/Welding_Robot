@@ -1,0 +1,56 @@
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:8[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+    8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+      | 
+[01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:327:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kprocessing_cloud[m[K’ was not declared in this scope; did you mean ‘[01m[Kprocessing_done[m[K’?
+  327 |                 if ([01;31m[Kprocessing_cloud[m[K && !processing_cloud->points.empty()) {
+      |                     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                     [32m[Kprocessing_done[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:329:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_processing_pointcloud[m[K’ was not declared in this scope
+  329 |                                             [01;31m[Kpub_processing_pointcloud[m[K, processing_pointcloud_publisher);
+      |                                             [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:329:72:[m[K [01;31m[Kerror: [m[K‘[01m[Kprocessing_pointcloud_publisher[m[K’ was not declared in this scope; did you mean ‘[01m[Kpointcloud_publisher[m[K’?
+  329 |                                             pub_processing_pointcloud, [01;31m[Kprocessing_pointcloud_publisher[m[K);
+      |                                                                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                        [32m[Kpointcloud_publisher[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:285:24:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmax_frames[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  285 |             static int [01;35m[Kmax_frames[m[K = g_config.acquisition.max_frames;
+      |                        [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:286:25:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kcollecting[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  286 |             static bool [01;35m[Kcollecting[m[K = true;
+      |                         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:406:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcollecting[m[K’ was not declared in this scope
+  406 |             if ([01;31m[Kcollecting[m[K) {
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:421:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kmulti_view_buffer[m[K’ was not declared in this scope
+  421 |                     [01;31m[Kmulti_view_buffer[m[K.push_back(cloud_xyz);
+      |                     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:424:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_buffer[m[K’ was not declared in this scope; did you mean ‘[01m[Ksetbuffer[m[K’?
+  424 |                     [01;31m[Kpose_buffer[m[K.push_back(pose);
+      |                     [01;31m[K^~~~~~~~~~~[m[K
+      |                     [32m[Ksetbuffer[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:429:58:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_frames[m[K’ was not declared in this scope
+  429 |                     if ((int)multi_view_buffer.size() >= [01;31m[Kmax_frames[m[K) {
+      |                                                          [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:432:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kprocessing_done[m[K’ was not declared in this scope
+  432 |                         [01;31m[Kprocessing_done[m[K = true;
+      |                         [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:459:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kelse[m[K’ without a previous ‘[01m[Kif[m[K’
+  459 |         [01;31m[Kelse[m[K {
+      |         [01;31m[K^~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:550:23:[m[K [01;31m[Kerror: [m[Kexpected constructor, destructor, or type conversion before ‘[01m[K;[m[K’ token
+  550 |     rclcpp::shutdown()[01;31m[K;[m[K
+      |                       [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:551:5:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kreturn[m[K’
+  551 |     [01;31m[Kreturn[m[K 0;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:552:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+  552 | [01;31m[K}[m[K
+      | [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

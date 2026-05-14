@@ -1,0 +1,88 @@
+[0.013s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[0.250s] [ 12%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[0.251s] [ 25%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[0.253s] [ 37%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o[0m
+[0.257s] [ 50%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o[0m
+[3.951s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K,
+[3.952s]                  from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[3.952s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[3.952s]     8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+[3.952s]       | 
+[3.952s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:7[m[K:
+[3.952s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[3.952s]     8 | #define _USE_MATH_DEFINES   // 修复 M_PI 未定义
+[3.952s]       | 
+[3.952s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[3.952s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[4.882s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/adaptive_pointcloud_processor.cpp:[m[K In member function ‘[01m[Kbool AdaptivePointCloudProcessor::[01;32m[KfastICP[m[K(CloudPtr, CloudPtr, Eigen::Matrix4f&, CloudPtr&)[m[K’:
+[4.882s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/adaptive_pointcloud_processor.cpp:194:79:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kreturn[m[K’
+[4.882s]   194 |         std::cout << "[ICP] Converged with fitness: " << icp.getFitnessScore()
+[4.882s]       |                                                                               [01;31m[K^[m[K
+[4.882s]       |                                                                               [32m[K;[m[K
+[4.882s]   195 |         [32m[Kreturn[m[K true;
+[4.882s]       |         [32m[K~~~~~~[m[K                                                                 
+[6.328s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/adaptive_pointcloud_processor.cpp:200:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[6.329s]   200 | [01;35m[K}[m[K
+[6.329s]       | [01;35m[K^[m[K
+[6.410s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:160: CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o] Error 1
+[6.410s] gmake[2]: *** Waiting for unfinished jobs....
+[7.820s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KEigen::MatrixXf LMICP::[01;32m[KcomputeJacobian[m[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)[m[K’:
+[7.820s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:277:66:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktarget[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[7.821s]   277 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, [01;35m[KCloudPtr target[m[K,
+[7.821s]       |                                                         [01;35m[K~~~~~~~~~^~~~~~[m[K
+[8.150s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[8.151s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:873:7:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+[8.151s]   873 | float [01;31m[KTorchPoseEstimator[m[K::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {
+[8.151s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[8.151s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:873:7:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+[8.151s] In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:5[m[K:
+[8.151s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:240:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass TorchPoseEstimator[m[K’ defined here
+[8.151s]   240 | class [01;36m[KTorchPoseEstimator[m[K {
+[8.151s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[8.190s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[Kstd::vector<WeldingPathPoint> TorchPoseEstimator::[01;32m[KcomputeTorchPoses[m[K(CloudPtr, CloudPtr)[m[K’:
+[8.190s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:998:31:[m[K [01;31m[Kerror: [m[K‘[01m[KcomputeLocalCurvature[m[K’ was not declared in this scope
+[8.190s]   998 |             float curvature = [01;31m[KcomputeLocalCurvature[m[K(wsr_cloud, indices);
+[8.190s]       |                               [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[8.204s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[8.204s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1043:7:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+[8.204s]  1043 | float [01;31m[KTorchPoseEstimator[m[K::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {
+[8.204s]       |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[8.204s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1043:7:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kfloat TorchPoseEstimator::[01;32m[KcomputeLocalCurvature[m[K(CloudPtr, const std::vector<int>&)[m[K’
+[8.204s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:240:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass TorchPoseEstimator[m[K’ defined here
+[8.204s]   240 | class [01;36m[KTorchPoseEstimator[m[K {
+[8.204s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[8.209s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointClouds[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[8.209s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1098:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.209s]  1098 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+[8.209s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[8.238s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K At global scope:
+[8.238s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1290:31:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::[01;32m[KgenerateWeldingPath[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger)[m[K’
+[8.238s]  1290 | std::vector<WeldingPathPoint> [01;31m[KPC2RWeldingGenerator[m[K::generateWeldingPath(
+[8.238s]       |                               [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[8.238s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:278:35:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::[01;32m[KgenerateWeldingPath[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr)[m[K’
+[8.238s]   278 |     std::vector<WeldingPathPoint> [01;36m[KgenerateWeldingPath[m[K(
+[8.238s]       |                                   [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[8.238s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:267:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass PC2RWeldingGenerator[m[K’ defined here
+[8.238s]   267 | class [01;36m[KPC2RWeldingGenerator[m[K {
+[8.238s]       |       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[8.242s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointCloudsAdaptive[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[8.242s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1444:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[8.242s]  1444 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+[8.242s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[11.822s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K trajectory_6DOF_generation_pc2r[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, bool&, int&, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&, rclcpp::Logger)[m[K’:
+[11.823s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:548:11:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KtrajectoryPlanning_flag[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[11.823s]   548 |     [01;35m[Kbool& trajectoryPlanning_flag[m[K,
+[11.823s]       |     [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[11.823s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:549:10:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kreceive_capture_count[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[11.823s]   549 |     [01;35m[Kint& receive_capture_count[m[K,
+[11.823s]       |     [01;35m[K~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[11.823s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:550:35:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpub_pointcloud[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[11.823s]   550 |     [01;35m[Ksensor_msgs::msg::PointCloud2 pub_pointcloud[m[K,
+[11.823s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[11.823s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:553:19:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knaptime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[11.823s]   553 |     [01;35m[Krclcpp::Rate& naptime[m[K,
+[11.823s]       |     [01;35m[K~~~~~~~~~~~~~~^~~~~~~[m[K
+[13.097s] gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:146: CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o] Error 1
+[24.005s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+[24.005s] gmake: *** [Makefile:146: all] Error 2
+[24.010s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4

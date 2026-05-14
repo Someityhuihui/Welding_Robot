@@ -1,0 +1,146 @@
+[0.018s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[0.064s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.254s] -- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.692s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.698s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.707s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.716s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.763s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.764s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.474s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.095s] -- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)
+[2.105s] -- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[2.117s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[2.136s] -- Found visualization_msgs: 5.3.7 (/opt/ros/jazzy/share/visualization_msgs/cmake)
+[2.158s] -- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+[2.166s] -- Found image_transport: 5.1.7 (/opt/ros/jazzy/share/image_transport/cmake)
+[2.175s] -- Found pcl_conversions: 2.6.4 (/opt/ros/jazzy/share/pcl_conversions/cmake)
+[2.213s] [33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+[2.213s]   Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+[2.213s]   variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+[2.213s]   cmake_policy command to set the policy and suppress this warning.
+[2.213s] 
+[2.213s]   CMake variable FLANN_ROOT is set to:
+[2.213s] 
+[2.213s]     /usr
+[2.213s] 
+[2.213s]   For compatibility, find_package is ignoring the variable, but code in a
+[2.213s]   .cmake module might still use it.
+[2.213s] Call Stack (most recent call first):
+[2.213s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+[2.213s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+[2.213s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+[2.213s]   /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[2.213s]   /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+[2.214s]   CMakeLists.txt:28 (find_package)
+[2.214s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[2.214s] [0m
+[2.214s] -- Found flann version 1.9.2
+[2.215s] -- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+[41.636s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[41.640s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[42.192s] -- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+[83.614s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[83.619s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[115.829s] -- Found Qhull version 8.0.2
+[151.360s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[173.261s] -- Found tf2: 0.36.20 (/opt/ros/jazzy/share/tf2/cmake)
+[173.264s] -- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[173.345s] -- Found tf2_geometry_msgs: 0.36.20 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[173.348s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[173.349s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[173.354s] [33mCMake Warning (dev) at CMakeLists.txt:37 (find_package):
+[173.354s]   Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+[173.354s]   Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+[173.354s]   command to set the policy and suppress this warning.
+[173.354s] 
+[173.354s]   CMake variable PCL_ROOT is set to:
+[173.354s] 
+[173.354s]     /usr
+[173.354s] 
+[173.354s]   For compatibility, CMake is ignoring the variable.
+[173.354s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[173.354s] [0m
+[173.370s] -- OpenMP enabled: -fopenmp
+[173.461s] -- Configuring done (173.4s)
+[173.866s] -- Generating done (0.2s)
+[173.890s] -- Build files have been written to: /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[174.045s] [ 11%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[174.047s] [ 22%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[174.048s] [ 33%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o[0m
+[174.054s] [ 44%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o[0m
+[174.063s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:1:[m[K [01;35m[Kwarning: [m[K"_USE_MATH_DEFINES" redefined
+[174.063s]     1 | #define _USE_MATH_DEFINES
+[174.063s]       | 
+[174.063s] [01m[K<command-line>:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[180.251s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[180.252s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:191:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[180.252s]   191 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+[180.252s]       |                                                  [01;35m[K~~~~^[m[K
+[180.281s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[180.281s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:410:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[180.281s]   410 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+[180.281s]       |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[180.291s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[180.291s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:553:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[180.292s]   553 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+[180.292s]       |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[180.333s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[180.333s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:793:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[180.333s]   793 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+[180.333s]       |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[183.397s] [ 55%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/seam_location.cpp.o[0m
+[184.744s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[KPC2RResult[01;32m[K trajectory_6DOF_generation_pc2r[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, bool&, int&, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&, rclcpp::Logger)[m[K’:
+[184.744s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:729:16:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcloud_ptr_modelSeam[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[184.744s]   729 |     [01;35m[KCloud::Ptr cloud_ptr_modelSeam[m[K,
+[184.745s]       |     [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[193.582s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K SurfaceProfile_Reconstruction[m[K(float, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZRGB>::Ptr)[m[K’:
+[193.582s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:134:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kradius[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[193.583s]   134 | void SurfaceProfile_Reconstruction([01;35m[Kfloat radius[m[K,
+[193.583s]       |                                    [01;35m[K~~~~~~^~~~~~[m[K
+[193.658s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:[m[K In function ‘[01m[Kstd::vector<cv::Point3_<float> >[01;32m[K Pointnormal_Direction_Unify[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZRGB>::Ptr, std::vector<cv::Point3_<float> >, cv::Point3f)[m[K’:
+[193.658s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/seam_location.cpp:243:61:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcloud_ptr_show[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[193.658s]   243 |                                             [01;35m[KPointCloud::Ptr cloud_ptr_show[m[K,
+[193.658s]       |                                             [01;35m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[195.530s] [ 66%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o[0m
+[202.035s] [ 77%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o[0m
+[202.417s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KEigen::MatrixXf LMICP::[01;32m[KcomputeJacobian[m[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)[m[K’:
+[202.417s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:281:66:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktarget[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[202.417s]   281 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, [01;35m[KCloudPtr target[m[K,
+[202.417s]       |                                                         [01;35m[K~~~~~~~~~^~~~~~[m[K
+[202.665s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr EdgeIntensityDetector::[01;32m[KextractEdgePoints[m[K(CloudPtr, float)[m[K’:
+[202.666s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:785:32:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<float>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[202.666s]   785 |     if ([01;35m[Kvalid_responses.size() > target_edge_count[m[K) {
+[202.666s]       |         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[202.739s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointClouds[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)[m[K’:
+[202.740s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1176:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[202.740s]  1176 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K) {
+[202.740s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[202.766s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:[m[K In member function ‘[01m[KCloudPtr PC2RWeldingGenerator::[01;32m[Kstep1_StitchPointCloudsAdaptive[m[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr)[m[K’:
+[202.766s] [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1605:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcamera_poses[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[202.767s]  1605 |     [01;35m[Kconst std::vector<Eigen::Vector3f>& camera_poses[m[K,
+[202.767s]       |     [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[209.473s] [ 88%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/welding_config.cpp.o[0m
+[215.506s] [100%] [32m[1mLinking CXX executable trajectory_planning_node[0m
+[233.212s] [100%] Built target trajectory_planning_node
+[233.224s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/someityhuihui/ros2_welding_ws/build/trajectory_planning -- -j4 -l4
+[233.235s] Invoking command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning
+[233.243s] -- Install configuration: "Release"
+[233.244s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node
+[233.256s] -- Set non-toolchain portion of runtime path of "/home/someityhuihui/ros2_welding_ws/install/trajectory_planning/lib/trajectory_planning/trajectory_planning_node" to ""
+[233.257s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/package_run_dependencies/trajectory_planning
+[233.257s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/parent_prefix_path/trajectory_planning
+[233.258s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.sh
+[233.258s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/ament_prefix_path.dsv
+[233.258s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.sh
+[233.258s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/environment/path.dsv
+[233.258s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.bash
+[233.259s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.sh
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.zsh
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/local_setup.dsv
+[233.260s] -- Installing: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.dsv
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/ament_index/resource_index/packages/trajectory_planning
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig.cmake
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/cmake/trajectory_planningConfig-version.cmake
+[233.260s] -- Up-to-date: /home/someityhuihui/ros2_welding_ws/install/trajectory_planning/share/trajectory_planning/package.xml
+[233.260s] Invoked command in '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/someityhuihui/ros2_welding_ws/build/trajectory_planning

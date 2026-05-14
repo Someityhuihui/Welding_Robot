@@ -1,0 +1,289 @@
+[0.000000] (-) TimerEvent: {}
+[0.000826] (trajectory_planning) JobQueued: {'identifier': 'trajectory_planning', 'dependencies': OrderedDict()}
+[0.000995] (trajectory_planning) JobStarted: {'identifier': 'trajectory_planning'}
+[0.007865] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'cmake'}
+[0.008577] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'build'}
+[0.009373] (trajectory_planning) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', '--', '-j4', '-l4'], 'cwd': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'someityhuihui', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/someityhuihui', 'CONDA_SHLVL': '0', 'OLDPWD': '/home/someityhuihui', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'someityhuihui', 'NAME': 'LAPTOP-9AS1OUJD', 'WSL_INTEROP': '/run/WSL/8909_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/home/someityhuihui/miniforge3/condabin:/mnt/d/anaconda4/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/d/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/SIMULIA/Commands:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/d/MATLAB__2023b/bin:/mnt/d/Program Files/MATLAB/MATLAB Runtime/R2023a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/d/GSCAD24.5/GsPlot:/mnt/c/users/lenovo/appdata/local/programs/python/python310/lib/site-packages:/mnt/c/Program Files/dotnet/:/mnt/d/anaconda4:/mnt/d/anaconda4/Scripts/:/mnt/d/anaconda4/Library/bin/:/mnt/d/anaconda4/Library/mingw-w64/bin/:/mnt/c/Program Files (x86)/Autodesk/Backburner/:/mnt/c/Program Files (x86)/NetSarang/Xshell 7/:/mnt/c/Program Files (x86)/NetSarang/Xftp 7/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/d/Program Files/cmake-3.30.3/cmake-3.30.3-windows-x86_64/bin:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files (x86)/NetSarang/Xshell 8/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/PuTTY/:/mnt/d/Programs/Trae CN/bin:/mnt/c/Users/Lenovo/.cargo/bin:/mnt/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm 2023.3.2/bin:/mnt/d/VS_Code/Microsoft VS Code/bin:/mnt/d/VS_Code/mingw64/bin:/mnt/c/Users/Lenovo/.dotnet/tools:/mnt/d/Program Files/JetBrains/IntelliJ IDEA 2024.3.1.1/bin:/mnt/d/Program Files/JetBrains/IntelliJ IDEA Community Edition 2024.3.1.1/bin:/mnt/c/Users/Lenovo/AppData/Local/Programs/Ollama:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'MAMBA_ROOT_PREFIX': '/home/someityhuihui/miniforge3', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'MAMBA_EXE': '/home/someityhuihui/miniforge3/bin/mamba', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/someityhuihui/ros2_welding_ws/install/trajectory_planning:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': ''}), 'shell': False}
+[0.099922] (-) TimerEvent: {}
+[0.164735] (trajectory_planning) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o\x1b[0m\n'}
+[0.166531] (trajectory_planning) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o\x1b[0m\n'}
+[0.168410] (trajectory_planning) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o\x1b[0m\n'}
+[0.170182] (trajectory_planning) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/adaptive_pointcloud_processor.cpp.o\x1b[0m\n'}
+[0.205098] (-) TimerEvent: {}
+[0.305619] (-) TimerEvent: {}
+[0.405967] (-) TimerEvent: {}
+[0.506366] (-) TimerEvent: {}
+[0.606788] (-) TimerEvent: {}
+[0.707178] (-) TimerEvent: {}
+[0.807608] (-) TimerEvent: {}
+[0.908034] (-) TimerEvent: {}
+[1.008452] (-) TimerEvent: {}
+[1.108870] (-) TimerEvent: {}
+[1.209229] (-) TimerEvent: {}
+[1.309565] (-) TimerEvent: {}
+[1.409928] (-) TimerEvent: {}
+[1.510282] (-) TimerEvent: {}
+[1.610661] (-) TimerEvent: {}
+[1.711102] (-) TimerEvent: {}
+[1.811490] (-) TimerEvent: {}
+[1.917164] (-) TimerEvent: {}
+[2.017518] (-) TimerEvent: {}
+[2.117900] (-) TimerEvent: {}
+[2.218265] (-) TimerEvent: {}
+[2.318635] (-) TimerEvent: {}
+[2.419013] (-) TimerEvent: {}
+[2.519398] (-) TimerEvent: {}
+[2.619784] (-) TimerEvent: {}
+[2.720172] (-) TimerEvent: {}
+[2.820597] (-) TimerEvent: {}
+[2.920977] (-) TimerEvent: {}
+[3.021389] (-) TimerEvent: {}
+[3.121742] (-) TimerEvent: {}
+[3.222163] (-) TimerEvent: {}
+[3.322600] (-) TimerEvent: {}
+[3.389697] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:7\x1b[m\x1b[K:\n'}
+[3.389925] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K"_USE_MATH_DEFINES" redefined\n'}
+[3.389988] (trajectory_planning) StderrLine: {'line': b'    8 | #define _USE_MATH_DEFINES   // \xe4\xbf\xae\xe5\xa4\x8d M_PI \xe6\x9c\xaa\xe5\xae\x9a\xe4\xb9\x89\n'}
+[3.390039] (trajectory_planning) StderrLine: {'line': b'      | \n'}
+[3.390083] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K<command-line>:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kthis is the location of the previous definition\n'}
+[3.421044] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27\x1b[m\x1b[K,\n'}
+[3.421256] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9\x1b[m\x1b[K:\n'}
+[3.421313] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:8:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K"_USE_MATH_DEFINES" redefined\n'}
+[3.421360] (trajectory_planning) StderrLine: {'line': b'    8 | #define _USE_MATH_DEFINES   // \xe4\xbf\xae\xe5\xa4\x8d M_PI \xe6\x9c\xaa\xe5\xae\x9a\xe4\xb9\x89\n'}
+[3.421407] (trajectory_planning) StderrLine: {'line': b'      | \n'}
+[3.421524] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K<command-line>:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kthis is the location of the previous definition\n'}
+[3.424905] (-) TimerEvent: {}
+[3.525220] (-) TimerEvent: {}
+[3.625577] (-) TimerEvent: {}
+[3.725911] (-) TimerEvent: {}
+[3.826280] (-) TimerEvent: {}
+[3.926671] (-) TimerEvent: {}
+[4.027149] (-) TimerEvent: {}
+[4.129103] (-) TimerEvent: {}
+[4.229530] (-) TimerEvent: {}
+[4.330006] (-) TimerEvent: {}
+[4.430477] (-) TimerEvent: {}
+[4.533126] (-) TimerEvent: {}
+[4.633620] (-) TimerEvent: {}
+[4.734045] (-) TimerEvent: {}
+[4.834564] (-) TimerEvent: {}
+[4.935077] (-) TimerEvent: {}
+[5.037229] (-) TimerEvent: {}
+[5.137786] (-) TimerEvent: {}
+[5.238412] (-) TimerEvent: {}
+[5.338868] (-) TimerEvent: {}
+[5.441124] (-) TimerEvent: {}
+[5.541529] (-) TimerEvent: {}
+[5.642003] (-) TimerEvent: {}
+[5.742513] (-) TimerEvent: {}
+[5.845157] (-) TimerEvent: {}
+[5.945601] (-) TimerEvent: {}
+[6.046137] (-) TimerEvent: {}
+[6.146561] (-) TimerEvent: {}
+[6.246987] (-) TimerEvent: {}
+[6.347481] (-) TimerEvent: {}
+[6.453157] (-) TimerEvent: {}
+[6.553680] (-) TimerEvent: {}
+[6.654269] (-) TimerEvent: {}
+[6.754717] (-) TimerEvent: {}
+[6.855380] (-) TimerEvent: {}
+[6.956242] (-) TimerEvent: {}
+[7.056963] (-) TimerEvent: {}
+[7.157741] (-) TimerEvent: {}
+[7.258248] (-) TimerEvent: {}
+[7.358823] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:5\x1b[m\x1b[K:\n'}
+[7.359201] (-) TimerEvent: {}
+[7.359387] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:282:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected identifier before \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[7.359528] (trajectory_planning) StderrLine: {'line': b'  282 |     \x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[7.359642] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[7.459606] (-) TimerEvent: {}
+[7.559342] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[KEigen::MatrixXf LMICP::\x1b[01;32m\x1b[KcomputeJacobian\x1b[m\x1b[K(CloudPtr, CloudPtr, const std::vector<CorrespondingPointPair>&, const Eigen::Matrix4f&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.559579] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:277:66:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ktarget\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.559649] (-) TimerEvent: {}
+[7.559738] (trajectory_planning) StderrLine: {'line': b'  277 | Eigen::MatrixXf LMICP::computeJacobian(CloudPtr source, \x1b[01;35m\x1b[KCloudPtr target\x1b[m\x1b[K,\n'}
+[7.559805] (trajectory_planning) StderrLine: {'line': b'      |                                                         \x1b[01;35m\x1b[K~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[7.660038] (-) TimerEvent: {}
+[7.761133] (-) TimerEvent: {}
+[7.843930] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K At global scope:\n'}
+[7.844185] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:873:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno declaration matches \xe2\x80\x98\x1b[01m\x1b[Kfloat TorchPoseEstimator::\x1b[01;32m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K(CloudPtr, const std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.844242] (trajectory_planning) StderrLine: {'line': b'  873 | float \x1b[01;31m\x1b[KTorchPoseEstimator\x1b[m\x1b[K::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {\n'}
+[7.844287] (trajectory_planning) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.844330] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:873:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kno functions named \xe2\x80\x98\x1b[01m\x1b[Kfloat TorchPoseEstimator::\x1b[01;32m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K(CloudPtr, const std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.844425] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:240:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass TorchPoseEstimator\x1b[m\x1b[K\xe2\x80\x99 defined here\n'}
+[7.844534] (trajectory_planning) StderrLine: {'line': b'  240 | class \x1b[01;36m\x1b[KTorchPoseEstimator\x1b[m\x1b[K {\n'}
+[7.844635] (trajectory_planning) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.861358] (-) TimerEvent: {}
+[7.881762] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<WeldingPathPoint> TorchPoseEstimator::\x1b[01;32m\x1b[KcomputeTorchPoses\x1b[m\x1b[K(CloudPtr, CloudPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.882026] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:998:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[7.882137] (trajectory_planning) StderrLine: {'line': b'  998 |             float curvature = \x1b[01;31m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K(wsr_cloud, indices);\n'}
+[7.882189] (trajectory_planning) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.894610] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K At global scope:\n'}
+[7.895946] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1043:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno declaration matches \xe2\x80\x98\x1b[01m\x1b[Kfloat TorchPoseEstimator::\x1b[01;32m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K(CloudPtr, const std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.896020] (trajectory_planning) StderrLine: {'line': b' 1043 | float \x1b[01;31m\x1b[KTorchPoseEstimator\x1b[m\x1b[K::computeLocalCurvature(CloudPtr cloud, const std::vector<int>& indices) {\n'}
+[7.896070] (trajectory_planning) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.896116] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1043:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kno functions named \xe2\x80\x98\x1b[01m\x1b[Kfloat TorchPoseEstimator::\x1b[01;32m\x1b[KcomputeLocalCurvature\x1b[m\x1b[K(CloudPtr, const std::vector<int>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.896162] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:240:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass TorchPoseEstimator\x1b[m\x1b[K\xe2\x80\x99 defined here\n'}
+[7.896238] (trajectory_planning) StderrLine: {'line': b'  240 | class \x1b[01;36m\x1b[KTorchPoseEstimator\x1b[m\x1b[K {\n'}
+[7.896286] (trajectory_planning) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.899516] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[KCloudPtr PC2RWeldingGenerator::\x1b[01;32m\x1b[Kstep1_StitchPointClouds\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.899623] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1098:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcamera_poses\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.899675] (trajectory_planning) StderrLine: {'line': b' 1098 |     \x1b[01;35m\x1b[Kconst std::vector<Eigen::Vector3f>& camera_poses\x1b[m\x1b[K) {\n'}
+[7.899736] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.925559] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K At global scope:\n'}
+[7.925761] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1290:31:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno declaration matches \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::\x1b[01;32m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.925826] (trajectory_planning) StderrLine: {'line': b' 1290 | std::vector<WeldingPathPoint> \x1b[01;31m\x1b[KPC2RWeldingGenerator\x1b[m\x1b[K::generateWeldingPath(\n'}
+[7.925887] (trajectory_planning) StderrLine: {'line': b'      |                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.925932] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:278:35:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate is: \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::\x1b[01;32m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.925979] (trajectory_planning) StderrLine: {'line': b'  278 |     std::vector<WeldingPathPoint> \x1b[01;36m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(\n'}
+[7.926025] (trajectory_planning) StderrLine: {'line': b'      |                                   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.926144] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:267:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass PC2RWeldingGenerator\x1b[m\x1b[K\xe2\x80\x99 defined here\n'}
+[7.926197] (trajectory_planning) StderrLine: {'line': b'  267 | class \x1b[01;36m\x1b[KPC2RWeldingGenerator\x1b[m\x1b[K {\n'}
+[7.926259] (trajectory_planning) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.929384] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[KCloudPtr PC2RWeldingGenerator::\x1b[01;32m\x1b[Kstep1_StitchPointCloudsAdaptive\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.929583] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/pc2r_welding_generator.cpp:1444:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcamera_poses\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.929647] (trajectory_planning) StderrLine: {'line': b' 1444 |     \x1b[01;35m\x1b[Kconst std::vector<Eigen::Vector3f>& camera_poses\x1b[m\x1b[K) {\n'}
+[7.929803] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.961929] (-) TimerEvent: {}
+[8.062948] (-) TimerEvent: {}
+[8.163518] (-) TimerEvent: {}
+[8.265539] (-) TimerEvent: {}
+[8.366200] (-) TimerEvent: {}
+[8.466831] (-) TimerEvent: {}
+[8.567643] (-) TimerEvent: {}
+[8.668223] (-) TimerEvent: {}
+[8.769495] (-) TimerEvent: {}
+[8.870604] (-) TimerEvent: {}
+[8.971160] (-) TimerEvent: {}
+[9.071928] (-) TimerEvent: {}
+[9.172901] (-) TimerEvent: {}
+[9.274125] (-) TimerEvent: {}
+[9.374838] (-) TimerEvent: {}
+[9.476038] (-) TimerEvent: {}
+[9.578823] (-) TimerEvent: {}
+[9.681583] (-) TimerEvent: {}
+[9.784088] (-) TimerEvent: {}
+[9.887043] (-) TimerEvent: {}
+[9.987878] (-) TimerEvent: {}
+[10.088446] (-) TimerEvent: {}
+[10.189274] (-) TimerEvent: {}
+[10.289868] (-) TimerEvent: {}
+[10.390298] (-) TimerEvent: {}
+[10.491691] (-) TimerEvent: {}
+[10.592302] (-) TimerEvent: {}
+[10.692834] (-) TimerEvent: {}
+[10.793502] (-) TimerEvent: {}
+[10.894140] (-) TimerEvent: {}
+[10.994610] (-) TimerEvent: {}
+[11.095237] (-) TimerEvent: {}
+[11.196552] (-) TimerEvent: {}
+[11.202167] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:8\x1b[m\x1b[K:\n'}
+[11.202541] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:282:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected identifier before \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[11.202611] (trajectory_planning) StderrLine: {'line': b'  282 |     \x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[11.202658] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[11.247656] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >\x1b[01;32m\x1b[K trajectory_planning\x1b[m\x1b[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, std::vector<pcl::PointXYZ>, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.247871] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:361:83:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KPC2RWeldingGenerator::generateWeldingPath(std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.247928] (trajectory_planning) StderrLine: {'line': b'  361 |         std::vector<WeldingPathPoint> welding_path = \x1b[01;31m\x1b[Kgenerator.generateWeldingPath(\x1b[m\x1b[K\n'}
+[11.247976] (trajectory_planning) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[11.248023] (trajectory_planning) StderrLine: {'line': b'  362 | \x1b[01;31m\x1b[K            multi_view_clouds,\x1b[m\x1b[K\n'}
+[11.248065] (trajectory_planning) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                                                     \n'}
+[11.248104] (trajectory_planning) StderrLine: {'line': b'  363 | \x1b[01;31m\x1b[K            camera_poses,\x1b[m\x1b[K\n'}
+[11.248143] (trajectory_planning) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~~~~~~~~~~~~\x1b[m\x1b[K                                                          \n'}
+[11.248306] (trajectory_planning) StderrLine: {'line': b'  364 | \x1b[01;31m\x1b[K            rclcpp::get_logger("trajectory_planning")\x1b[m\x1b[K\n'}
+[11.248354] (trajectory_planning) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K                              \n'}
+[11.248396] (trajectory_planning) StderrLine: {'line': b'  365 | \x1b[01;31m\x1b[K        )\x1b[m\x1b[K;\n'}
+[11.248436] (trajectory_planning) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~\x1b[m\x1b[K                                                                          \n'}
+[11.248520] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:278:35:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::\x1b[01;32m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.248579] (trajectory_planning) StderrLine: {'line': b'  278 |     std::vector<WeldingPathPoint> \x1b[01;36m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(\n'}
+[11.248632] (trajectory_planning) StderrLine: {'line': b'      |                                   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.248672] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:278:35:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 4 arguments, 3 provided\n'}
+[11.297363] (-) TimerEvent: {}
+[11.383541] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:10\x1b[m\x1b[K:\n'}
+[11.383718] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:282:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected identifier before \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[11.383774] (trajectory_planning) StderrLine: {'line': b'  282 |     \x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[11.383819] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[11.397703] (-) TimerEvent: {}
+[11.497167] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >\x1b[01;32m\x1b[K trajectory_6DOF_generation_pc2r\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, bool&, int&, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&, rclcpp::Logger)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.497462] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:575:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kcannot convert \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > > >\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.497702] (-) TimerEvent: {}
+[11.497895] (trajectory_planning) StderrLine: {'line': b'  575 |         multi_view_clouds, camera_poses, logger, \x1b[01;31m\x1b[Kpointcloud_publisher\x1b[m\x1b[K);\n'}
+[11.498115] (trajectory_planning) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.498185] (trajectory_planning) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[11.498231] (trajectory_planning) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[Krclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr {aka std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > > >}\x1b[m\x1b[K\n'}
+[11.498322] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/pc2r_welding_generator.hpp:282:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  initializing argument 4 of \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<WeldingPathPoint> PC2RWeldingGenerator::\x1b[01;32m\x1b[KgenerateWeldingPath\x1b[m\x1b[K(const std::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> > >&, const std::vector<Eigen::Matrix<float, 3, 1> >&, rclcpp::Logger, int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[11.498377] (trajectory_planning) StderrLine: {'line': b'  282 |     \x1b[01;36m\x1b[K)\x1b[m\x1b[K;\n'}
+[11.498421] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[11.502583] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:548:11:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KtrajectoryPlanning_flag\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.502707] (trajectory_planning) StderrLine: {'line': b'  548 |     \x1b[01;35m\x1b[Kbool& trajectoryPlanning_flag\x1b[m\x1b[K,\n'}
+[11.502754] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.502796] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:549:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kreceive_capture_count\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.502843] (trajectory_planning) StderrLine: {'line': b'  549 |     \x1b[01;35m\x1b[Kint& receive_capture_count\x1b[m\x1b[K,\n'}
+[11.502889] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.502930] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:550:35:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kpub_pointcloud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.502971] (trajectory_planning) StderrLine: {'line': b'  550 |     \x1b[01;35m\x1b[Ksensor_msgs::msg::PointCloud2 pub_pointcloud\x1b[m\x1b[K,\n'}
+[11.503016] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.503058] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:553:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Knaptime\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.503101] (trajectory_planning) StderrLine: {'line': b'  553 |     \x1b[01;35m\x1b[Krclcpp::Rate& naptime\x1b[m\x1b[K,\n'}
+[11.503143] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~~~~\x1b[m\x1b[K\n'}
+[11.598915] (-) TimerEvent: {}
+[11.701561] (-) TimerEvent: {}
+[11.804267] (-) TimerEvent: {}
+[11.906977] (-) TimerEvent: {}
+[12.007777] (-) TimerEvent: {}
+[12.110478] (-) TimerEvent: {}
+[12.211131] (-) TimerEvent: {}
+[12.312087] (-) TimerEvent: {}
+[12.414652] (-) TimerEvent: {}
+[12.516423] (-) TimerEvent: {}
+[12.617853] (-) TimerEvent: {}
+[12.718416] (-) TimerEvent: {}
+[12.821069] (-) TimerEvent: {}
+[12.921604] (-) TimerEvent: {}
+[12.957131] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:146: CMakeFiles/trajectory_planning_node.dir/src/pc2r_welding_generator.cpp.o] Error 1\n'}
+[12.957341] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[13.022191] (-) TimerEvent: {}
+[13.123862] (-) TimerEvent: {}
+[13.224820] (-) TimerEvent: {}
+[13.325558] (-) TimerEvent: {}
+[13.426428] (-) TimerEvent: {}
+[13.529081] (-) TimerEvent: {}
+[13.629983] (-) TimerEvent: {}
+[13.730847] (-) TimerEvent: {}
+[13.831809] (-) TimerEvent: {}
+[13.933857] (-) TimerEvent: {}
+[14.034871] (-) TimerEvent: {}
+[14.135854] (-) TimerEvent: {}
+[14.236889] (-) TimerEvent: {}
+[14.337299] (-) TimerEvent: {}
+[14.438428] (-) TimerEvent: {}
+[14.541061] (-) TimerEvent: {}
+[14.641469] (-) TimerEvent: {}
+[14.742509] (-) TimerEvent: {}
+[14.843618] (-) TimerEvent: {}
+[14.907807] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:90: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o] Error 1\n'}
+[14.944041] (-) TimerEvent: {}
+[15.044382] (-) TimerEvent: {}
+[15.147137] (-) TimerEvent: {}
+[15.248298] (-) TimerEvent: {}
+[15.351034] (-) TimerEvent: {}
+[15.452324] (-) TimerEvent: {}
+[15.555000] (-) TimerEvent: {}
+[15.656445] (-) TimerEvent: {}
+[15.757792] (-) TimerEvent: {}
+[15.859019] (-) TimerEvent: {}
+[15.961632] (-) TimerEvent: {}
+[16.062402] (-) TimerEvent: {}
+[16.163393] (-) TimerEvent: {}
+[16.264842] (-) TimerEvent: {}
+[16.367499] (-) TimerEvent: {}
+[16.468955] (-) TimerEvent: {}
+[16.571707] (-) TimerEvent: {}
+[16.672315] (-) TimerEvent: {}
+[16.774015] (-) TimerEvent: {}
+[16.874700] (-) TimerEvent: {}
+[16.976155] (-) TimerEvent: {}
+[17.041499] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Error 1\n'}
+[17.042131] (trajectory_planning) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2\n'}
+[17.042405] (trajectory_planning) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[17.047399] (trajectory_planning) CommandEnded: {'returncode': 2}
+[17.058480] (trajectory_planning) JobEnded: {'identifier': 'trajectory_planning', 'rc': 2}
+[17.069264] (-) EventReactorShutdown: {}

@@ -1,0 +1,78 @@
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:36:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv[m[K’ is not a namespace-name
+   36 | using namespace [01;31m[Kcv[m[K;
+      |                 [01;31m[K^~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:184:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  184 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+      |                                                  [01;35m[K~~~~^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:403:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  403 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:546:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  546 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:786:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  786 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+      |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K At global scope:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:860:48:[m[K [01;31m[Kerror: [m[K‘[01m[KPoint3f[m[K’ was not declared in this scope
+  860 |                                    std::vector<[01;31m[KPoint3f[m[K> Torch_Normal_Vector)
+      |                                                [01;31m[K^~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:860:55:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  860 |                                    std::vector<Point3f[01;31m[K>[m[K Torch_Normal_Vector)
+      |                                                       [01;31m[K^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:860:55:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K Ultimate_6DOF_TrajectoryGeneration[m[K(std::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >&, pcl::PointCloud<pcl::PointXYZ>::Ptr, int)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:864:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kbegin[m[K’ was not declared in this scope
+  864 |     for (auto& cv_p : [01;31m[KTorch_Normal_Vector[m[K) {
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:864:23:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+In file included from [01m[K/usr/include/c++/13/string:53[m[K,
+                 from [01m[K/usr/include/c++/13/bits/locale_classes.h:40[m[K,
+                 from [01m[K/usr/include/c++/13/bits/ios_base.h:41[m[K,
+                 from [01m[K/usr/include/c++/13/ios:44[m[K,
+                 from [01m[K/usr/include/c++/13/ostream:40[m[K,
+                 from [01m[K/usr/include/c++/13/iostream:41[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:3[m[K:
+[01m[K/usr/include/c++/13/bits/range_access.h:114:37:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::begin[m[K’
+  114 |   template<typename _Tp> const _Tp* [01;36m[Kbegin[m[K(const valarray<_Tp>&) noexcept;
+      |                                     [01;36m[K^~~~~[m[K
+In file included from [01m[K/usr/include/boost/mpl/vector/aux_/begin_end.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/vector/vector0.hpp:31[m[K,
+                 from [01m[K/usr/include/boost/mpl/vector/vector10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/vector/vector20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/vector.hpp:36[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/point_struct_traits.h:43[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/PCLHeader.h:3[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:25[m[K:
+[01m[K/usr/include/boost/mpl/begin_end_fwd.hpp:22:38:[m[K [01;36m[Knote: [m[K  ‘[01m[Kboost::mpl::begin[m[K’
+   22 | template< typename Sequence > struct [01;36m[Kbegin[m[K;
+      |                                      [01;36m[K^~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:864:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kend[m[K’ was not declared in this scope
+  864 |     for (auto& cv_p : [01;31m[KTorch_Normal_Vector[m[K) {
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:864:23:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+[01m[K/usr/include/c++/13/bits/range_access.h:116:37:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::end[m[K’
+  116 |   template<typename _Tp> const _Tp* [01;36m[Kend[m[K(const valarray<_Tp>&) noexcept;
+      |                                     [01;36m[K^~~[m[K
+In file included from [01m[K/usr/include/eigen3/Eigen/Core:265[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:21[m[K:
+[01m[K/usr/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h:181:40:[m[K [01;36m[Knote: [m[K  ‘[01m[KEigen::placeholders::end[m[K’
+  181 |   EIGEN_DEPRECATED static const end_t  [01;36m[Kend[m[K  = Eigen::lastp1; // PLEASE use Eigen::lastp1 instead of Eigen::placeholders::end
+      |                                        [01;36m[K^~~[m[K
+[01m[K/usr/include/boost/mpl/begin_end_fwd.hpp:23:38:[m[K [01;36m[Knote: [m[K  ‘[01m[Kboost::mpl::end[m[K’
+   23 | template< typename Sequence > struct [01;36m[Kend[m[K;
+      |                                      [01;36m[K^~~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:118: CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:104: CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Interrupt
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Interrupt

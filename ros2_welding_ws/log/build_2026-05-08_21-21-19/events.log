@@ -1,0 +1,263 @@
+[0.000000] (-) TimerEvent: {}
+[0.000606] (trajectory_planning) JobQueued: {'identifier': 'trajectory_planning', 'dependencies': OrderedDict()}
+[0.000662] (trajectory_planning) JobStarted: {'identifier': 'trajectory_planning'}
+[0.016500] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'cmake'}
+[0.017601] (trajectory_planning) JobProgress: {'identifier': 'trajectory_planning', 'progress': 'build'}
+[0.018672] (trajectory_planning) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', '--', '-j4', '-l4'], 'cwd': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'someityhuihui', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/someityhuihui/ws_moveit/install/robotiq_driver/lib:/home/someityhuihui/ws_moveit/install/serial/lib:/home/someityhuihui/ws_moveit/install/moveit_visual_tools/lib:/home/someityhuihui/ws_moveit/install/rviz_visual_tools/lib:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_capabilities/lib:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_core/lib:/home/someityhuihui/ws_moveit/install/rviz_marker_tools/lib:/home/someityhuihui/ws_moveit/install/robotiq_controllers/lib:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner_testutils/lib:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner/lib:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_msgs/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_control_interface/lib:/home/someityhuihui/ws_moveit/install/moveit_simple_controller_manager/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_assistant/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_srdf_plugins/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_core_plugins/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_controllers/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_app_plugins/lib:/home/someityhuihui/ws_moveit/install/moveit_setup_framework/lib:/home/someityhuihui/ws_moveit/install/moveit_servo/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_trajectory_cache/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_visualization/lib:/home/someityhuihui/ws_moveit/install/moveit_py/lib:/home/someityhuihui/ws_moveit/install/moveit_hybrid_planning/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_planning_interface/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_benchmarks/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_warehouse/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_robot_interaction/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_perception/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_move_group/lib:/home/someityhuihui/ws_moveit/install/moveit_planners_ompl/lib:/home/someityhuihui/ws_moveit/install/moveit_kinematics/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_planning/lib:/home/someityhuihui/ws_moveit/install/moveit_ros_occupancy_map_monitor/lib:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_ikfast_manipulator_plugin/lib:/home/someityhuihui/ws_moveit/install/moveit_planners_stomp/lib:/home/someityhuihui/ws_moveit/install/moveit_planners_chomp/lib:/home/someityhuihui/ws_moveit/install/chomp_motion_planner/lib:/home/someityhuihui/ws_moveit/install/moveit_core/lib:/home/someityhuihui/ws_moveit/install/moveit_msgs/lib:/home/someityhuihui/ws_moveit/install/kortex_driver/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/someityhuihui', 'CONDA_SHLVL': '0', 'OLDPWD': '/home/someityhuihui/ros2_welding_ws/src/trajectory_planning', 'ROS_PYTHON_VERSION': '3', 'PS1': '\\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/someityhuihui/ws_moveit/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'someityhuihui', 'NAME': 'LAPTOP-9AS1OUJD', 'WSL_INTEROP': '/run/WSL/310_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/someityhuihui/ws_moveit/install/moveit_core/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/home/someityhuihui/miniforge3/condabin:/mnt/d/anaconda4/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Java/jdk-17.0.2/bin:/mnt/d/SIMULIA/Commands:/mnt/c/Program Files/Microsoft MPI/Bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/SIMULIA/Commands:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/d/MATLAB__2023b/bin:/mnt/d/Program Files/MATLAB/MATLAB Runtime/R2023a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/runtime/win64:/mnt/d/Program Files/MATLAB/R2022a/bin:/mnt/c/Program Files/Common Files/Autodesk Shared/:/mnt/d/GSCAD24.5/GsPlot:/mnt/c/users/lenovo/appdata/local/programs/python/python310/lib/site-packages:/mnt/c/Program Files/dotnet/:/mnt/d/anaconda4:/mnt/d/anaconda4/Scripts/:/mnt/d/anaconda4/Library/bin/:/mnt/d/anaconda4/Library/mingw-w64/bin/:/mnt/c/Program Files (x86)/Autodesk/Backburner/:/mnt/c/Program Files (x86)/NetSarang/Xshell 7/:/mnt/c/Program Files (x86)/NetSarang/Xftp 7/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/d/Program Files/cmake-3.30.3/cmake-3.30.3-windows-x86_64/bin:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files (x86)/NetSarang/Xshell 8/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/Lenovo/.cargo/bin:/mnt/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/JetBrains/PyCharm 2023.3.2/bin:/mnt/d/VS_Code/Microsoft VS Code/bin:/mnt/d/VS_Code/mingw64/bin:/mnt/c/Users/Lenovo/.dotnet/tools:/mnt/d/Program Files/JetBrains/IntelliJ IDEA 2024.3.1.1/bin:/mnt/d/Program Files/JetBrains/IntelliJ IDEA Community Edition 2024.3.1.1/bin:/mnt/c/Users/Lenovo/AppData/Local/Programs/Ollama:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'MAMBA_ROOT_PREFIX': '/home/someityhuihui/miniforge3', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/someityhuihui/ws_moveit/install/welding_robot:/home/someityhuihui/ws_moveit/install/robotiq_hardware_tests:/home/someityhuihui/ws_moveit/install/robotiq_driver:/home/someityhuihui/ws_moveit/install/serial:/home/someityhuihui/ws_moveit/install/moveit2_tutorials:/home/someityhuihui/ws_moveit/install/moveit_visual_tools:/home/someityhuihui/ws_moveit/install/rviz_visual_tools:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_capabilities:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_core:/home/someityhuihui/ws_moveit/install/rviz_marker_tools:/home/someityhuihui/ws_moveit/install/kortex_bringup:/home/someityhuihui/ws_moveit/install/kinova_gen3_lite_moveit_config:/home/someityhuihui/ws_moveit/install/kinova_gen3_7dof_robotiq_2f_85_moveit_config:/home/someityhuihui/ws_moveit/install/kinova_gen3_6dof_robotiq_2f_85_moveit_config:/home/someityhuihui/ws_moveit/install/kortex_description:/home/someityhuihui/ws_moveit/install/robotiq_description:/home/someityhuihui/ws_moveit/install/robotiq_controllers:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner_testutils:/home/someityhuihui/ws_moveit/install/moveit_runtime:/home/someityhuihui/ws_moveit/install/moveit:/home/someityhuihui/ws_moveit/install/moveit_planners:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_msgs:/home/someityhuihui/ws_moveit/install/moveit_ros_control_interface:/home/someityhuihui/ws_moveit/install/moveit_plugins:/home/someityhuihui/ws_moveit/install/moveit_simple_controller_manager:/home/someityhuihui/ws_moveit/install/moveit_setup_assistant:/home/someityhuihui/ws_moveit/install/moveit_setup_srdf_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_core_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_controllers:/home/someityhuihui/ws_moveit/install/moveit_setup_app_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_framework:/home/someityhuihui/ws_moveit/install/moveit_servo:/home/someityhuihui/ws_moveit/install/moveit_ros_trajectory_cache:/home/someityhuihui/ws_moveit/install/moveit_ros:/home/someityhuihui/ws_moveit/install/moveit_ros_visualization:/home/someityhuihui/ws_moveit/install/moveit_py:/home/someityhuihui/ws_moveit/install/moveit_hybrid_planning:/home/someityhuihui/ws_moveit/install/hello_moveit:/home/someityhuihui/ws_moveit/install/moveit_ros_planning_interface:/home/someityhuihui/ws_moveit/install/moveit_ros_benchmarks:/home/someityhuihui/ws_moveit/install/moveit_ros_warehouse:/home/someityhuihui/ws_moveit/install/moveit_ros_robot_interaction:/home/someityhuihui/ws_moveit/install/moveit_ros_perception:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_pg70_support:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_ros_move_group:/home/someityhuihui/ws_moveit/install/moveit_planners_ompl:/home/someityhuihui/ws_moveit/install/moveit_kinematics:/home/someityhuihui/ws_moveit/install/moveit_ros_planning:/home/someityhuihui/ws_moveit/install/moveit_ros_occupancy_map_monitor:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_support:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_ikfast_manipulator_plugin:/home/someityhuihui/ws_moveit/install/moveit_resources:/home/someityhuihui/ws_moveit/install/moveit_resources_pr2_description:/home/someityhuihui/ws_moveit/install/moveit_resources_panda_moveit_config:/home/someityhuihui/ws_moveit/install/dual_arm_panda_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_resources_panda_description:/home/someityhuihui/ws_moveit/install/moveit_resources_fanuc_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_resources_fanuc_description:/home/someityhuihui/ws_moveit/install/moveit_planners_stomp:/home/someityhuihui/ws_moveit/install/moveit_planners_chomp:/home/someityhuihui/ws_moveit/install/chomp_motion_planner:/home/someityhuihui/ws_moveit/install/moveit_core:/home/someityhuihui/ws_moveit/install/moveit_msgs:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/home/someityhuihui/ws_moveit/install/moveit_common:/home/someityhuihui/ws_moveit/install/kortex_driver:/home/someityhuihui/ws_moveit/install/kortex_api:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CMAKE_MODULE_PATH': '/home/someityhuihui/ws_moveit/install/moveit_task_constructor_core/share/moveit_task_constructor_core/cmake', 'MAMBA_EXE': '/home/someityhuihui/miniforge3/bin/mamba', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/someityhuihui/ros2_welding_ws/build/trajectory_planning', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/someityhuihui/ws_moveit/install/moveit_task_constructor_core/lib/python3.12/site-packages:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_msgs/lib/python3.12/site-packages:/home/someityhuihui/ws_moveit/install/moveit_py/lib/python3.12/site-packages:/home/someityhuihui/ws_moveit/install/moveit_msgs/lib/python3.12/site-packages:/home/someityhuihui/ws_moveit/install/moveit_configs_utils/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/someityhuihui/ws_moveit/install/welding_robot:/home/someityhuihui/ws_moveit/install/robotiq_hardware_tests:/home/someityhuihui/ws_moveit/install/robotiq_driver:/home/someityhuihui/ws_moveit/install/serial:/home/someityhuihui/ws_moveit/install/moveit2_tutorials:/home/someityhuihui/ws_moveit/install/moveit_visual_tools:/home/someityhuihui/ws_moveit/install/rviz_visual_tools:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_capabilities:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_core:/home/someityhuihui/ws_moveit/install/rviz_marker_tools:/home/someityhuihui/ws_moveit/install/kortex_bringup:/home/someityhuihui/ws_moveit/install/kinova_gen3_lite_moveit_config:/home/someityhuihui/ws_moveit/install/kinova_gen3_7dof_robotiq_2f_85_moveit_config:/home/someityhuihui/ws_moveit/install/kinova_gen3_6dof_robotiq_2f_85_moveit_config:/home/someityhuihui/ws_moveit/install/kortex_description:/home/someityhuihui/ws_moveit/install/robotiq_description:/home/someityhuihui/ws_moveit/install/robotiq_controllers:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner_testutils:/home/someityhuihui/ws_moveit/install/moveit_runtime:/home/someityhuihui/ws_moveit/install/moveit:/home/someityhuihui/ws_moveit/install/moveit_planners:/home/someityhuihui/ws_moveit/install/pilz_industrial_motion_planner:/home/someityhuihui/ws_moveit/install/moveit_task_constructor_msgs:/home/someityhuihui/ws_moveit/install/moveit_ros_control_interface:/home/someityhuihui/ws_moveit/install/moveit_plugins:/home/someityhuihui/ws_moveit/install/moveit_simple_controller_manager:/home/someityhuihui/ws_moveit/install/moveit_setup_assistant:/home/someityhuihui/ws_moveit/install/moveit_setup_srdf_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_core_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_controllers:/home/someityhuihui/ws_moveit/install/moveit_setup_app_plugins:/home/someityhuihui/ws_moveit/install/moveit_setup_framework:/home/someityhuihui/ws_moveit/install/moveit_servo:/home/someityhuihui/ws_moveit/install/moveit_ros_trajectory_cache:/home/someityhuihui/ws_moveit/install/moveit_ros:/home/someityhuihui/ws_moveit/install/moveit_ros_visualization:/home/someityhuihui/ws_moveit/install/moveit_py:/home/someityhuihui/ws_moveit/install/moveit_hybrid_planning:/home/someityhuihui/ws_moveit/install/hello_moveit:/home/someityhuihui/ws_moveit/install/moveit_ros_planning_interface:/home/someityhuihui/ws_moveit/install/moveit_ros_benchmarks:/home/someityhuihui/ws_moveit/install/moveit_ros_warehouse:/home/someityhuihui/ws_moveit/install/moveit_ros_robot_interaction:/home/someityhuihui/ws_moveit/install/moveit_ros_perception:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_pg70_support:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_ros_move_group:/home/someityhuihui/ws_moveit/install/moveit_planners_ompl:/home/someityhuihui/ws_moveit/install/moveit_kinematics:/home/someityhuihui/ws_moveit/install/moveit_ros_planning:/home/someityhuihui/ws_moveit/install/moveit_ros_occupancy_map_monitor:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_support:/home/someityhuihui/ws_moveit/install/moveit_resources_prbt_ikfast_manipulator_plugin:/home/someityhuihui/ws_moveit/install/moveit_resources:/home/someityhuihui/ws_moveit/install/moveit_resources_pr2_description:/home/someityhuihui/ws_moveit/install/moveit_resources_panda_moveit_config:/home/someityhuihui/ws_moveit/install/dual_arm_panda_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_resources_panda_description:/home/someityhuihui/ws_moveit/install/moveit_resources_fanuc_moveit_config:/home/someityhuihui/ws_moveit/install/moveit_resources_fanuc_description:/home/someityhuihui/ws_moveit/install/moveit_planners_stomp:/home/someityhuihui/ws_moveit/install/moveit_planners_chomp:/home/someityhuihui/ws_moveit/install/chomp_motion_planner:/home/someityhuihui/ws_moveit/install/moveit_core:/home/someityhuihui/ws_moveit/install/moveit_msgs:/home/someityhuihui/ws_moveit/install/moveit_common:/home/someityhuihui/ws_moveit/install/kortex_driver:/home/someityhuihui/ws_moveit/install/kortex_api:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/someityhuihui/ws_moveit/install/moveit_configs_utils:/opt/ros/jazzy', 'WSLENV': ''}), 'shell': False}
+[0.099737] (-) TimerEvent: {}
+[0.200061] (-) TimerEvent: {}
+[0.291792] (trajectory_planning) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o\x1b[0m\n'}
+[0.294884] (trajectory_planning) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o\x1b[0m\n'}
+[0.295160] (trajectory_planning) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o\x1b[0m\n'}
+[0.300179] (-) TimerEvent: {}
+[0.401223] (-) TimerEvent: {}
+[0.501930] (-) TimerEvent: {}
+[0.602584] (-) TimerEvent: {}
+[0.702931] (-) TimerEvent: {}
+[0.803506] (-) TimerEvent: {}
+[0.904089] (-) TimerEvent: {}
+[1.004747] (-) TimerEvent: {}
+[1.105116] (-) TimerEvent: {}
+[1.205456] (-) TimerEvent: {}
+[1.306021] (-) TimerEvent: {}
+[1.406638] (-) TimerEvent: {}
+[1.507217] (-) TimerEvent: {}
+[1.607560] (-) TimerEvent: {}
+[1.708079] (-) TimerEvent: {}
+[1.809400] (-) TimerEvent: {}
+[1.913618] (-) TimerEvent: {}
+[2.013958] (-) TimerEvent: {}
+[2.114321] (-) TimerEvent: {}
+[2.215129] (-) TimerEvent: {}
+[2.315698] (-) TimerEvent: {}
+[2.416967] (-) TimerEvent: {}
+[2.518539] (-) TimerEvent: {}
+[2.619165] (-) TimerEvent: {}
+[2.720177] (-) TimerEvent: {}
+[2.821171] (-) TimerEvent: {}
+[2.922125] (-) TimerEvent: {}
+[3.022767] (-) TimerEvent: {}
+[3.123701] (-) TimerEvent: {}
+[3.224685] (-) TimerEvent: {}
+[3.325342] (-) TimerEvent: {}
+[3.426035] (-) TimerEvent: {}
+[3.527111] (-) TimerEvent: {}
+[3.627577] (-) TimerEvent: {}
+[3.728462] (-) TimerEvent: {}
+[3.831422] (-) TimerEvent: {}
+[3.931806] (-) TimerEvent: {}
+[4.033131] (-) TimerEvent: {}
+[4.133569] (-) TimerEvent: {}
+[4.234237] (-) TimerEvent: {}
+[4.341067] (-) TimerEvent: {}
+[4.441934] (-) TimerEvent: {}
+[4.542657] (-) TimerEvent: {}
+[4.643362] (-) TimerEvent: {}
+[4.744127] (-) TimerEvent: {}
+[4.844894] (-) TimerEvent: {}
+[4.947645] (-) TimerEvent: {}
+[5.048312] (-) TimerEvent: {}
+[5.149191] (-) TimerEvent: {}
+[5.249794] (-) TimerEvent: {}
+[5.350572] (-) TimerEvent: {}
+[5.451187] (-) TimerEvent: {}
+[5.552017] (-) TimerEvent: {}
+[5.652928] (-) TimerEvent: {}
+[5.753603] (-) TimerEvent: {}
+[5.854186] (-) TimerEvent: {}
+[5.955041] (-) TimerEvent: {}
+[6.056456] (-) TimerEvent: {}
+[6.158351] (-) TimerEvent: {}
+[6.258749] (-) TimerEvent: {}
+[6.359238] (-) TimerEvent: {}
+[6.460584] (-) TimerEvent: {}
+[6.561681] (-) TimerEvent: {}
+[6.663150] (-) TimerEvent: {}
+[6.764029] (-) TimerEvent: {}
+[6.864655] (-) TimerEvent: {}
+[6.967068] (-) TimerEvent: {}
+[7.068504] (-) TimerEvent: {}
+[7.169702] (-) TimerEvent: {}
+[7.271446] (-) TimerEvent: {}
+[7.372334] (-) TimerEvent: {}
+[7.474396] (-) TimerEvent: {}
+[7.575654] (-) TimerEvent: {}
+[7.676245] (-) TimerEvent: {}
+[7.776981] (-) TimerEvent: {}
+[7.877745] (-) TimerEvent: {}
+[7.978567] (-) TimerEvent: {}
+[8.080332] (-) TimerEvent: {}
+[8.182061] (-) TimerEvent: {}
+[8.282782] (-) TimerEvent: {}
+[8.383850] (-) TimerEvent: {}
+[8.484578] (-) TimerEvent: {}
+[8.587994] (-) TimerEvent: {}
+[8.689812] (-) TimerEvent: {}
+[8.790406] (-) TimerEvent: {}
+[8.892270] (-) TimerEvent: {}
+[8.992723] (-) TimerEvent: {}
+[9.093441] (-) TimerEvent: {}
+[9.194182] (-) TimerEvent: {}
+[9.295162] (-) TimerEvent: {}
+[9.395939] (-) TimerEvent: {}
+[9.497997] (-) TimerEvent: {}
+[9.598568] (-) TimerEvent: {}
+[9.705277] (-) TimerEvent: {}
+[9.806214] (-) TimerEvent: {}
+[9.906961] (-) TimerEvent: {}
+[10.007930] (-) TimerEvent: {}
+[10.108773] (-) TimerEvent: {}
+[10.209499] (-) TimerEvent: {}
+[10.310484] (-) TimerEvent: {}
+[10.412005] (-) TimerEvent: {}
+[10.512788] (-) TimerEvent: {}
+[10.614758] (-) TimerEvent: {}
+[10.715252] (-) TimerEvent: {}
+[10.815810] (-) TimerEvent: {}
+[10.916716] (-) TimerEvent: {}
+[11.017449] (-) TimerEvent: {}
+[11.118603] (-) TimerEvent: {}
+[11.219303] (-) TimerEvent: {}
+[11.320322] (-) TimerEvent: {}
+[11.421265] (-) TimerEvent: {}
+[11.522471] (-) TimerEvent: {}
+[11.623358] (-) TimerEvent: {}
+[11.723756] (-) TimerEvent: {}
+[11.824439] (-) TimerEvent: {}
+[11.925048] (-) TimerEvent: {}
+[12.025707] (-) TimerEvent: {}
+[12.126909] (-) TimerEvent: {}
+[12.227822] (-) TimerEvent: {}
+[12.328732] (-) TimerEvent: {}
+[12.429805] (-) TimerEvent: {}
+[12.531123] (-) TimerEvent: {}
+[12.632110] (-) TimerEvent: {}
+[12.733752] (-) TimerEvent: {}
+[12.834384] (-) TimerEvent: {}
+[12.934994] (-) TimerEvent: {}
+[13.035701] (-) TimerEvent: {}
+[13.136509] (-) TimerEvent: {}
+[13.234598] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >\x1b[01;32m\x1b[K trajectory_planning\x1b[m\x1b[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, std::vector<pcl::PointXYZ>, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[13.235938] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:296:96:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kcould not convert \xe2\x80\x98\x1b[01m\x1b[KTorch_Normal_Vector\x1b[m\x1b[K\xe2\x80\x99 from \xe2\x80\x98\x1b[01m\x1b[Kvector<\x1b[01;32m\x1b[Kcv::Point3_<float>\x1b[m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kvector<\x1b[01;32m\x1b[Kpcl::PointXYZ\x1b[m\x1b[K>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.236348] (trajectory_planning) StderrLine: {'line': b'  296 |                                                                                                \x1b[01;31m\x1b[KTorch_Normal_Vector\x1b[m\x1b[K);\n'}
+[13.236609] (-) TimerEvent: {}
+[13.236860] (trajectory_planning) StderrLine: {'line': b'      |                                                                                                \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.237182] (trajectory_planning) StderrLine: {'line': b'      |                                                                                                \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[13.237257] (trajectory_planning) StderrLine: {'line': b'      |                                                                                                \x1b[01;31m\x1b[Kvector<cv::Point3_<float>>\x1b[m\x1b[K\n'}
+[13.336863] (-) TimerEvent: {}
+[13.437834] (-) TimerEvent: {}
+[13.538450] (-) TimerEvent: {}
+[13.639858] (-) TimerEvent: {}
+[13.740914] (-) TimerEvent: {}
+[13.837553] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[01;32m\x1b[K main\x1b[m\x1b[K(int, char**)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[13.838069] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KBuffer\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[Ktf2_ros\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcv::ogl::Buffer\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[13.838218] (trajectory_planning) StderrLine: {'line': b'  188 |     auto tf_buffer = std::make_shared<tf2_ros::\x1b[01;31m\x1b[KBuffer\x1b[m\x1b[K>(node->get_clock());\n'}
+[13.838322] (trajectory_planning) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[13.842760] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/core.hpp:53\x1b[m\x1b[K,\n'}
+[13.844013] (-) TimerEvent: {}
+[13.844174] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/highgui.hpp:46\x1b[m\x1b[K,\n'}
+[13.844356] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/opencv4/opencv2/highgui/highgui.hpp:48\x1b[m\x1b[K,\n'}
+[13.844462] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:30\x1b[m\x1b[K,\n'}
+[13.844567] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/running_flow.hpp:20\x1b[m\x1b[K,\n'}
+[13.844660] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:24\x1b[m\x1b[K,\n'}
+[13.844750] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9\x1b[m\x1b[K:\n'}
+[13.844843] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/opencv4/opencv2/core/base.hpp:611:22:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv::ogl::Buffer\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[13.845009] (trajectory_planning) StderrLine: {'line': b'  611 |     class CV_EXPORTS \x1b[01;36m\x1b[KBuffer\x1b[m\x1b[K;\n'}
+[13.845105] (trajectory_planning) StderrLine: {'line': b'      |                      \x1b[01;36m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[13.845253] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Kmake_shared<<expression error> >(rclcpp::Clock::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.845420] (trajectory_planning) StderrLine: {'line': b'  188 |     auto tf_buffer = \x1b[01;31m\x1b[Kstd::make_shared<tf2_ros::Buffer>(node->get_clock())\x1b[m\x1b[K;\n'}
+[13.845542] (trajectory_planning) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.845686] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/13/memory:80\x1b[m\x1b[K,\n'}
+[13.845791] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169\x1b[m\x1b[K,\n'}
+[13.845880] (trajectory_planning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:6\x1b[m\x1b[K:\n'}
+[13.845970] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp, class ... _Args> std::shared_ptr<typename std::enable_if<(! std::is_array< <template-parameter-1-1> >::value), _Tp>::type> std::\x1b[01;32m\x1b[Kmake_shared\x1b[m\x1b[K(_Args&& ...)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.846085] (trajectory_planning) StderrLine: {'line': b' 1005 |     \x1b[01;36m\x1b[Kmake_shared\x1b[m\x1b[K(_Args&&... __args)\n'}
+[13.846170] (trajectory_planning) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.846256] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[13.846353] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[13.846444] (trajectory_planning) StderrLine: {'line': b'  188 |     auto tf_buffer = \x1b[01;31m\x1b[Kstd::make_shared<tf2_ros::Buffer>(node->get_clock())\x1b[m\x1b[K;\n'}
+[13.846529] (trajectory_planning) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.861240] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:237:82:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kcall of overloaded \xe2\x80\x98\x1b[01m\x1b[KWaypoint_markerTransform_creation(size_t&, __gnu_cxx::__alloc_traits<std::allocator<geometry_msgs::msg::Pose_<std::allocator<void> > >, geometry_msgs::msg::Pose_<std::allocator<void> > >::value_type&)\x1b[m\x1b[K\xe2\x80\x99 is ambiguous\n'}
+[13.862161] (trajectory_planning) StderrLine: {'line': b'  237 |             tf2::Transform waypoint_transform = \x1b[01;31m\x1b[KWaypoint_markerTransform_creation(i, Rviz_TrajectoryPose[i])\x1b[m\x1b[K;\n'}
+[13.862376] (trajectory_planning) StderrLine: {'line': b'      |                                                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.862527] (trajectory_planning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27\x1b[m\x1b[K:\n'}
+[13.862670] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:93:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktf2::Transform\x1b[01;32m\x1b[K Waypoint_markerTransform_creation\x1b[m\x1b[K(int, const geometry_msgs::msg::Pose&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.862820] (trajectory_planning) StderrLine: {'line': b'   93 | tf2::Transform \x1b[01;36m\x1b[KWaypoint_markerTransform_creation\x1b[m\x1b[K(int i, const geometry_msgs::msg::Pose& P);\n'}
+[13.862956] (trajectory_planning) StderrLine: {'line': b'      |                \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.863089] (trajectory_planning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:145:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktf2::Transform\x1b[01;32m\x1b[K Waypoint_markerTransform_creation\x1b[m\x1b[K(int, geometry_msgs::msg::Pose)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.863258] (trajectory_planning) StderrLine: {'line': b'  145 | tf2::Transform \x1b[01;36m\x1b[KWaypoint_markerTransform_creation\x1b[m\x1b[K(int i, geometry_msgs::msg::Pose pose);\n'}
+[13.867169] (trajectory_planning) StderrLine: {'line': b'      |                \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.944229] (-) TimerEvent: {}
+[14.044779] (-) TimerEvent: {}
+[14.145623] (-) TimerEvent: {}
+[14.246258] (-) TimerEvent: {}
+[14.347649] (-) TimerEvent: {}
+[14.448589] (-) TimerEvent: {}
+[14.551445] (-) TimerEvent: {}
+[14.651935] (-) TimerEvent: {}
+[14.752871] (-) TimerEvent: {}
+[14.855419] (-) TimerEvent: {}
+[14.955784] (-) TimerEvent: {}
+[15.056218] (-) TimerEvent: {}
+[15.156618] (-) TimerEvent: {}
+[15.258810] (-) TimerEvent: {}
+[15.359278] (-) TimerEvent: {}
+[15.460067] (-) TimerEvent: {}
+[15.560852] (-) TimerEvent: {}
+[15.661576] (-) TimerEvent: {}
+[15.763294] (-) TimerEvent: {}
+[15.863933] (-) TimerEvent: {}
+[15.965801] (-) TimerEvent: {}
+[16.066653] (-) TimerEvent: {}
+[16.167257] (-) TimerEvent: {}
+[16.268642] (-) TimerEvent: {}
+[16.369341] (-) TimerEvent: {}
+[16.470338] (-) TimerEvent: {}
+[16.571817] (-) TimerEvent: {}
+[16.672951] (-) TimerEvent: {}
+[16.779475] (-) TimerEvent: {}
+[16.880036] (-) TimerEvent: {}
+[16.980881] (-) TimerEvent: {}
+[17.081732] (-) TimerEvent: {}
+[17.183045] (-) TimerEvent: {}
+[17.283926] (-) TimerEvent: {}
+[17.384718] (-) TimerEvent: {}
+[17.485348] (-) TimerEvent: {}
+[17.586260] (-) TimerEvent: {}
+[17.609115] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:90: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o] Error 1\n'}
+[17.609885] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[17.686406] (-) TimerEvent: {}
+[17.786853] (-) TimerEvent: {}
+[17.887358] (-) TimerEvent: {}
+[17.987692] (-) TimerEvent: {}
+[18.088034] (-) TimerEvent: {}
+[18.188393] (-) TimerEvent: {}
+[18.288780] (-) TimerEvent: {}
+[18.389145] (-) TimerEvent: {}
+[18.489546] (-) TimerEvent: {}
+[18.589965] (-) TimerEvent: {}
+[18.690344] (-) TimerEvent: {}
+[18.790784] (-) TimerEvent: {}
+[18.891161] (-) TimerEvent: {}
+[18.991632] (-) TimerEvent: {}
+[19.091962] (-) TimerEvent: {}
+[19.192308] (-) TimerEvent: {}
+[19.292628] (-) TimerEvent: {}
+[19.392955] (-) TimerEvent: {}
+[19.493309] (-) TimerEvent: {}
+[19.593628] (-) TimerEvent: {}
+[19.694011] (-) TimerEvent: {}
+[19.794389] (-) TimerEvent: {}
+[19.894783] (-) TimerEvent: {}
+[19.995107] (-) TimerEvent: {}
+[20.095481] (-) TimerEvent: {}
+[20.195877] (-) TimerEvent: {}
+[20.296260] (-) TimerEvent: {}
+[20.339660] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Interrupt\n'}
+[20.339922] (trajectory_planning) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:104: CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o] Interrupt\n'}
+[20.341388] (trajectory_planning) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Interrupt\n'}
+[20.341905] (trajectory_planning) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Interrupt\n'}
+[20.396393] (-) TimerEvent: {}
+[20.420238] (trajectory_planning) CommandEnded: {'returncode': -2}
+[20.435837] (trajectory_planning) JobEnded: {'identifier': 'trajectory_planning', 'rc': 'SIGINT'}
+[20.447026] (-) EventReactorShutdown: {}

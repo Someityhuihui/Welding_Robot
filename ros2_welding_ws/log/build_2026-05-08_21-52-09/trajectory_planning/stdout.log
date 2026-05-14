@@ -1,0 +1,4 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/trajectory_planning_node.dir/src/transformation.cpp.o[0m

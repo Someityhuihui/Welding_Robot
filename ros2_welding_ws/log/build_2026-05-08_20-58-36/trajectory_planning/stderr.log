@@ -1,0 +1,861 @@
+[33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:30 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at CMakeLists.txt:39 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/motion_planning.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kmotion_planning.h: No such file or directory
+    1 | #include [01;31m[K<motion_planning.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:104: CMakeFiles/trajectory_planning_node.dir/src/motion_planning.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:178:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ki[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  178 | tf2::Transform Waypoint_markerTransform_creation([01;35m[Kint i[m[K, const geometry_msgs::msg::Pose& P)
+      |                                                  [01;35m[K~~~~^[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification_horizontal[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:397:52:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  397 |                                         [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                                         [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K direction_modification[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:540:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KPathPoint_Position_final[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  540 |                             [01;35m[KCloud::Ptr PathPoint_Position_final[m[K)
+      |                             [01;35m[K~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:[m[K In function ‘[01m[Kvoid[01;32m[K orientation_computation[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/transformation.cpp:780:39:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  780 |             for(int j = i - intern; [01;35m[Kj <= i + intern[m[K; j++)
+      |                                     [01;35m[K~~^~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:48:[m[K [01;31m[Kerror: [m[K‘[01m[KBuffer[m[K’ is not a member of ‘[01m[Ktf2_ros[m[K’; did you mean ‘[01m[Kcv::ogl::Buffer[m[K’?
+  188 |     auto tf_buffer = std::make_shared<tf2_ros::[01;31m[KBuffer[m[K>(node->get_clock());
+      |                                                [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core.hpp:53[m[K,
+                 from [01m[K/usr/include/opencv4/opencv2/highgui.hpp:46[m[K,
+                 from [01m[K/usr/include/opencv4/opencv2/highgui/highgui.hpp:48[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:30[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/running_flow.hpp:20[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:24[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:9[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/base.hpp:611:22:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::ogl::Buffer[m[K’ declared here
+  611 |     class CV_EXPORTS [01;36m[KBuffer[m[K;
+      |                      [01;36m[K^~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:55:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_shared<<expression error> >(rclcpp::Clock::SharedPtr)[m[K’
+  188 |     auto tf_buffer = [01;31m[Kstd::make_shared<tf2_ros::Buffer>(node->get_clock())[m[K;
+      |                      [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/13/memory:80[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:6[m[K:
+[01m[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> std::shared_ptr<typename std::enable_if<(! std::is_array< <template-parameter-1-1> >::value), _Tp>::type> std::[01;32m[Kmake_shared[m[K(_Args&& ...)[m[K’
+ 1005 |     [01;36m[Kmake_shared[m[K(_Args&&... __args)
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/shared_ptr.h:1005:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:188:55:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  188 |     auto tf_buffer = [01;31m[Kstd::make_shared<tf2_ros::Buffer>(node->get_clock())[m[K;
+      |                      [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:237:82:[m[K [01;31m[Kerror: [m[Kcall of overloaded ‘[01m[KWaypoint_markerTransform_creation(size_t&, __gnu_cxx::__alloc_traits<std::allocator<geometry_msgs::msg::Pose_<std::allocator<void> > >, geometry_msgs::msg::Pose_<std::allocator<void> > >::value_type&)[m[K’ is ambiguous
+  237 |             tf2::Transform waypoint_transform = [01;31m[KWaypoint_markerTransform_creation(i, Rviz_TrajectoryPose[i])[m[K;
+      |                                                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/main.hpp:27[m[K:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/transformation.hpp:93:16:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, const geometry_msgs::msg::Pose&)[m[K’
+   93 | tf2::Transform [01;36m[KWaypoint_markerTransform_creation[m[K(int i, const geometry_msgs::msg::Pose& P);
+      |                [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/main.cpp:145:16:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktf2::Transform[01;32m[K Waypoint_markerTransform_creation[m[K(int, geometry_msgs::msg::Pose)[m[K’
+  145 | tf2::Transform [01;36m[KWaypoint_markerTransform_creation[m[K(int i, geometry_msgs::msg::Pose pose);
+      |                [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:[m[K In function ‘[01m[Kbool[01;32m[K welding_seam_location[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointXYZ, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:178:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kcloud_ptr_origin_copy[m[K’ was not declared in this scope; did you mean ‘[01m[Kcloud_ptr_origin[m[K’?
+  178 |     Cloud::Ptr cloud_ptr_origin = [01;31m[Kcloud_ptr_origin_copy[m[K(cloud_ptr);
+      |                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                   [32m[Kcloud_ptr_origin[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K trajectory_planning[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr, std::vector<pcl::PointXYZ>, sensor_msgs::msg::PointCloud2, rclcpp::Publisher<sensor_msgs::msg::PointCloud2_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<geometry_msgs::msg::Pose_<std::allocator<void> > >::SharedPtr, rclcpp::Rate&)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:293:60:[m[K [01;31m[Kerror: [m[K‘[01m[KUltimate_6DOF_TrajectoryGeneration[m[K’ was not declared in this scope
+  293 |     vector<geometry_msgs::msg::Pose> Rviz_TrajectoryPose = [01;31m[KUltimate_6DOF_TrajectoryGeneration[m[K(Welding_Trajectory,
+      |                                                            [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:[m[K In function ‘[01m[Kstd::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >[01;32m[K read_trajectory_frame[m[K(std::string)[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:26:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator<<[m[K’ (operand types are ‘[01m[Kstd::basic_ostream<char>[m[K’ and ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’})
+  591 |         [32m[Kcout << "pose: "[m[K [01;31m[K<<[m[K [34m[Kpose[m[K << endl;
+      |         [32m[K~~~~~~~~~~~~~~~~[m[K [01;31m[K^~[m[K [34m[K~~~~[m[K
+      |              [32m[K|[m[K              [34m[K|[m[K
+      |              [32m[K|[m[K              [34m[Kgeometry_msgs::msg::Pose {aka geometry_msgs::msg::Pose_<std::allocator<void> >}[m[K
+      |              [32m[Kstd::basic_ostream<char>[m[K
+In file included from [01m[K/usr/include/c++/13/istream:41[m[K,
+                 from [01m[K/usr/include/c++/13/sstream:40[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/list_parameters__traits.hpp:13[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/list_parameters.hpp:9[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:21[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:171[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/running_flow.hpp:9[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:6[m[K:
+[01m[K/usr/include/c++/13/ostream:110:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(__ostream_type& (*)(__ostream_type&)) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  110 |       [01;36m[Koperator[m[K<<(__ostream_type& (*__pf)(__ostream_type&))
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:110:36:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kstd::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&)[m[K’ {aka ‘[01m[Kstd::basic_ostream<char>& (*)(std::basic_ostream<char>&)[m[K’}
+  110 |       operator<<([01;36m[K__ostream_type& (*__pf)(__ostream_type&)[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:119:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(__ios_type& (*)(__ios_type&)) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>; __ios_type = std::basic_ios<char>][m[K[m[K’
+  119 |       [01;36m[Koperator[m[K<<(__ios_type& (*__pf)(__ios_type&))
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:119:32:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kstd::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&)[m[K’ {aka ‘[01m[Kstd::basic_ios<char>& (*)(std::basic_ios<char>&)[m[K’}
+  119 |       operator<<([01;36m[K__ios_type& (*__pf)(__ios_type&)[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:129:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(std::ios_base& (*)(std::ios_base&)) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  129 |       [01;36m[Koperator[m[K<<(ios_base& (*__pf) (ios_base&))
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:129:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kstd::ios_base& (*)(std::ios_base&)[m[K’
+  129 |       operator<<([01;36m[Kios_base& (*__pf) (ios_base&)[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:168:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(long int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  168 |       [01;36m[Koperator[m[K<<(long __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:168:23:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Klong int[m[K’
+  168 |       operator<<([01;36m[Klong __n[m[K)
+      |                  [01;36m[K~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:172:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(long unsigned int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  172 |       [01;36m[Koperator[m[K<<(unsigned long __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:172:32:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Klong unsigned int[m[K’
+  172 |       operator<<([01;36m[Kunsigned long __n[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:176:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(bool) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  176 |       [01;36m[Koperator[m[K<<(bool __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:176:23:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kbool[m[K’
+  176 |       operator<<([01;36m[Kbool __n[m[K)
+      |                  [01;36m[K~~~~~^~~[m[K
+In file included from [01m[K/usr/include/c++/13/ostream:880[m[K:
+[01m[K/usr/include/c++/13/bits/ostream.tcc:96:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_Ch, _Tr>& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(short int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>][m[K[m[K’
+   96 |     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:97:22:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kshort int[m[K’
+   97 |     operator<<([01;36m[Kshort __n[m[K)
+      |                [01;36m[K~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:183:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(short unsigned int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  183 |       [01;36m[Koperator[m[K<<(unsigned short __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:183:33:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kshort unsigned int[m[K’
+  183 |       operator<<([01;36m[Kunsigned short __n[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:110:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_Ch, _Tr>& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>][m[K[m[K’
+  110 |     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:111:20:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kint[m[K’
+  111 |     operator<<([01;36m[Kint __n[m[K)
+      |                [01;36m[K~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:194:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(unsigned int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  194 |       [01;36m[Koperator[m[K<<(unsigned int __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:194:31:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kunsigned int[m[K’
+  194 |       operator<<([01;36m[Kunsigned int __n[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:203:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(long long int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  203 |       [01;36m[Koperator[m[K<<(long long __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:203:28:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Klong long int[m[K’
+  203 |       operator<<([01;36m[Klong long __n[m[K)
+      |                  [01;36m[K~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:207:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(long long unsigned int) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  207 |       [01;36m[Koperator[m[K<<(unsigned long long __n)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:207:37:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Klong long unsigned int[m[K’
+  207 |       operator<<([01;36m[Kunsigned long long __n[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:222:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(double) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  222 |       [01;36m[Koperator[m[K<<(double __f)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:222:25:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kdouble[m[K’
+  222 |       operator<<([01;36m[Kdouble __f[m[K)
+      |                  [01;36m[K~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:226:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(float) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  226 |       [01;36m[Koperator[m[K<<(float __f)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:226:24:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kfloat[m[K’
+  226 |       operator<<([01;36m[Kfloat __f[m[K)
+      |                  [01;36m[K~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:234:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(long double) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  234 |       [01;36m[Koperator[m[K<<(long double __f)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:234:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Klong double[m[K’
+  234 |       operator<<([01;36m[Klong double __f[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:292:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(const void*) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>][m[K[m[K’
+  292 |       [01;36m[Koperator[m[K<<(const void* __p)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:292:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst void*[m[K’
+  292 |       operator<<([01;36m[Kconst void* __p[m[K)
+      |                  [01;36m[K~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/c++/13/ostream:297:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(std::nullptr_t) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>; std::nullptr_t = std::nullptr_t][m[K[m[K’
+  297 |       [01;36m[Koperator[m[K<<(nullptr_t)
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:297:18:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kstd::nullptr_t[m[K’
+  297 |       operator<<([01;36m[Knullptr_t[m[K)
+      |                  [01;36m[K^~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:124:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::basic_ostream<_Ch, _Tr>& std::basic_ostream<_CharT, _Traits>::[01;32m[Koperator<<[m[K(__streambuf_type*) [35m[K[with _CharT = char; _Traits = std::char_traits<char>; __streambuf_type = std::basic_streambuf<char>][m[K[m[K’
+  124 |     [01;36m[Kbasic_ostream<_CharT, _Traits>[m[K::
+      |     [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:125:34:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kstd::basic_ostream<char>::__streambuf_type*[m[K’ {aka ‘[01m[Kstd::basic_streambuf<char>*[m[K’}
+  125 |     operator<<([01;36m[K__streambuf_type* __sbin[m[K)
+      |                [01;36m[K~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core.hpp:3349[m[K,
+                 from [01m[K/usr/include/opencv4/opencv2/highgui.hpp:46[m[K,
+                 from [01m[K/usr/include/opencv4/opencv2/highgui/highgui.hpp:48[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:30[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/running_flow.hpp:20[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:184:29:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, Range&)[m[K’
+  184 | static inline std::ostream &[01;36m[Koperator[m[K<< (std::ostream &s, cv::Range &r)
+      |                             [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:184:69:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kcv::Range&[m[K’
+  184 | static inline std::ostream &operator<< (std::ostream &s, [01;36m[Kcv::Range &r[m[K)
+      |                                                          [01;36m[K~~~~~~~~~~~^[m[K
+[01m[K/usr/include/opencv4/opencv2/core.hpp:3110:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kcv::String& cv::[01;32m[Koperator<<[m[K(String&, const Mat&)[m[K’
+ 3110 | String& [01;36m[Koperator[m[K << (String& out, const Mat& mtx)
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core.hpp:3110:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::basic_ostream<char>[m[K’ to ‘[01m[Kcv::String&[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>&[m[K’}
+ 3110 | String& operator << ([01;36m[KString& out[m[K, const Mat& mtx)
+      |                      [01;36m[K~~~~~~~~^~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core.hpp:3101:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kcv::String& cv::[01;32m[Koperator<<[m[K(String&, Ptr<Formatted>)[m[K’
+ 3101 | String& [01;36m[Koperator[m[K << (String& out, Ptr<Formatted> fmtd)
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core.hpp:3101:30:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::basic_ostream<char>[m[K’ to ‘[01m[Kcv::String&[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>&[m[K’}
+ 3101 | String& operator << ([01;36m[KString& out[m[K, Ptr<Formatted> fmtd)
+      |                      [01;36m[K~~~~~~~~^~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core.hpp:59[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1242:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kcv::FileStorage& cv::[01;32m[Koperator<<[m[K(FileStorage&, char*)[m[K’
+ 1242 | FileStorage& [01;36m[Koperator[m[K << (FileStorage& fs, char* value)
+      |              [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1242:40:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::basic_ostream<char>[m[K’ to ‘[01m[Kcv::FileStorage&[m[K’
+ 1242 | FileStorage& operator << ([01;36m[KFileStorage& fs[m[K, char* value)
+      |                           [01;36m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1234:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kcv::FileStorage& cv::[01;32m[Koperator<<[m[K(FileStorage&, const char*)[m[K’
+ 1234 | FileStorage& [01;36m[Koperator[m[K << (FileStorage& fs, const char* str)
+      |              [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1234:40:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::basic_ostream<char>[m[K’ to ‘[01m[Kcv::FileStorage&[m[K’
+ 1234 | FileStorage& operator << ([01;36m[KFileStorage& fs[m[K, const char* str)
+      |                           [01;36m[K~~~~~~~~~~~~~^~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:804:25:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kcv::FileStorage& cv::[01;32m[Koperator<<[m[K(FileStorage&, const String&)[m[K’
+  804 | CV_EXPORTS FileStorage& [01;36m[Koperator[m[K << (FileStorage& fs, const String& str);
+      |                         [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:804:51:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::basic_ostream<char>[m[K’ to ‘[01m[Kcv::FileStorage&[m[K’
+  804 | CV_EXPORTS FileStorage& operator << ([01;36m[KFileStorage& fs[m[K, const String& str);
+      |                                      [01;36m[K~~~~~~~~~~~~~^~[m[K
+In file included from [01m[K/usr/include/pcl-1.14/pcl/visualization/point_cloud_geometry_handlers.h:49[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/visualization/common/actor_map.h:40[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/visualization/pcl_visualizer.h:48[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:37[m[K:
+[01m[K/usr/include/vtk-9.1/vtkSmartPointer.h:359:17:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> std::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkSmartPointer<T>&)[m[K’
+  359 | inline ostream& [01;36m[Koperator[m[K<<(ostream& os, const vtkSmartPointer<T>& p)
+      |                 [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkSmartPointer.h:359:17:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst vtkSmartPointer<T>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core.hpp:56[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/matx.hpp:955:33:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _T2, int m, int n> cv::MatxCommaInitializer<_Tp, m, n> cv::[01;32m[Koperator<<[m[K(const Matx<_Tp, m, n>&, _T2)[m[K’
+  955 | MatxCommaInitializer<_Tp, m, n> [01;36m[Koperator[m[K << (const Matx<_Tp, m, n>& mtx, _T2 val)
+      |                                 [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/matx.hpp:955:33:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::basic_ostream<char>[m[K’ is not derived from ‘[01m[Kconst cv::Matx<_Tp, m, n>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/matx.hpp:1180:30:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _T2, int cn> cv::VecCommaInitializer<_Tp, cn> cv::[01;32m[Koperator<<[m[K(const Vec<_Tp, n>&, _T2)[m[K’
+ 1180 | VecCommaInitializer<_Tp, cn> [01;36m[Koperator[m[K << (const Vec<_Tp, cn>& vec, _T2 val)
+      |                              [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/matx.hpp:1180:30:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::basic_ostream<char>[m[K’ is not derived from ‘[01m[Kconst cv::Vec<_Tp, n>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core/mat.hpp:3773[m[K,
+                 from [01m[K/usr/include/opencv4/opencv2/core.hpp:58[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/mat.inl.hpp:2997:27:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class T2> cv::MatCommaInitializer_<_Tp> cv::[01;32m[Koperator<<[m[K(const Mat_<_Tp>&, T2)[m[K’
+ 2997 | MatCommaInitializer_<_Tp> [01;36m[Koperator[m[K << (const Mat_<_Tp>& m, T2 val)
+      |                           [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/mat.inl.hpp:2997:27:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::basic_ostream<char>[m[K’ is not derived from ‘[01m[Kconst cv::Mat_<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1219:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> cv::FileStorage& cv::[01;32m[Koperator<<[m[K(FileStorage&, const _Tp&)[m[K’
+ 1219 | FileStorage& [01;36m[Koperator[m[K << (FileStorage& fs, const _Tp& value)
+      |              [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/persistence.hpp:1219:14:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:14:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kstd::operator<< <char_traits<char> >(std::cout, ((const char*)"pose: "))[m[K’ (type ‘[01m[Kstd::basic_ostream<char>[m[K’) to type ‘[01m[Kcv::FileStorage&[m[K’
+  591 |         [01;36m[Kcout << "pose: "[m[K << pose << endl;
+      |         [01;36m[K~~~~~^~~~~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:99:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Complex<_Tp>&)[m[K’
+   99 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Complex<_Tp>& c)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:99:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Complex<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:105:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const std::vector<Point_<_Tp> >&)[m[K’
+  105 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const std::vector<Point_<_Tp> >& vec)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:105:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::vector<cv::Point_<_Tp> >[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:112:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const std::vector<Point3_<_Tp> >&)[m[K’
+  112 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const std::vector<Point3_<_Tp> >& vec)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:112:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::vector<cv::Point3_<_Tp> >[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:119:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, int m, int n> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Matx<_Tp, m, n>&)[m[K’
+  119 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Matx<_Tp, m, n>& matx)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:119:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Matx<_Tp, m, n>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:125:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Point_<_Tp>&)[m[K’
+  125 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Point_<_Tp>& p)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:125:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Point_<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:132:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Point3_<_Tp>&)[m[K’
+  132 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Point3_<_Tp>& p)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:132:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Point3_<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:139:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, int n> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Vec<_Tp, m>&)[m[K’
+  139 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Vec<_Tp, n>& vec)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:139:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Vec<_Tp, m>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:161:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Size_<_Tp>&)[m[K’
+  161 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Size_<_Tp>& size)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:161:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Size_<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:167:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> std::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Rect_<_Tp>&)[m[K’
+  167 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Rect_<_Tp>& rect)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:167:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst cv::Rect_<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/regex:68[m[K,
+                 from [01m[K/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/image_encodings.hpp:36[m[K,
+                 from [01m[K/opt/ros/jazzy/include/cv_bridge/cv_bridge/cv_bridge.hpp:42[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:31[m[K:
+[01m[K/usr/include/c++/13/bits/regex.h:1715:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Ch_type, class _Ch_traits, class _Bi_iter> std::basic_ostream<_Ch, _Tr>& std::__cxx11::[01;32m[Koperator<<[m[K(std::basic_ostream<_Ch, _Tr>&, const sub_match<_Bi_iter>&)[m[K’
+ 1715 |     [01;36m[Koperator[m[K<<(basic_ostream<_Ch_type, _Ch_traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/regex.h:1715:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::__cxx11::sub_match<_Bi_iter>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/memory:80[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169[m[K:
+[01m[K/usr/include/c++/13/bits/shared_ptr.h:70:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Ch, class _Tr, class _Tp, __gnu_cxx::_Lock_policy _Lp> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const __shared_ptr<_Tp, _Lp>&)[m[K’
+   70 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_Ch, _Tr>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/shared_ptr.h:70:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::__shared_ptr<_Tp, _Lp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/bits/basic_string.h:47[m[K,
+                 from [01m[K/usr/include/c++/13/string:54[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/copy_all_parameter_values.hpp:18[m[K:
+[01m[K/usr/include/c++/13/string_view:761:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, basic_string_view<_CharT, _Traits>)[m[K’
+  761 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/string_view:761:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’ is not derived from ‘[01m[Kstd::basic_string_view<_CharT, _Traits>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/basic_string.h:4032:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const __cxx11::basic_string<_CharT, _Traits, _Allocator>&)[m[K’
+ 4032 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/basic_string.h:4032:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::__cxx11::basic_string<_CharT, _Traits, _Allocator>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/bits/memory_resource.h:38[m[K,
+                 from [01m[K/usr/include/c++/13/string:58[m[K:
+[01m[K/usr/include/c++/13/cstddef:124:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntegerType> constexpr std::__byte_op_t<_IntegerType> std::[01;32m[Koperator<<[m[K(byte, _IntegerType)[m[K’
+  124 |     [01;36m[Koperator[m[K<<(byte __b, _IntegerType __shift) noexcept
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/cstddef:124:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:14:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kstd::operator<< <char_traits<char> >(std::cout, ((const char*)"pose: "))[m[K’ (type ‘[01m[Kstd::basic_ostream<char>[m[K’) to type ‘[01m[Kstd::byte[m[K’
+  591 |         [01;36m[Kcout << "pose: "[m[K << pose << endl;
+      |         [01;36m[K~~~~~^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/13/bits/ios_base.h:46[m[K,
+                 from [01m[K/usr/include/c++/13/ios:44[m[K,
+                 from [01m[K/usr/include/c++/13/istream:40[m[K:
+[01m[K/usr/include/c++/13/system_error:339:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const error_code&)[m[K’
+  339 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/system_error:339:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst std::error_code&[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:554:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _CharT)[m[K’
+  554 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:554:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  deduced conflicting types for parameter ‘[01m[K_CharT[m[K’ (‘[01m[Kchar[m[K’ and ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’)
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:564:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, char)[m[K’
+  564 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:564:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kchar[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:570:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, char)[m[K’
+  570 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, char __c)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:570:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kchar[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:581:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, signed char)[m[K’
+  581 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, signed char __c)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:581:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Ksigned char[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:586:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, unsigned char)[m[K’
+  586 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:586:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kunsigned char[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:645:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const _CharT*)[m[K’
+  645 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:645:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  mismatched types ‘[01m[Kconst _CharT*[m[K’ and ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:307:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const char*)[m[K’
+  307 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/ostream.tcc:307:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst char*[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:662:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, const char*)[m[K’
+  662 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const char* __s)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:662:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst char*[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:675:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, const signed char*)[m[K’
+  675 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:675:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst signed char*[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:680:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Traits> std::basic_ostream<char, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<char, _Traits>&, const unsigned char*)[m[K’
+  680 |     [01;36m[Koperator[m[K<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:680:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst unsigned char*[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/ostream:801:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Ostream, class _Tp> _Ostream&& std::[01;32m[Koperator<<[m[K(_Ostream&&, const _Tp&)[m[K’
+  801 |     [01;36m[Koperator[m[K<<(_Ostream&& __os, const _Tp& __x)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/ostream:801:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+/usr/include/c++/13/ostream: In substitution of ‘[01m[Ktemplate<class _Ostream, class _Tp> _Ostream&& std::[01;32m[Koperator<<[m[K(_Ostream&&, const _Tp&) [35m[K[with _Ostream = std::basic_ostream<char>&; _Tp = geometry_msgs::msg::Pose_<std::allocator<void> >][m[K[m[K’:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K   required from here
+[01m[K/usr/include/c++/13/ostream:801:5:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, void>[m[K’
+In file included from [01m[K/opt/ros/jazzy/include/rosidl_runtime_cpp/rosidl_runtime_cpp/traits.hpp:20[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/list_parameters__traits.hpp:18[m[K:
+[01m[K/usr/include/c++/13/iomanip:81:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Resetiosflags)[m[K’
+   81 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Resetiosflags __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:81:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::_Resetiosflags[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:111:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Setiosflags)[m[K’
+  111 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setiosflags __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:111:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::_Setiosflags[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:145:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Setbase)[m[K’
+  145 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setbase __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:145:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::_Setbase[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:180:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Setfill<_CharT>)[m[K’
+  180 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setfill<_CharT> __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:180:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’ is not derived from ‘[01m[Kstd::_Setfill<_CharT>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:210:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Setprecision)[m[K’
+  210 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setprecision __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:210:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::_Setprecision[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:240:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Setw)[m[K’
+  240 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Setw __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:240:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::_Setw[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:313:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, class _MoneyT> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Put_money<_MoneyT>)[m[K’
+  313 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Put_money<_MoneyT> __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:313:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’ is not derived from ‘[01m[Kstd::_Put_money<_MoneyT>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:365:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, _Put_time<_CharT>)[m[K’
+  365 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, _Put_time<_CharT> __f)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/iomanip:365:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’ is not derived from ‘[01m[Kstd::_Put_time<_CharT>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:22[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:172[m[K:
+[01m[K/usr/include/c++/13/thread:97:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, thread::id)[m[K’
+   97 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __out, thread::id __id)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/thread:97:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kstd::thread::id[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/eigen3/Eigen/Core:50[m[K,
+                 from [01m[K/usr/include/eigen3/Eigen/Dense:1[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/running_flow.hpp:17[m[K:
+[01m[K/usr/include/c++/13/complex:558:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const complex<_Tp>&)[m[K’
+  558 |     [01;36m[Koperator[m[K<<(basic_ostream<_CharT, _Traits>& __os, const complex<_Tp>& __x)
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/complex:558:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::complex<_Tp>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/regex:40[m[K:
+[01m[K/usr/include/c++/13/bitset:1683:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, long unsigned int _Nb> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const bitset<_Nb>&)[m[K’
+ 1683 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bitset:1683:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::bitset<_Nb>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/random:51[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/sample_consensus/sac_model.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/sample_consensus/sac.h:43[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/segmentation/sac_segmentation.h:48[m[K,
+                 from [01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/include/seam_location.hpp:51[m[K:
+[01m[K/usr/include/c++/13/bits/random.h:1341:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RandomNumberEngine, long unsigned int __w, class _UIntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const independent_bits_engine<_RandomNumberEngine, __w, _UIntType>&)[m[K’
+ 1341 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.h:1341:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::independent_bits_engine<_RandomNumberEngine, __w, _UIntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/c++/13/random:53[m[K:
+[01m[K/usr/include/c++/13/bits/random.tcc:910:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const uniform_int_distribution<_IntType>&)[m[K’
+  910 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:910:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::uniform_int_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:968:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const uniform_real_distribution<_IntType>&)[m[K’
+  968 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:968:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::uniform_real_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2145:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const cauchy_distribution<_RealType>&)[m[K’
+ 2145 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2145:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::cauchy_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1029:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits> std::basic_ostream<_Ch, _Tr>& std::[01;32m[Koperator<<[m[K(basic_ostream<_Ch, _Tr>&, const bernoulli_distribution&)[m[K’
+ 1029 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1029:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  cannot convert ‘[01m[Kpose[m[K’ (type ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’}) to type ‘[01m[Kconst std::bernoulli_distribution&[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1110:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const geometric_distribution<_IntType>&)[m[K’
+ 1110 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1110:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::geometric_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1762:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const exponential_distribution<_RealType>&)[m[K’
+ 1762 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1762:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::exponential_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2539:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const weibull_distribution<_RealType>&)[m[K’
+ 2539 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2539:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::weibull_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2613:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const extreme_value_distribution<_RealType>&)[m[K’
+ 2613 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2613:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::extreme_value_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:156:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _UIntType, _UIntType __a, _UIntType __c, _UIntType __m, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const linear_congruential_engine<_UIntType, __a, __c, __m>&)[m[K’
+  156 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:156:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::linear_congruential_engine<_UIntType, __a, __c, __m>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:477:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _UIntType1, long unsigned int __w1, long unsigned int __n1, long unsigned int __m1, long unsigned int __r1, _UIntType1 __a1, long unsigned int __u1, _UIntType1 __d1, long unsigned int __s1, _UIntType1 __b1, long unsigned int __t1, _UIntType1 __c1, long unsigned int __l1, _UIntType1 __f1, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d, __s, __b, __t, __c, __l, __f>&)[m[K’
+  477 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:477:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d, __s, __b, __t, __c, __l, __f>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:635:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _UIntType, long unsigned int __w, long unsigned int __s, long unsigned int __r, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const subtract_with_carry_engine<_UIntType, __w, __s, __r>&)[m[K’
+  635 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:635:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::subtract_with_carry_engine<_UIntType, __w, __s, __r>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:704:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RandomNumberEngine, long unsigned int __p, long unsigned int __r, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const discard_block_engine<_RandomNumberEngine, __p, __r>&)[m[K’
+  704 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:704:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::discard_block_engine<_RandomNumberEngine, __p, __r>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:866:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RandomNumberEngine, long unsigned int __k, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const shuffle_order_engine<_RandomNumberEngine, __k>&)[m[K’
+  866 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:866:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::shuffle_order_engine<_RandomNumberEngine, __k>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1224:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const negative_binomial_distribution<_IntType>&)[m[K’
+ 1224 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1224:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::negative_binomial_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1434:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const poisson_distribution<_IntType>&)[m[K’
+ 1434 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1434:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::poisson_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1700:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const binomial_distribution<_IntType>&)[m[K’
+ 1700 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1700:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::binomial_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1920:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType1, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const normal_distribution<_RealType>&)[m[K’
+ 1920 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1920:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::normal_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1987:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const lognormal_distribution<_RealType>&)[m[K’
+ 1987 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:1987:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::lognormal_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2059:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const chi_squared_distribution<_RealType>&)[m[K’
+ 2059 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2059:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::chi_squared_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2220:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const fisher_f_distribution<_RealType>&)[m[K’
+ 2220 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2220:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::fisher_f_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2294:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const student_t_distribution<_RealType>&)[m[K’
+ 2294 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2294:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::student_t_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2463:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType1, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const gamma_distribution<_RealType>&)[m[K’
+ 2463 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2463:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::gamma_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2749:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IntType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const discrete_distribution<_IntType>&)[m[K’
+ 2749 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2749:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::discrete_distribution<_IntType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2971:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const piecewise_constant_distribution<_RealType>&)[m[K’
+ 2971 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:2971:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::piecewise_constant_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:3177:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _RealType, class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::[01;32m[Koperator<<[m[K(basic_ostream<_CharT, _Traits>&, const piecewise_linear_distribution<_RealType>&)[m[K’
+ 3177 |     [01;36m[Koperator[m[K<<(std::basic_ostream<_CharT, _Traits>& __os,
+      |     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/13/bits/random.tcc:3177:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst std::piecewise_linear_distribution<_RealType>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/eigen3/Eigen/Core:269[m[K:
+[01m[K/usr/include/eigen3/Eigen/src/Core/IO.h:249:16:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class Derived> std::ostream& Eigen::[01;32m[Koperator<<[m[K(std::ostream&, const DenseBase<Derived>&)[m[K’
+  249 | std::ostream & [01;36m[Koperator[m[K <<
+      |                [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/eigen3/Eigen/src/Core/IO.h:249:16:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/someityhuihui/ros2_welding_ws/src/trajectory_planning/src/running_flow.cpp:591:29:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} is not derived from ‘[01m[Kconst Eigen::DenseBase<Derived>[m[K’
+  591 |         cout << "pose: " << [01;36m[Kpose[m[K << endl;
+      |                             [01;36m[K^~~~[m[K
+In file included from [01m[K/usr/include/vtk-9.1/vtkObjectBase.h:53[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkSmartPointerBase.h:30[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkSmartPointer.h:26[m[K:
+[01m[K/usr/include/vtk-9.1/vtkIndent.h:49:40:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkIndent&)[m[K’
+   49 |   friend VTKCOMMONCORE_EXPORT ostream& [01;36m[Koperator[m[K<<(ostream& os, const vtkIndent& o);
+      |                                        [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkIndent.h:31:72:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst vtkIndent&[m[K’
+   31 | VTKCOMMONCORE_EXPORT ostream& operator<<(ostream& os, [01;36m[Kconst vtkIndent& o[m[K);
+      |                                                       [01;36m[K~~~~~~~~~~~~~~~~~^[m[K
+[01m[K/usr/include/vtk-9.1/vtkSmartPointerBase.h:136:31:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkSmartPointerBase&)[m[K’
+  136 | VTKCOMMONCORE_EXPORT ostream& [01;36m[Koperator[m[K<<(ostream& os, const vtkSmartPointerBase& p);
+      |                               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkSmartPointerBase.h:136:82:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst vtkSmartPointerBase&[m[K’
+  136 | VTKCOMMONCORE_EXPORT ostream& operator<<(ostream& os, [01;36m[Kconst vtkSmartPointerBase& p[m[K);
+      |                                                       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+In file included from [01m[K/usr/include/vtk-9.1/vtkObject.h:48[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkPoints.h:27[m[K,
+                 from [01m[K/usr/include/pcl-1.14/pcl/visualization/point_cloud_geometry_handlers.h:50[m[K:
+[01m[K/usr/include/vtk-9.1/vtkWeakPointerBase.h:127:31:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkWeakPointerBase&)[m[K’
+  127 | VTKCOMMONCORE_EXPORT ostream& [01;36m[Koperator[m[K<<(ostream& os, const vtkWeakPointerBase& p);
+      |                               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkWeakPointerBase.h:127:81:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst vtkWeakPointerBase&[m[K’
+  127 | VTKCOMMONCORE_EXPORT ostream& operator<<(ostream& os, [01;36m[Kconst vtkWeakPointerBase& p[m[K);
+      |                                                       [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+In file included from [01m[K/usr/include/vtk-9.1/vtkVariant.h:38[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkAbstractArray.h:62[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkDataArray.h:38[m[K,
+                 from [01m[K/usr/include/vtk-9.1/vtkPoints.h:29[m[K:
+[01m[K/usr/include/vtk-9.1/vtkStdString.h:33:31:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkStdString&)[m[K’
+   33 | VTKCOMMONCORE_EXPORT ostream& [01;36m[Koperator[m[K<<(ostream&, const vtkStdString&);
+      |                               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkStdString.h:33:52:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst vtkStdString&[m[K’
+   33 | VTKCOMMONCORE_EXPORT ostream& operator<<(ostream&, [01;36m[Kconst vtkStdString&[m[K);
+      |                                                    [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkVariant.h:434:40:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream&[01;32m[K operator<<[m[K(std::ostream&, const vtkVariant&)[m[K’
+  434 |   friend VTKCOMMONCORE_EXPORT ostream& [01;36m[Koperator[m[K<<(ostream& os, const vtkVariant& val);
+      |                                        [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/vtk-9.1/vtkVariant.h:63:73:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst vtkVariant&[m[K’
+   63 | VTKCOMMONCORE_EXPORT ostream& operator<<(ostream& os, [01;36m[Kconst vtkVariant& val[m[K);
+      |                                                       [01;36m[K~~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:78:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, Ptr<Formatted>)[m[K’
+   78 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, Ptr<Formatted> fmtd)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:78:62:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kcv::Ptr<cv::Formatted>[m[K’
+   78 | std::ostream& operator << (std::ostream& out, [01;36m[KPtr<Formatted> fmtd[m[K)
+      |                                               [01;36m[K~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:87:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const Mat&)[m[K’
+   87 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const Mat& mtx)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:87:58:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst cv::Mat&[m[K’
+   87 | std::ostream& operator << (std::ostream& out, [01;36m[Kconst Mat& mtx[m[K)
+      |                                               [01;36m[K~~~~~~~~~~~^~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:93:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const UMat&)[m[K’
+   93 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const UMat& m)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:93:59:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst cv::UMat&[m[K’
+   93 | std::ostream& operator << (std::ostream& out, [01;36m[Kconst UMat& m[m[K)
+      |                                               [01;36m[K~~~~~~~~~~~~^[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:172:29:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const MatSize&)[m[K’
+  172 | static inline std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const MatSize& msize)
+      |                             [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/cvstd.inl.hpp:172:76:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst cv::MatSize&[m[K’
+  172 | static inline std::ostream& operator << (std::ostream& out, [01;36m[Kconst MatSize& msize[m[K)
+      |                                                             [01;36m[K~~~~~~~~~~~~~~~^~~~~[m[K
+In file included from [01m[K/usr/include/opencv4/opencv2/core.hpp:3350[m[K:
+[01m[K/usr/include/opencv4/opencv2/core/utility.hpp:398:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kstd::ostream& cv::[01;32m[Koperator<<[m[K(std::ostream&, const TickMeter&)[m[K’
+  398 | std::ostream& [01;36m[Koperator[m[K << (std::ostream& out, const TickMeter& tm)
+      |               [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/opencv4/opencv2/core/utility.hpp:398:64:[m[K [01;36m[Knote: [m[K  no known conversion for argument 2 from ‘[01m[Kgeometry_msgs::msg::Pose[m[K’ {aka ‘[01m[Kgeometry_msgs::msg::Pose_<std::allocator<void> >[m[K’} to ‘[01m[Kconst cv::TickMeter&[m[K’
+  398 | std::ostream& operator << (std::ostream& out, [01;36m[Kconst TickMeter& tm[m[K)
+      |                                               [01;36m[K~~~~~~~~~~~~~~~~~^~[m[K
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:90: CMakeFiles/trajectory_planning_node.dir/src/running_flow.cpp.o] Error 1
+gmake[2]: *** [CMakeFiles/trajectory_planning_node.dir/build.make:76: CMakeFiles/trajectory_planning_node.dir/src/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/trajectory_planning_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
