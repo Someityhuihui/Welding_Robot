@@ -1,4 +1,3 @@
-根据您的项目流程，我来生成一个完整的 README.md 文档。
 
 ```markdown
 # 焊缝自动提取系统 (Plane Weld Vision Extractor)
