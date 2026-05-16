@@ -7,6 +7,11 @@
 #include "corner_classifier.hpp"
 #include <string>
 
+enum ExtractionMethod {
+    METHOD_RANSAC = 0,      // RANSAC + 连通分量
+    METHOD_REGION_GROWING = 1  // 区域生长
+};
+
 class WeldExtractor {
 public:
     WeldExtractor();
@@ -44,11 +49,16 @@ public:
     void setExtractionMode(ExtractionMode mode) { classifier_.setExtractionMode(mode); }
     void setMinWeldLength(float length) { classifier_.setMinWeldLength(length); }
     void setUseICP(bool use) { registrar_.setUseICP(use); }
+    void setExtractionMethod(ExtractionMethod method) { extraction_method_ = method; }
+    // 设置边界过滤
+    void setFilterBoundaryCorners(bool filter) { classifier_.setFilterBoundaryCorners(filter); }
+    void setBoundaryMargin(float margin_mm) { classifier_.setBoundaryMargin(margin_mm); }
 
 private:
     PointCloudRegistrar registrar_;
     PlaneExtractor plane_extractor_;
     CornerClassifier classifier_;
+    ExtractionMethod extraction_method_ = METHOD_REGION_GROWING;
     
     std::vector<WeldSeam> seams_;
     std::string output_folder_;

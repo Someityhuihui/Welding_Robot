@@ -7,6 +7,8 @@
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/search/kdtree.h>
+#include <pcl/segmentation/region_growing.h>
+#include <pcl/features/normal_3d.h>
 #include <iostream>
 #include <cmath>
 #include <limits>
@@ -106,94 +108,86 @@ void PlaneExtractor::segmentConnectedComponents(FinitePlane& plane) {
 
 // ========== 核心修改：提取平面 + 连通域分割 ==========
 std::vector<FinitePlane> PlaneExtractor::extractPlanes(CloudPtr cloud) {
-    std::vector<FinitePlane> planes;
-    
-    CloudPtr downsampled = downsample(cloud);
-    std::cout << "[PlaneExtractor] 降采样后点数: " << downsampled->points.size() << std::endl;
-    
-    // 去噪
-    pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
-    sor.setInputCloud(downsampled);
-    sor.setMeanK(20);
-    sor.setStddevMulThresh(1.0);
-    sor.filter(*downsampled);
-    
+    std::vector<FinitePlane> raw_planes;
     CloudPtr remaining(new Cloud);
-    *remaining = *downsampled;
+    *remaining = *cloud;
+    
+    std::cout << "[PlaneExtractor] 步骤1: 粗分割 (RANSAC)..." << std::endl;
     
     pcl::SACSegmentation<pcl::PointXYZ> seg;
-    pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
-    pcl::ModelCoefficients coeff;
-    pcl::ExtractIndices<pcl::PointXYZ> extract;
-    
     seg.setOptimizeCoefficients(true);
     seg.setModelType(pcl::SACMODEL_PLANE);
     seg.setMethodType(pcl::SAC_RANSAC);
-    seg.setDistanceThreshold(distance_threshold_);
-    seg.setMaxIterations(max_iterations_);
+    seg.setDistanceThreshold(0.005f);
+    seg.setMaxIterations(2000);
+    seg.setProbability(0.99);
     
-    int max_planes = 20;  // 最多提取20个平面，避免过度分割
-    
-    // 预定义颜色列表
-    std::vector<std::tuple<int, int, int>> colors = {
-        {255, 0, 0},     // 红色
-        {0, 255, 0},     // 绿色
-        {0, 0, 255},     // 蓝色
-        {255, 255, 0},   // 黄色
-        {255, 0, 255},   // 品红
-        {0, 255, 255},   // 青色
-        {255, 128, 0},   // 橙色
-        {128, 0, 255},   // 紫色
-        {255, 0, 128},   // 粉红
-        {0, 128, 255},   // 天蓝
-        {128, 255, 0},   // 黄绿
-        {255, 128, 128}, // 浅红
-        {128, 255, 128}, // 浅绿
-        {128, 128, 255}, // 浅蓝
-        {255, 255, 128}  // 浅黄
-    };
+    int max_planes = 20;
+    int total_points = cloud->points.size();
+    int classified_points = 0;
     
     for (int attempt = 0; attempt < max_planes; attempt++) {
         if (remaining->points.size() < (size_t)min_plane_points_) break;
         
+        pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+        pcl::ModelCoefficients coeff;
+        
         seg.setInputCloud(remaining);
         seg.segment(*inliers, coeff);
         
-        if (inliers->indices.size() < (size_t)min_plane_points_) break;
+        if (inliers->indices.size() < (size_t)min_plane_points_) continue;
         
         FinitePlane plane;
-        plane.id = planes.size();  // 使用向量索引作为 ID
+        plane.id = raw_planes.size();
         plane.normal = Eigen::Vector3f(coeff.values[0], coeff.values[1], coeff.values[2]);
         plane.normal.normalize();
         plane.d = coeff.values[3];
-        plane.point_count = inliers->indices.size();
         
         // 提取平面点云
+        pcl::ExtractIndices<pcl::PointXYZ> extract;
         plane.cloud.reset(new Cloud);
         extract.setInputCloud(remaining);
         extract.setIndices(inliers);
         extract.setNegative(false);
         extract.filter(*plane.cloud);
+        
+        // 从剩余点云中移除
         extract.setNegative(true);
         extract.filter(*remaining);
         
-        // 计算边界
-        computePlaneBounds(plane);
+        plane.point_count = plane.cloud->points.size();
+        classified_points += plane.point_count;
         
-        // ===== 关键：分割连通分量 =====
+        computePlaneBounds(plane);
+        raw_planes.push_back(plane);
+        
+        std::cout << "  平面 " << plane.id << ": 点数=" << plane.point_count 
+                  << ", 累计覆盖率=" << (100.0f * classified_points / total_points) << "%" << std::endl;
+    }
+    
+    float coverage = 100.0f * classified_points / total_points;
+    std::cout << "[PlaneExtractor] 粗分割覆盖率: " << coverage << "%" << std::endl;
+    
+    // 步骤2: 3σ距离补全
+    if (coverage < 99.9f) {
+        std::cout << "[PlaneExtractor] 步骤2: 3σ距离补全..." << std::endl;
+        completePlanesWithSigma(raw_planes, cloud);
+    }
+    
+    // 步骤3: 有限连通域分割
+    std::cout << "[PlaneExtractor] 步骤3: 有限连通域分割..." << std::endl;
+    std::vector<FinitePlane> processed_planes;
+    for (auto& plane : raw_planes) {
+        if (!plane.cloud || plane.cloud->points.empty()) continue;
+        
+        // 连通分量分割
         segmentConnectedComponents(plane);
         
-        // 如果分割出多个分量，为每个分量创建单独的平面记录
         if (plane.components.size() > 1) {
-            std::cout << "  [分裂] 平面 " << plane.id << " 分裂为 " << plane.components.size() << " 个独立平面" << std::endl;
-            
             for (size_t comp_idx = 0; comp_idx < plane.components.size(); comp_idx++) {
-                FinitePlane sub_plane;
-                sub_plane.id = planes.size();  
-                sub_plane.normal = plane.normal;
-                sub_plane.d = plane.d;
+                FinitePlane sub_plane = plane;
+                sub_plane.id = processed_planes.size();
                 sub_plane.cloud = plane.components[comp_idx];
-                sub_plane.point_count = sub_plane.cloud->points.size();
                 sub_plane.center = plane.component_centers[comp_idx];
                 sub_plane.min_x = plane.component_bbox_min[comp_idx].x();
                 sub_plane.max_x = plane.component_bbox_max[comp_idx].x();
@@ -201,26 +195,14 @@ std::vector<FinitePlane> PlaneExtractor::extractPlanes(CloudPtr cloud) {
                 sub_plane.max_y = plane.component_bbox_max[comp_idx].y();
                 sub_plane.min_z = plane.component_bbox_min[comp_idx].z();
                 sub_plane.max_z = plane.component_bbox_max[comp_idx].z();
-
-                // ✅ 添加局部坐标系和凸包
+                sub_plane.point_count = sub_plane.cloud->points.size();
+                
                 computePlaneLocalFrame(sub_plane);
                 computePlaneConvexHull(sub_plane);
-     
-                // 分配颜色
-                int color_idx = sub_plane.id % colors.size();
-                sub_plane.r = std::get<0>(colors[color_idx]);
-                sub_plane.g = std::get<1>(colors[color_idx]);
-                sub_plane.b = std::get<2>(colors[color_idx]);
-                
-                planes.push_back(sub_plane);
-                
-                std::cout << "    子平面 " << sub_plane.id << ": 中心=(" 
-                          << sub_plane.center.x() << "," << sub_plane.center.y() << "," << sub_plane.center.z() 
-                          << "), 点数=" << sub_plane.point_count 
-                          << ", 颜色=RGB(" << sub_plane.r << "," << sub_plane.g << "," << sub_plane.b << ")" << std::endl;
+                processed_planes.push_back(sub_plane);
             }
         } else if (plane.components.size() == 1) {
-            // 只有一个分量，直接使用
+            plane.id = processed_planes.size();
             plane.cloud = plane.components[0];
             plane.center = plane.component_centers[0];
             plane.min_x = plane.component_bbox_min[0].x();
@@ -229,41 +211,293 @@ std::vector<FinitePlane> PlaneExtractor::extractPlanes(CloudPtr cloud) {
             plane.max_y = plane.component_bbox_max[0].y();
             plane.min_z = plane.component_bbox_min[0].z();
             plane.max_z = plane.component_bbox_max[0].z();
-
-            // ✅ 添加局部坐标系和凸包
+            
             computePlaneLocalFrame(plane);
             computePlaneConvexHull(plane);
-            
-            // 分配颜色
-            int color_idx = plane.id % colors.size();
-            plane.r = std::get<0>(colors[color_idx]);
-            plane.g = std::get<1>(colors[color_idx]);
-            plane.b = std::get<2>(colors[color_idx]);
-            
-            planes.push_back(plane);
-            
-            std::cout << "[Plane " << plane.id << "] 单一分量: 中心=(" 
-                      << plane.center.x() << "," << plane.center.y() << "," << plane.center.z() 
-                      << "), 点数=" << plane.point_count 
-                      << ", 颜色=RGB(" << plane.r << "," << plane.g << "," << plane.b << ")" << std::endl;
-        } else {
-            // 没有有效分量，跳过
-            std::cout << "[Plane " << plane.id << "] 无有效分量，跳过" << std::endl;
-        }
-    }
-
-    // ✅ 验证 ID 与向量索引一致
-    for (size_t i = 0; i < planes.size(); i++) {
-        if (planes[i].id != (int)i) {
-            std::cout << "[修正] 平面索引: 向量索引=" << i 
-                      << ", 原ID=" << planes[i].id << " -> 修正为 " << i << std::endl;
-            planes[i].id = i;
+            processed_planes.push_back(plane);
         }
     }
     
-    std::cout << "[PlaneExtractor] 共提取 " << planes.size() << " 个有限平面（含连通分量）" << std::endl;
-    return planes;
+    std::cout << "[PlaneExtractor] 最终平面数: " << processed_planes.size() << std::endl;
+    return processed_planes;
 }
+
+void PlaneExtractor::completePlanesWithSigma(std::vector<FinitePlane>& planes, CloudPtr cloud) {
+    // 为每个平面计算距离的均值和标准差
+    for (auto& plane : planes) {
+        if (!plane.cloud || plane.cloud->points.empty()) continue;
+        
+        std::vector<float> distances;
+        for (const auto& p : plane.cloud->points) {
+            Eigen::Vector3f pt(p.x, p.y, p.z);
+            float dist = std::abs(plane.normal.dot(pt) + plane.d);
+            distances.push_back(dist);
+        }
+        
+        // 计算均值和标准差
+        float mean = 0, stddev = 0;
+        for (float d : distances) mean += d;
+        mean /= distances.size();
+        for (float d : distances) stddev += (d - mean) * (d - mean);
+        stddev = std::sqrt(stddev / distances.size());
+        
+        plane.distance_mean = mean;
+        plane.distance_stddev = stddev;
+        plane.sigma_threshold = mean + sigma_threshold_ * stddev;
+        
+        std::cout << "  平面 " << plane.id << ": 距离均值=" << mean 
+                  << ", 标准差=" << stddev << ", 3σ阈值=" << plane.sigma_threshold << std::endl;
+    }
+    
+    // 收集所有已分类点的索引（简化版：使用点云直接判断）
+    // 注意：这里需要根据实际情况实现点分类标记
+    
+    int new_classified = 0;
+    
+    // 遍历原始点云中的每个点
+    for (const auto& p : cloud->points) {
+        Eigen::Vector3f pt(p.x, p.y, p.z);
+        
+        int best_plane = -1;
+        float best_dist = FLT_MAX;
+        
+        // 找到最近的平面（在3σ阈值内）
+        for (size_t j = 0; j < planes.size(); j++) {
+            const auto& plane = planes[j];
+            float dist = std::abs(plane.normal.dot(pt) + plane.d);
+            
+            if (dist < plane.sigma_threshold && dist < best_dist) {
+                best_dist = dist;
+                best_plane = j;
+            }
+        }
+        
+        if (best_plane >= 0) {
+            // 检查点是否已经在平面中（简化：检查距离）
+            bool already_in_plane = false;
+            for (const auto& existing_pt : planes[best_plane].cloud->points) {
+                float dx = existing_pt.x - p.x;
+                float dy = existing_pt.y - p.y;
+                float dz = existing_pt.z - p.z;
+                if (std::sqrt(dx*dx + dy*dy + dz*dz) < 0.001f) {
+                    already_in_plane = true;
+                    break;
+                }
+            }
+            
+            if (!already_in_plane) {
+                planes[best_plane].cloud->push_back(p);
+                new_classified++;
+            }
+        }
+    }
+    
+    std::cout << "[3σ补全] 新增分类点数: " << new_classified << std::endl;
+    
+    // 重新计算每个平面的边界
+    for (auto& plane : planes) {
+        computePlaneBounds(plane);
+    }
+}
+
+std::vector<FinitePlane> PlaneExtractor::extractPlanesRegionGrowing(CloudPtr cloud) {
+    std::vector<FinitePlane> raw_planes;
+    
+    std::cout << "[区域生长] 开始提取平面..." << std::endl;
+    
+    // 降采样
+    CloudPtr downsampled = downsample(cloud);
+    std::cout << "[区域生长] 降采样后点数: " << downsampled->points.size() << std::endl;
+    
+    // 去噪
+    pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
+    sor.setInputCloud(downsampled);
+    sor.setMeanK(20);
+    sor.setStddevMulThresh(1.0);
+    sor.filter(*downsampled);
+    
+    // 计算法向量
+    pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+    pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+    ne.setInputCloud(downsampled);
+    ne.setKSearch(30);
+    ne.compute(*normals);
+    
+    // 区域生长分割
+    pcl::RegionGrowing<pcl::PointXYZ, pcl::Normal> reg;
+    reg.setMinClusterSize(min_plane_points_);
+    reg.setMaxClusterSize(1000000);
+    reg.setSearchMethod(pcl::search::KdTree<pcl::PointXYZ>::Ptr(new pcl::search::KdTree<pcl::PointXYZ>));
+    reg.setNumberOfNeighbours(30);
+    reg.setSmoothModeFlag(true);
+    reg.setCurvatureThreshold(curvature_threshold_);
+    reg.setSmoothnessThreshold(normal_smoothness_threshold_ / 180.0f * M_PI);
+    reg.setInputCloud(downsampled);
+    reg.setInputNormals(normals);
+    
+    std::vector<pcl::PointIndices> clusters;
+    reg.extract(clusters);
+    
+    std::cout << "[区域生长] 找到 " << clusters.size() << " 个平面簇" << std::endl;
+    
+    for (size_t i = 0; i < clusters.size(); i++) {
+        if (clusters[i].indices.size() < (size_t)min_plane_points_) continue;
+        
+        FinitePlane raw_plane;
+        raw_plane.id = raw_planes.size();  // 临时ID，后处理会重新分配
+        raw_plane.cloud.reset(new Cloud);
+        
+        // 提取点云
+        for (int idx : clusters[i].indices) {
+            raw_plane.cloud->push_back(downsampled->points[idx]);
+        }
+        raw_plane.point_count = raw_plane.cloud->points.size();
+        
+        // ✅ 使用 RANSAC 拟合平面获取法向量和d（更稳定）
+        pcl::SACSegmentation<pcl::PointXYZ> seg;
+        pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+        pcl::ModelCoefficients coeff;
+        
+        seg.setOptimizeCoefficients(true);
+        seg.setModelType(pcl::SACMODEL_PLANE);
+        seg.setMethodType(pcl::SAC_RANSAC);
+        seg.setDistanceThreshold(0.01f);
+        seg.setInputCloud(raw_plane.cloud);
+        seg.segment(*inliers, coeff);
+        
+        if (inliers->indices.size() > raw_plane.cloud->points.size() * 0.5) {
+            raw_plane.normal = Eigen::Vector3f(coeff.values[0], coeff.values[1], coeff.values[2]);
+            raw_plane.normal.normalize();
+            raw_plane.d = coeff.values[3];
+        } else {
+            // 如果 RANSAC 失败，使用最小二乘法拟合
+            Eigen::MatrixXf A(raw_plane.point_count, 3);
+            Eigen::VectorXf b(raw_plane.point_count);
+            for (size_t j = 0; j < raw_plane.cloud->points.size(); j++) {
+                const auto& p = raw_plane.cloud->points[j];
+                A(j, 0) = p.x;
+                A(j, 1) = p.y;
+                A(j, 2) = p.z;
+                b(j) = 1.0f;
+            }
+            Eigen::Vector3f n = A.colPivHouseholderQr().solve(b);
+            raw_plane.normal = n.normalized();
+            raw_plane.d = -1.0f / n.norm();
+        }
+        
+        // 计算边界（粗略，后处理会重新计算精确边界）
+        computePlaneBounds(raw_plane);
+        
+        raw_planes.push_back(raw_plane);
+        
+        std::cout << "[区域生长] 提取原始平面 " << raw_plane.id << ": 点数=" << raw_plane.point_count << std::endl;
+    }
+    
+    std::cout << "[区域生长] 共提取 " << raw_planes.size() << " 个原始平面" << std::endl;
+    
+    // ✅ 使用统一的后处理（连通分量分割 + 凸包计算）
+    std::cout << "[区域生长] 开始后处理..." << std::endl;
+    auto processed_planes = postProcessPlanes(raw_planes);
+    
+    // ✅ 合并相似平面
+    std::cout << "[区域生长] 开始合并相似平面..." << std::endl;
+    auto merged_planes = mergeSimilarPlanes(processed_planes);
+    std::cout << "[区域生长] 合并后剩余 " << merged_planes.size() << " 个平面" << std::endl;
+    
+    return merged_planes;
+}
+
+
+// ========== 合并相似平面 ==========
+std::vector<FinitePlane> PlaneExtractor::mergeSimilarPlanes(const std::vector<FinitePlane>& planes) {
+    std::vector<FinitePlane> merged;
+    std::vector<bool> used(planes.size(), false);
+    
+    // 法向量夹角阈值（度）
+    float angle_threshold = 15.0f;   // 15度以内的认为平行
+    float distance_threshold = 0.02f; // 2cm 以内的认为共面
+    
+    for (size_t i = 0; i < planes.size(); i++) {
+        if (used[i]) continue;
+        
+        // 开始一个新组
+        std::vector<int> group = { (int)i };
+        used[i] = true;
+        
+        for (size_t j = i + 1; j < planes.size(); j++) {
+            if (used[j]) continue;
+            
+            // 计算法向量夹角
+            float dot = std::abs(planes[i].normal.dot(planes[j].normal));
+            float angle = std::acos(std::min(1.0f, dot)) * 180.0f / M_PI;
+            
+            if (angle > angle_threshold) continue;
+            
+            // 计算平面距离
+            float dist = std::abs(planes[i].normal.dot(planes[j].center) + planes[i].d);
+            
+            if (dist > distance_threshold) continue;
+            
+            // 相似平面，加入组
+            group.push_back(j);
+            used[j] = true;
+        }
+        
+        if (group.size() == 1) {
+            // 没有相似平面，直接加入
+            merged.push_back(planes[i]);
+        } else {
+            // 合并组内所有平面
+            FinitePlane merged_plane;
+            merged_plane.id = merged.size();
+            merged_plane.normal = planes[i].normal;
+            merged_plane.d = planes[i].d;
+            
+            // 合并点云
+            merged_plane.cloud.reset(new Cloud);
+            for (int idx : group) {
+                *merged_plane.cloud += *planes[idx].cloud;
+            }
+            merged_plane.point_count = merged_plane.cloud->points.size();
+            
+            // 重新计算边界
+            computePlaneBounds(merged_plane);
+            computePlaneLocalFrame(merged_plane);
+            computePlaneConvexHull(merged_plane);
+            
+            // 重新拟合平面（使用合并后的点云）
+            pcl::SACSegmentation<pcl::PointXYZ> seg;
+            pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+            pcl::ModelCoefficients coeff;
+            seg.setOptimizeCoefficients(true);
+            seg.setModelType(pcl::SACMODEL_PLANE);
+            seg.setMethodType(pcl::SAC_RANSAC);
+            seg.setDistanceThreshold(0.01f);
+            seg.setInputCloud(merged_plane.cloud);
+            seg.segment(*inliers, coeff);
+            
+            if (inliers->indices.size() > 0) {
+                merged_plane.normal = Eigen::Vector3f(coeff.values[0], coeff.values[1], coeff.values[2]);
+                merged_plane.normal.normalize();
+                merged_plane.d = coeff.values[3];
+            }
+            
+            // 分配颜色
+            int color_idx = merged_plane.id % colors_.size();
+            merged_plane.r = std::get<0>(colors_[color_idx]);
+            merged_plane.g = std::get<1>(colors_[color_idx]);
+            merged_plane.b = std::get<2>(colors_[color_idx]);
+            
+            merged.push_back(merged_plane);
+            
+            std::cout << "  [合并] " << group.size() << " 个平面合并为 1 个平面，总点数=" 
+                      << merged_plane.point_count << std::endl;
+        }
+    }
+    
+    return merged;
+}
+
 
 bool PlaneExtractor::computeTriplePlaneIntersection(const FinitePlane& p1,
                                                      const FinitePlane& p2,
@@ -737,3 +971,107 @@ void PlaneExtractor::computePlaneConvexHull(FinitePlane& plane) {
     std::cout << "    [凸包] 顶点数=" << hull.size() << std::endl;
 }
 
+
+// ========== 统一的平面后处理：连通分量分割 + 索引修正 ==========
+std::vector<FinitePlane> PlaneExtractor::postProcessPlanes(const std::vector<FinitePlane>& input_planes) {
+    std::vector<FinitePlane> result_planes;
+    
+    std::cout << "[后处理] 开始处理 " << input_planes.size() << " 个输入平面" << std::endl;
+    
+    // 预定义颜色列表
+    std::vector<std::tuple<int, int, int>> colors = colors_;
+    
+    for (const auto& plane : input_planes) {
+        if (!plane.cloud || plane.cloud->points.empty()) continue;
+        
+        // 创建临时平面对象用于连通分量分割
+        FinitePlane temp_plane = plane;
+        
+        // 执行连通分量分割
+        segmentConnectedComponents(temp_plane);
+        
+        if (temp_plane.components.size() > 1) {
+            // 多个连通分量，分裂成多个独立平面
+            std::cout << "  [分裂] 原始平面 " << plane.id << " 分裂为 " 
+                      << temp_plane.components.size() << " 个独立平面" << std::endl;
+            
+            for (size_t comp_idx = 0; comp_idx < temp_plane.components.size(); comp_idx++) {
+                FinitePlane sub_plane;
+                sub_plane.id = result_planes.size();  // 使用 result_planes.size() 作为新ID
+                sub_plane.normal = plane.normal;
+                sub_plane.d = plane.d;
+                sub_plane.cloud = temp_plane.components[comp_idx];
+                sub_plane.point_count = sub_plane.cloud->points.size();
+                sub_plane.center = temp_plane.component_centers[comp_idx];
+                
+                // 边界
+                sub_plane.min_x = temp_plane.component_bbox_min[comp_idx].x();
+                sub_plane.max_x = temp_plane.component_bbox_max[comp_idx].x();
+                sub_plane.min_y = temp_plane.component_bbox_min[comp_idx].y();
+                sub_plane.max_y = temp_plane.component_bbox_max[comp_idx].y();
+                sub_plane.min_z = temp_plane.component_bbox_min[comp_idx].z();
+                sub_plane.max_z = temp_plane.component_bbox_max[comp_idx].z();
+                
+                // 局部坐标系和凸包
+                computePlaneLocalFrame(sub_plane);
+                computePlaneConvexHull(sub_plane);
+                
+                // 分配颜色
+                int color_idx = sub_plane.id % colors.size();
+                sub_plane.r = std::get<0>(colors[color_idx]);
+                sub_plane.g = std::get<1>(colors[color_idx]);
+                sub_plane.b = std::get<2>(colors[color_idx]);
+                
+                result_planes.push_back(sub_plane);
+                
+                std::cout << "    子平面 " << sub_plane.id << ": 中心=(" 
+                          << sub_plane.center.x() << "," << sub_plane.center.y() << "," << sub_plane.center.z() 
+                          << "), 点数=" << sub_plane.point_count 
+                          << ", 颜色=RGB(" << sub_plane.r << "," << sub_plane.g << "," << sub_plane.b << ")" << std::endl;
+            }
+        } else if (temp_plane.components.size() == 1) {
+            // 单一分量，直接使用
+            FinitePlane single_plane = plane;
+            single_plane.id = result_planes.size();  // 使用 result_planes.size() 作为新ID
+            single_plane.cloud = temp_plane.components[0];
+            single_plane.center = temp_plane.component_centers[0];
+            single_plane.min_x = temp_plane.component_bbox_min[0].x();
+            single_plane.max_x = temp_plane.component_bbox_max[0].x();
+            single_plane.min_y = temp_plane.component_bbox_min[0].y();
+            single_plane.max_y = temp_plane.component_bbox_max[0].y();
+            single_plane.min_z = temp_plane.component_bbox_min[0].z();
+            single_plane.max_z = temp_plane.component_bbox_max[0].z();
+            
+            // 局部坐标系和凸包
+            computePlaneLocalFrame(single_plane);
+            computePlaneConvexHull(single_plane);
+            
+            // 分配颜色
+            int color_idx = single_plane.id % colors.size();
+            single_plane.r = std::get<0>(colors[color_idx]);
+            single_plane.g = std::get<1>(colors[color_idx]);
+            single_plane.b = std::get<2>(colors[color_idx]);
+            
+            result_planes.push_back(single_plane);
+            
+            std::cout << "[平面 " << single_plane.id << "] 单一分量: 中心=(" 
+                      << single_plane.center.x() << "," << single_plane.center.y() << "," << single_plane.center.z() 
+                      << "), 点数=" << single_plane.point_count 
+                      << ", 颜色=RGB(" << single_plane.r << "," << single_plane.g << "," << single_plane.b << ")" << std::endl;
+        }
+        // 无有效分量的情况跳过
+    }
+    
+    // ✅ 验证 ID 与向量索引一致
+    for (size_t i = 0; i < result_planes.size(); i++) {
+        if (result_planes[i].id != (int)i) {
+            std::cout << "[修正] 平面索引: 向量索引=" << i 
+                      << ", 原ID=" << result_planes[i].id << " -> 修正为 " << i << std::endl;
+            result_planes[i].id = i;
+        }
+    }
+    
+    std::cout << "[后处理] 完成，共 " << result_planes.size() << " 个平面" << std::endl;
+    
+    return result_planes;
+}

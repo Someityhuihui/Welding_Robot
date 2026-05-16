@@ -11,6 +11,7 @@ WeldExtractor::WeldExtractor() {}
 
 WeldExtractor::~WeldExtractor() {}
 
+
 bool WeldExtractor::loadFrames(const std::string& folder_path, bool has_pose_files) {
     return registrar_.loadFrames(folder_path, has_pose_files);
 }
@@ -30,7 +31,16 @@ std::vector<WeldSeam> WeldExtractor::extractWeldSeams(CloudPtr cloud,
     
     // 步骤2.1：提取有限平面
     std::cout << "[步骤2.1] 提取有限平面..." << std::endl;
-    auto planes = plane_extractor_.extractPlanes(cloud);
+    
+    std::vector<FinitePlane> planes;
+    
+    if (extraction_method_ == METHOD_REGION_GROWING) {
+        std::cout << "[步骤2.1] 使用区域生长法..." << std::endl;
+        planes = plane_extractor_.extractPlanesRegionGrowing(cloud);
+    } else {
+        std::cout << "[步骤2.1] 使用 RANSAC + 连通分量法..." << std::endl;
+        planes = plane_extractor_.extractPlanes(cloud);
+    }
 
      // 输出平面统计
     std::cout << "\n[平面统计] 共 " << planes.size() << " 个平面:" << std::endl;
@@ -236,16 +246,32 @@ int main(int argc, char** argv) {
     if (argc < 3) {
         std::cout << "用法: weld_extractor <数据集文件夹> <输出文件夹> [选项]" << std::endl;
         std::cout << std::endl;
+        
         std::cout << "选项:" << std::endl;
         std::cout << "  --no-poses           没有位姿文件，使用ICP配准" << std::endl;
         std::cout << "  --mode corner        边角模式：只提取三平面相交的三条焊缝" << std::endl;
         std::cout << "  --mode long          长条模式：只提取两平面相交的长焊缝" << std::endl;
         std::cout << "  --mode both          混合模式：提取所有焊缝（默认）" << std::endl;
+
+        std::cout << "  --method ransac      使用RANSAC方法提取平面（默认）" << std::endl;
+        std::cout << "  --method region      使用区域生长方法提取平面" << std::endl;
         std::cout << "  --min-length <mm>    最小焊缝长度（单位：mm，默认50）" << std::endl;
         std::cout << std::endl;
+
         std::cout << "示例:" << std::endl;
         std::cout << "  weld_extractor ./data ./output --mode corner" << std::endl;
         std::cout << "  weld_extractor ./data ./output --mode long --min-length 100" << std::endl;
+        std::cout << "  weld_extractor ./data ./output --method region --mode both" << std::endl;
+        std::cout << "选项:" << std::endl;
+
+        std::cout << "  --no-boundary-filter       不过滤边界角点（保留所有角点）" << std::endl;
+        std::cout << "  --boundary-margin <mm>     边界过滤距离阈值（单位：mm，默认10）" << std::endl;
+        std::cout << std::endl;
+        std::cout << "示例:" << std::endl;
+        std::cout << "  weld_extractor ./data ./output                                    # 默认过滤边界（10mm）" << std::endl;
+        std::cout << "  weld_extractor ./data ./output --no-boundary-filter               # 不过滤边界" << std::endl;
+        std::cout << "  weld_extractor ./data ./output --boundary-margin 5                # 边界阈值5mm" << std::endl;
+        std::cout << "  weld_extractor ./data ./output --no-boundary-filter --mode both   # 不过滤边界+混合模式" << std::endl;
         return 1;
     }
     
@@ -253,8 +279,12 @@ int main(int argc, char** argv) {
     std::string output_folder = argv[2];
     bool has_pose_files = true;
     ExtractionMode mode = MODE_CORNER_ONLY; // 默认边角模式
+    ExtractionMethod extraction_method = METHOD_REGION_GROWING; // ✅ 添加变量声明，默认REGION_GROWING
     bool use_icp = false;
     float min_length_mm = 50.0f;
+
+    bool filter_boundary = true;      // 默认过滤边界
+    float boundary_margin_mm = 10.0f; // 默认10mm
     
     // 解析参数
     for (int i = 3; i < argc; i++) {
@@ -272,10 +302,26 @@ int main(int argc, char** argv) {
                 mode = MODE_BOTH;
                 std::cout << "提取模式: 混合模式" << std::endl;
             }
+        } else if (strcmp(argv[i], "--method") == 0 && i + 1 < argc) {
+            i++;
+            if (strcmp(argv[i], "ransac") == 0) {
+                extraction_method = METHOD_RANSAC;
+                std::cout << "平面提取方法: RANSAC" << std::endl;
+            } else if (strcmp(argv[i], "region") == 0) {
+                extraction_method = METHOD_REGION_GROWING;
+                std::cout << "平面提取方法: 区域生长" << std::endl;
+            }
         } else if (strcmp(argv[i], "--min-length") == 0 && i + 1 < argc) {
             i++;
             min_length_mm = std::stof(argv[i]);
             std::cout << "最小焊缝长度: " << min_length_mm << " mm" << std::endl;
+        }  else if (strcmp(argv[i], "--no-boundary-filter") == 0) {
+            filter_boundary = false;
+            std::cout << "  [设置] 边界过滤: 禁用" << std::endl;
+        } else if (strcmp(argv[i], "--boundary-margin") == 0 && i + 1 < argc) {
+            i++;
+            boundary_margin_mm = std::stof(argv[i]);
+            std::cout << "  [设置] 边界距离阈值: " << boundary_margin_mm << " mm" << std::endl;
         }
     }
     
@@ -291,7 +337,11 @@ int main(int argc, char** argv) {
     extractor.setPathSpacing(0.005f);
     extractor.setWeldAngle(45.0f);
     extractor.setExtractionMode(mode);
+    extractor.setExtractionMethod(extraction_method);  // ✅ 设置提取方法
     extractor.setMinWeldLength(min_length_mm / 1000.0f);  // 转换为米
+    // 设置边界过滤参数
+    extractor.setFilterBoundaryCorners(filter_boundary);
+    extractor.setBoundaryMargin(boundary_margin_mm);
     
     if (extractor.process(dataset_folder, output_folder, has_pose_files)) {
         std::cout << "\n✅ 处理成功！" << std::endl;

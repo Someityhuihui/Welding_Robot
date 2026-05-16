@@ -26,6 +26,15 @@ struct WeldSeam {
     bool is_corner_weld;                // 是否为角焊缝（三平面交线）
 };
 
+struct WeldSegment {
+    int plane_id1;
+    int plane_id2;
+    Eigen::Vector3f start_point;  // 角点
+    Eigen::Vector3f end_point;    // 焊缝终点
+    std::vector<Eigen::Vector3f> path;  // 焊缝路径
+    float length;
+};
+
 // 添加枚举类型
 enum ExtractionMode {
     MODE_CORNER_ONLY = 0,    // 边角模式：只提取三平面相交的三条焊缝
@@ -84,6 +93,50 @@ public:
     
     // 新增：保存角点信息到文件
     void saveCornersToFile(const std::vector<CornerPoint>& corners, const std::string& filename);
+
+    // bool isCameraInsideCorner(const CornerPoint& corner,
+    //                           const std::vector<FinitePlane>& planes,
+    //                           const Eigen::Vector3f& camera_pos);
+    
+    bool isCameraInsideCornerMultiSample(const CornerPoint& corner,
+                                          const std::vector<FinitePlane>& planes,
+                                          const Eigen::Vector3f& camera_pos);
+    
+    int countCamerasSeeingConcaveCorner(const CornerPoint& corner,
+                                         const std::vector<FinitePlane>& planes,
+                                         const std::vector<Eigen::Vector3f>& camera_poses,
+                                         bool use_multi_sample = true);
+
+    // 新增：使用三条焊缝向量判定内凹角
+    bool isConcaveWithWeldVectors(const CornerPoint& corner,
+                                   const std::vector<FinitePlane>& planes,
+                                   const std::vector<Eigen::Vector3f>& camera_poses,
+                                   const std::vector<WeldSegment>& weld_segments);
+    
+    // 新增：计算从角点出发的焊缝终点
+    Eigen::Vector3f computeWeldEndPoint(const FinitePlane& p1, const FinitePlane& p2,
+                                         const Eigen::Vector3f& corner_point);
+    
+    // 新增：验证相机到焊缝终点的距离条件
+    bool verifyWeldEndPointDistance(const CornerPoint& corner,
+                                     const std::vector<WeldSegment>& weld_segments,
+                                     const Eigen::Vector3f& camera_pos,
+                                     const std::vector<FinitePlane>& planes);
+
+    // 新增：从角点出发的焊缝向量计算
+    // Eigen::Vector3f computeWeldVectorFromCorner(const CornerPoint& corner,
+    //                                               const Eigen::Vector3f& weld_end_point);
+
+    // 边界过滤函数
+    bool isCornerInsideModel(const Eigen::Vector3f& corner, float margin_mm = 10.0f);
+    float distanceToNearestBoundary(const Eigen::Vector3f& corner);
+    
+    // 设置边界过滤阈值
+    void setBoundaryMargin(float margin_mm) { boundary_margin_mm_ = margin_mm; }
+    void computeShrunkBBox(float shrink_margin_mm);
+
+    // 设置是否过滤边界角点
+    void setFilterBoundaryCorners(bool filter) { filter_boundary_corners_ = filter; }
     
     
 private:
@@ -105,13 +158,19 @@ private:
     std::vector<Eigen::Vector3f> camera_poses_;
     Eigen::Vector3f cloud_center_;
     Eigen::Vector3f cloud_bbox_min_, cloud_bbox_max_;
+    Eigen::Vector3f shrunk_bbox_min_;
+    Eigen::Vector3f shrunk_bbox_max_;
     
     // 参数
     float path_spacing_ = 0.005f;    // 5mm
     float weld_angle_ = 45.0f;       // 焊枪角度
     float outward_threshold_ = 0.3f; // 外部判定阈值
+
     ExtractionMode extraction_mode_ = MODE_CORNER_ONLY;  // 默认为边角模式
     float min_weld_length_ = 0.01f;  // 最小焊缝长度 50mm
+
+    float boundary_margin_mm_ = 5.0f;  // 边界距离阈值（毫米）
+    bool filter_boundary_corners_ = true;  // 默认过滤边界角点
     
 
     // 辅助函数

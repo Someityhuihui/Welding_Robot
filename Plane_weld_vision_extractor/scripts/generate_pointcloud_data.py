@@ -18,7 +18,7 @@ Args:
 """
 
 # 使用归一化后的网格直接扫描
-# python generate_pointcloud_data.py --input seam_fillet_lap_scene_normalized_center_and_scale.ply --output ./scan_result --frames 36 --radius 3.0 --rotation-axis Z --height 2 --rays-h 512 --rays-v 256
+# python generate_pointcloud_data.py --input models/seam_fillet_lap_scene_normalized_center_and_scale.ply --output ./scan_result --frames 36 --radius 3.0 --rotation-axis Z --height 2 --rays-h 512 --rays-v 256
 
 
 # # 如果你已经有网格文件，直接扫描

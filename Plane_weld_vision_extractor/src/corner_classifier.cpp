@@ -12,7 +12,16 @@
 #include <algorithm>   
 #include <iomanip>
 
-CornerClassifier::CornerClassifier() : cloud_(new Cloud) {}
+// 在构造函数中初始化成员变量
+CornerClassifier::CornerClassifier() : cloud_(new Cloud) {
+    cloud_center_.setZero();
+    cloud_bbox_min_.setZero();
+    cloud_bbox_max_.setZero();
+    shrunk_bbox_min_.setZero();
+    shrunk_bbox_max_.setZero();
+    filter_boundary_corners_ = true;
+    boundary_margin_mm_ = 10.0f;
+}
 
 CornerClassifier::~CornerClassifier() {}
 
@@ -174,224 +183,91 @@ bool CornerClassifier::classifyByNormalDistribution(const CornerPoint& corner, c
     return (outward_ratio > 0.3f && outward_ratio < 0.7f);
 }
 
-// CornerClassifier::classifyCorners(v1): 综合分类函数：结合多种方法判断角点类型，并计算置信度
-// std::vector<CornerPoint> CornerClassifier::classifyCorners(const std::vector<FinitePlane>& planes,
-//                                                             const std::vector<Eigen::Vector3f>& intersection_points) {
-//     std::vector<CornerPoint> corners;
-    
-//     std::cout << "[CornerClassifier] 开始分类 " << intersection_points.size() << " 个角点" << std::endl;
-    
-//     for (const auto& pt : intersection_points) {
-//         // 找到包含该点的三个平面
-//         std::vector<std::pair<float, int>> distances;
-//         for (size_t i = 0; i < planes.size(); i++) {
-//             float dist = std::abs(planes[i].normal.dot(pt) + planes[i].d);
-//             distances.push_back({dist, i});
-//         }
-        
-//         std::sort(distances.begin(), distances.end());
-        
-//         if (distances.size() >= 3 && distances[0].first < 0.01f && 
-//             distances[1].first < 0.01f && distances[2].first < 0.01f) {
-            
-//             CornerPoint corner;
-//             corner.position = pt;
-//             corner.plane_ids = {distances[0].second, distances[1].second, distances[2].second};
-            
-//             // 多方法综合判断
-//             float score = 0;
-//             int method_count = 1;
-            
-//             bool vec_sum = classifyByVectorSum(corner, planes);
-//             score += vec_sum ? 1 : -1;
-            
-//             if (!camera_poses_.empty()) {
-//                 bool camera = classifyByCameraPose(corner, planes);
-//                 score += camera ? 1 : -1;
-//                 method_count++;
-//             }
-            
-//             bool normal_dist = classifyByNormalDistribution(corner, planes);
-//             score += normal_dist ? 1 : -1;
-//             method_count++;
-            
-//             corner.confidence = std::abs(score) / method_count;
-//             corner.is_concave = score > 0;
-            
-//             // 计算内凹方向
-//             if (corner.is_concave) {
-//                 corner.inward_direction = -vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
-//             } else {
-//                 corner.inward_direction = vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
-//             }
-//             corner.inward_direction.normalize();
-            
-//             corners.push_back(corner);
-            
-//             std::cout << "[角点] 位置: (" << pt.x() << ", " << pt.y() << ", " << pt.z() << ")"
-//                       << ", 内凹: " << (corner.is_concave ? "是(焊缝)" : "否(边角)")
-//                       << ", 置信度: " << corner.confidence << std::endl;
-//         }
-//     }
-    
-//     return corners;
-// }
-
-
 // CornerClassifier::classifyCorners 函数(v2)，使用新的评分方法：相机可见性 + 向量夹角评分法，增强分类效果，并输出更详细的日志信息
-std::vector<CornerPoint> CornerClassifier::classifyCorners(
-    const std::vector<FinitePlane>& planes,
-    const std::vector<Eigen::Vector3f>& intersection_points,
-    const std::vector<std::tuple<int, int, int>>& intersection_plane_indices) {
+// std::vector<CornerPoint> CornerClassifier::classifyCorners(
+//     const std::vector<FinitePlane>& planes,
+//     const std::vector<Eigen::Vector3f>& intersection_points,
+//     const std::vector<std::tuple<int, int, int>>& intersection_plane_indices) {
     
-    std::vector<CornerPoint> corners;
-    
-    std::cout << "[CornerClassifier] 开始分类 " << intersection_points.size() << " 个角点" << std::endl;
-    std::cout << "[CornerClassifier] 使用相机可见性 + 向量夹角评分法" << std::endl;
-    
-    float score_threshold = 0.3f;  // 评分阈值
-    
-    for (size_t idx = 0; idx < intersection_points.size(); idx++) {
-        const auto& pt = intersection_points[idx];
-        auto [i, j, k] = intersection_plane_indices[idx];
-        
-        // 验证索引有效性
-        if (i >= (int)planes.size() || j >= (int)planes.size() || k >= (int)planes.size()) {
-            std::cerr << "[错误] 索引超出范围: " << i << "," << j << "," << k 
-                      << " 平面总数=" << planes.size() << std::endl;
-            continue;
-        }
-        
-        CornerPoint corner;
-        corner.position = pt;
-        corner.plane_ids = {i, j, k};  // 直接使用传入的索引
-        
-        // 使用原来的评分方法（不变）
-        float score = computeCornerScoreFromVisibleCameras(corner, planes, camera_poses_);
-        
-        corner.confidence = std::abs(score);
-        corner.is_concave = score > score_threshold;
-        
-        // 计算内凹方向
-        if (corner.is_concave) {
-            corner.inward_direction = -vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
-        } else {
-            corner.inward_direction = vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
-        }
-        corner.inward_direction.normalize();
-        
-        corners.push_back(corner);
-        
-        std::cout << "[角点] 位置: (" << std::fixed << std::setprecision(4)
-                  << pt.x() << ", " << pt.y() << ", " << pt.z() << ")"
-                  << ", 平面索引: (" << i << "," << j << "," << k << ")"
-                  << ", 评分: " << score
-                  << ", 内凹: " << (corner.is_concave ? "是(焊缝)" : "否(边角)")
-                  << ", 置信度: " << corner.confidence << std::endl;
-    }
-    
-    // 保存角点信息到文件
-    saveCornersToFile(corners, "corners_info.txt");
-    
-    return corners;
-}
-
-// ========== 获取指向外部的法向量 ==========
-// Eigen::Vector3f CornerClassifier::getOutwardNormal(const FinitePlane& plane, 
-//                                                     const Eigen::Vector3f& corner_point) {
-//     // 计算从角点到平面中心的向量
-//     Eigen::Vector3f to_center = plane.center - corner_point;
-    
-//     // 如果法向量与 to_center 方向一致，则指向外部；否则反转
-//     if (plane.normal.dot(to_center) > 0) {
-//         return plane.normal;
-//     } else {
-//         return -plane.normal;
-//     }
-// }
-
-// // ========== 通用内凹角判断 ==========
-// bool CornerClassifier::isConcaveCornerGeneral(const CornerPoint& corner,
-//                                                 const std::vector<FinitePlane>& planes) {
-//     // 获取三个平面的外法线（指向角外部）
-//     std::vector<Eigen::Vector3f> outward_normals;
-//     for (int pid : corner.plane_ids) {
-//         const auto& plane = planes[pid];
-//         Eigen::Vector3f to_center = plane.center - corner.position;
-//         if (plane.normal.dot(to_center) > 0) {
-//             outward_normals.push_back(plane.normal);
-//         } else {
-//             outward_normals.push_back(-plane.normal);
-//         }
-//     }
-    
-//     // 计算三个外法线的和向量
-//     Eigen::Vector3f sum_normals = outward_normals[0] + outward_normals[1] + outward_normals[2];
-//     float sum_magnitude = sum_normals.norm();
-    
-//     // 如果和向量很小（相互抵消），说明法线指向不同方向 → 内凹角
-//     // 如果和向量很大（方向一致），说明法线指向同一方向 → 外凸角
-//     bool is_concave = (sum_magnitude < 1.5f);
-    
-//     std::cout << "    [通用判断] 外法线和大小: " << sum_magnitude 
-//               << " → " << (is_concave ? "内凹角(焊缝)" : "外凸角(边角)") << std::endl;
-    
-//     return is_concave;
-// }
-
-
-// // ========== 改进的角点分类函数 ==========
-// std::vector<CornerPoint> CornerClassifier::classifyCorners(const std::vector<FinitePlane>& planes,
-//                                                             const std::vector<Eigen::Vector3f>& intersection_points) {
 //     std::vector<CornerPoint> corners;
     
-//     std::cout << "[CornerClassifier] 开始分类 " << intersection_points.size() << " 个角点" << std::endl;
-//     std::cout << "[CornerClassifier] 使用通用数学方法：外法线和判断法" << std::endl;
+//     std::cout << "\n========================================" << std::endl;
+//     std::cout << "[CornerClassifier] 角点分类" << std::endl;
+//     std::cout << "========================================" << std::endl;
+//     std::cout << "总角点数: " << intersection_points.size() << std::endl;
+//     std::cout << "总相机数: " << camera_poses_.size() << std::endl;
+//     std::cout << "判定方法: 从平面点云随机采样，所有采样组合的局部坐标分量都 > 0.01" << std::endl;
+//     std::cout << "内凹角判定: 有相机可见（≥1个相机满足条件）" << std::endl;
+//     std::cout << "========================================\n" << std::endl;
     
-//     for (const auto& pt : intersection_points) {
-//         // 找到包含该点的三个平面
-//         std::vector<std::pair<float, int>> distances;
-//         for (size_t i = 0; i < planes.size(); i++) {
-//             float dist = std::abs(planes[i].normal.dot(pt) + planes[i].d);
-//             distances.push_back({dist, i});
+//     int concave_count = 0;
+//     int convex_count = 0;
+    
+//     for (size_t idx = 0; idx < intersection_points.size(); idx++) {
+//         const auto& pt = intersection_points[idx];
+//         auto [i, j, k] = intersection_plane_indices[idx];
+        
+//         // 验证索引有效性
+//         if (i >= (int)planes.size() || j >= (int)planes.size() || k >= (int)planes.size()) {
+//             std::cerr << "[错误] 索引超出范围: " << i << "," << j << "," << k << std::endl;
+//             continue;
 //         }
         
-//         std::sort(distances.begin(), distances.end());
+//         CornerPoint corner;
+//         corner.position = pt;
+//         corner.plane_ids = {i, j, k};
         
-//         if (distances.size() >= 3 && distances[0].first < 0.02f && 
-//             distances[1].first < 0.02f && distances[2].first < 0.02f) {
-            
-//             CornerPoint corner;
-//             corner.position = pt;
-//             corner.plane_ids = {distances[0].second, distances[1].second, distances[2].second};
-            
-//             // ✅ 使用通用数学方法判断
-//             corner.is_concave = isConcaveCornerGeneral(corner, planes);
-//             corner.confidence = corner.is_concave ? 1.0f : 1.0f;
-            
-//             // 计算内凹方向
-//             if (corner.is_concave) {
-//                 corner.inward_direction = -vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
-//             } else {
-//                 corner.inward_direction = vectorToPlaneCenter(corner, planes[corner.plane_ids[0]]);
+//         std::cout << "\n[角点 " << idx << "] " << std::endl;
+//         std::cout << "  位置: (" << std::fixed << std::setprecision(4)
+//                   << pt.x() << ", " << pt.y() << ", " << pt.z() << ")" << std::endl;
+//         std::cout << "  平面: (" << i << "," << j << "," << k << ")" << std::endl;
+        
+//         // 统计可见相机数量
+//         int visible_cameras = countCamerasSeeingConcaveCorner(corner, planes, camera_poses_);
+        
+//         // 判定内凹角：只要有至少1个相机可见，就是内凹角（焊缝）
+//         // 因为真正的内凹角，相机从内部看，所有采样组合都会满足分量>0
+//         if (visible_cameras > 0) {
+//             corner.is_concave = true;
+//             concave_count++;
+//             std::cout << "  ✅ 判定结果: 内凹角 (焊缝) - 有 " << visible_cameras << " 个相机可见" << std::endl;
+//         } else {
+//             corner.is_concave = false;
+//             convex_count++;
+//             std::cout << "  ❌ 判定结果: 外凸角 (边角) - 无相机可见" << std::endl;
+//         }
+        
+//         // 计算置信度（基于可见相机比例）
+//         corner.confidence = (float)visible_cameras / camera_poses_.size();
+        
+//         // 计算内凹方向（用于焊缝生长）
+//         if (corner.is_concave) {
+//             // 内凹角：方向指向内部（三个平面中心的反方向）
+//             Eigen::Vector3f sum_center(0, 0, 0);
+//             for (int pid : corner.plane_ids) {
+//                 sum_center += planes[pid].center;
 //             }
-//             corner.inward_direction.normalize();
-            
-//             corners.push_back(corner);
-            
-//             std::cout << "[角点] 位置: (" << std::fixed << std::setprecision(4)
-//                       << pt.x() << ", " << pt.y() << ", " << pt.z() << ")"
-//                       << ", 内凹: " << (corner.is_concave ? "是(焊缝)" : "否(边角)")
-//                       << std::endl;
+//             corner.inward_direction = (corner.position - sum_center / 3).normalized();
+//         } else {
+//             // 外凸角：方向指向外部
+//             Eigen::Vector3f sum_center(0, 0, 0);
+//             for (int pid : corner.plane_ids) {
+//                 sum_center += planes[pid].center;
+//             }
+//             corner.inward_direction = (sum_center / 3 - corner.position).normalized();
 //         }
+        
+//         corners.push_back(corner);
 //     }
     
-//     int concave_count = std::count_if(corners.begin(), corners.end(), 
-//                                        [](const CornerPoint& c) { return c.is_concave; });
-//     std::cout << "[CornerClassifier] 角点分类完成：内凹(焊缝)=" << concave_count 
-//               << ", 外凸(边角)=" << (corners.size() - concave_count) << std::endl;
+//     std::cout << "\n========================================" << std::endl;
+//     std::cout << "[角点统计] 内凹(焊缝)=" << concave_count 
+//               << ", 外凸(边角)=" << convex_count << std::endl;
+//     std::cout << "========================================\n" << std::endl;
     
+//     // 保存角点信息
 //     saveCornersToFile(corners, "corners_info.txt");
+    
 //     return corners;
 // }
 
@@ -733,122 +609,7 @@ std::vector<WeldSeam> CornerClassifier::extractWeldSeams(const std::vector<Finit
     return seams;
 }
 
-
-
-// 焊缝交线提取v1: 全部提取（角焊缝 + 长焊缝）
-// std::vector<WeldSeam> CornerClassifier::extractWeldSeams(const std::vector<FinitePlane>& planes,
-//                                                           const std::vector<CornerPoint>& corners) {
-//     std::vector<WeldSeam> seams;
-//     std::set<std::pair<int, int>> added_seams;
-    
-//     // 1. 从内凹角提取焊缝（三平面交线）
-//     for (const auto& corner : corners) {
-//         if (!corner.is_concave) continue;
-        
-//         std::cout << "[焊缝] 处理内凹角: 平面 ";
-//         for (int pid : corner.plane_ids) std::cout << pid << " ";
-//         std::cout << std::endl;
-        
-//         // 提取三条交线
-//         for (size_t i = 0; i < corner.plane_ids.size(); i++) {
-//             int pid1 = corner.plane_ids[i];
-//             int pid2 = corner.plane_ids[(i+1) % corner.plane_ids.size()];
-            
-//             auto key = std::make_pair(std::min(pid1, pid2), std::max(pid1, pid2));
-//             if (added_seams.find(key) != added_seams.end()) continue;
-            
-//             WeldSeam seam = createWeldFromIntersection(planes[pid1], planes[pid2], seams.size());
-//             if (!seam.path.empty()) {
-//                 seam.is_corner_weld = true;
-//                 seams.push_back(seam);
-//                 added_seams.insert(key);
-//                 std::cout << "  + 焊缝 " << seam.id << ": 平面 " << pid1 << " - " << pid2 
-//                           << ", 路径点 " << seam.path.size() << ", 长度 " << seam.length * 1000 << " mm" << std::endl;
-//             }
-//         }
-//     }
-    
-//     // 2. 提取长焊缝（两平面相交，不在内凹角范围内）
-//     for (size_t i = 0; i < planes.size(); i++) {
-//         for (size_t j = i + 1; j < planes.size(); j++) {
-//             auto key = std::make_pair(i, j);
-//             if (added_seams.find(key) != added_seams.end()) continue;
-            
-//             // 检查是否在同一内凹角中
-//             bool in_corner = false;
-//             for (const auto& corner : corners) {
-//                 if (corner.is_concave) {
-//                     if ((corner.plane_ids[0] == i || corner.plane_ids[1] == i || corner.plane_ids[2] == i) &&
-//                         (corner.plane_ids[0] == j || corner.plane_ids[1] == j || corner.plane_ids[2] == j)) {
-//                         in_corner = true;
-//                         break;
-//                     }
-//                 }
-//             }
-            
-//             if (in_corner) continue;
-            
-//             // 检查交线长度
-//             PlaneExtractor extractor;
-//             CloudPtr line_points = extractor.sampleIntersectionLine(planes[i], planes[j], path_spacing_);
-            
-//             if (line_points->points.size() > 20) {
-//                 WeldSeam seam = createWeldFromIntersection(planes[i], planes[j], seams.size());
-//                 if (!seam.path.empty()) {
-//                     seams.push_back(seam);
-//                     added_seams.insert(key);
-//                     std::cout << "[焊缝] 长焊缝 " << seam.id << ": 平面 " << i << " - " << j 
-//                               << ", 路径点 " << seam.path.size() << ", 长度 " << seam.length * 1000 << " mm" << std::endl;
-//                 }
-//             }
-//         }
-//     }
-    
-//     std::cout << "[CornerClassifier] 共提取 " << seams.size() << " 条焊缝" << std::endl;
-//     return seams;
-// }
-
-
-
-// 判断相机是否可以看到角点（通过平行六面体）
-// bool CornerClassifier::isPointInParallelepiped(const Eigen::Vector3f& point,
-//                                                 const CornerPoint& corner,
-//                                                 const std::vector<FinitePlane>& planes) {
-//     // 构建三个方向向量（从角点到三个平面中心）
-//     std::vector<Eigen::Vector3f> directions;
-//     for (int pid : corner.plane_ids) {
-//         const auto& plane = planes[pid];
-//         Eigen::Vector3f dir = (plane.center - corner.position);
-//         float norm = dir.norm();
-//         if (norm < 1e-6f) continue;
-//         directions.push_back(dir / norm);
-//     }
-    
-//     if (directions.size() < 3) return false;
-    
-//     // 将点转换到角点坐标系
-//     Eigen::Vector3f local_pt = point - corner.position;
-    
-//     // 求解线性方程组 local_pt = a*d1 + b*d2 + c*d3
-//     Eigen::Matrix3f D;
-//     for (int i = 0; i < 3; i++) {
-//         D.col(i) = directions[i];
-//     }
-    
-//     // 检查矩阵是否可逆
-//     float det = D.determinant();
-//     if (std::abs(det) < 1e-4f) return false;
-    
-//     Eigen::Vector3f coeff = D.inverse() * local_pt;
-    
-//     // 检查系数是否在合理范围内（考虑一定的容差）
-//     float margin = 0.5f;
-//     return (coeff.x() >= -margin && coeff.x() <= 1.0f + margin &&
-//             coeff.y() >= -margin && coeff.y() <= 1.0f + margin &&
-//             coeff.z() >= -margin && coeff.z() <= 1.0f + margin);
-// }
-
-
+// 支持多点验证的版本
 bool CornerClassifier::isCameraVisibleToCorner(const CornerPoint& corner,
                                                 const std::vector<FinitePlane>& planes,
                                                 const Eigen::Vector3f& camera_pos) {
@@ -856,54 +617,120 @@ bool CornerClassifier::isCameraVisibleToCorner(const CornerPoint& corner,
     // 步骤1：构建局部坐标系
     // ============================================
     // 局部坐标系原点 = 角点位置
-    // 三个基向量 = 从角点到三个平面中心的单位向量
-    std::vector<Eigen::Vector3f> basis_vectors;
-    for (int pid : corner.plane_ids) {
+    // 三个基向量 = 从角点到三个平面内采样点的单位向量（使用多个点）
+    
+    // 为每个平面获取多个采样点
+    std::vector<std::vector<Eigen::Vector3f>> all_plane_points(3);
+    
+    // 预定义采样偏移量（在平面内采样多个点）
+    std::vector<float> offsets = {-0.03f, 0.0f, 0.03f};  // 采样点偏移（米）
+    
+    for (size_t idx = 0; idx < corner.plane_ids.size(); idx++) {
+        int pid = corner.plane_ids[idx];
         const auto& plane = planes[pid];
-        Eigen::Vector3f vec = plane.center - corner.position;
-        float len = vec.norm();
-        if (len < 1e-6f) return false;
-        basis_vectors.push_back(vec / len);
+        
+        // 获取另外两个方向（用于选择采样点）
+        std::vector<Eigen::Vector3f> dirs;
+        for (int other_pid : corner.plane_ids) {
+            if (other_pid == pid) continue;
+            const auto& other_plane = planes[other_pid];
+            Eigen::Vector3f dir = (other_plane.center - corner.position).normalized();
+            dirs.push_back(dir);
+        }
+        
+        // 采样多个点
+        std::vector<Eigen::Vector3f> sampled_points;
+        
+        // 1. 平面中心点
+        Eigen::Vector3f center_point = getValidPointInPlane(plane, corner.position, 
+                                                             dirs[0], dirs[1]);
+        sampled_points.push_back(center_point);
+        
+        // 2. 平面边界上的多个点
+        // 获取平面局部坐标系
+        Eigen::Vector3f u = plane.local_x;
+        Eigen::Vector3f v = plane.local_y;
+        
+        // 在平面内采样多个点（围绕中心点）
+        for (float du : offsets) {
+            for (float dv : offsets) {
+                if (du == 0.0f && dv == 0.0f) continue;  // 跳过中心点（已添加）
+                
+                Eigen::Vector3f candidate = plane.center + u * du + v * dv;
+                
+                // 检查是否在平面边界内
+                PlaneExtractor extractor;
+                if (extractor.isPointInPlaneBoundsExact(plane, candidate, 0.01f)) {
+                    sampled_points.push_back(candidate);
+                }
+            }
+        }
+        
+        all_plane_points[idx] = sampled_points;
+        
+        std::cout << "    [采样] 平面 " << pid << " 采样 " << sampled_points.size() << " 个点" << std::endl;
     }
     
     // ============================================
-    // 步骤2：构建变换矩阵 T（世界坐标 → 局部坐标的逆）
+    // 步骤2：对每组采样点进行可见性验证
     // ============================================
-    // T 的列是局部坐标系的基向量在世界坐标系中的表示
-    // 即：世界坐标 = T × 局部坐标
-    Eigen::Matrix3f T;
-    T.col(0) = basis_vectors[0];
-    T.col(1) = basis_vectors[1];
-    T.col(2) = basis_vectors[2];
     
-    // 检查 T 是否可逆（三个向量线性无关）
-    float det = T.determinant();
-    if (std::abs(det) < 1e-4f) {
-        std::cout << "      [警告] 三个平面中心共面，无法构建局部坐标系" << std::endl;
-        return false;
+    int valid_combs = 0;
+    int total_combs = 0;
+    
+    // 遍历所有组合（每个平面选一个采样点）
+    for (size_t i = 0; i < all_plane_points[0].size(); i++) {
+        for (size_t j = 0; j < all_plane_points[1].size(); j++) {
+            for (size_t k = 0; k < all_plane_points[2].size(); k++) {
+                total_combs++;
+                
+                const auto& p0 = all_plane_points[0][i];
+                const auto& p1 = all_plane_points[1][j];
+                const auto& p2 = all_plane_points[2][k];
+                
+                // 构建基向量
+                Eigen::Vector3f v0 = (p0 - corner.position).normalized();
+                Eigen::Vector3f v1 = (p1 - corner.position).normalized();
+                Eigen::Vector3f v2 = (p2 - corner.position).normalized();
+                
+                // 构建变换矩阵
+                Eigen::Matrix3f T;
+                T.col(0) = v0;
+                T.col(1) = v1;
+                T.col(2) = v2;
+                
+                // 检查矩阵是否可逆
+                float det = T.determinant();
+                if (std::abs(det) < 1e-4f) continue;
+                
+                // 将相机位置变换到局部坐标系
+                Eigen::Vector3f local_cam = T.inverse() * (camera_pos - corner.position);
+                
+                // 判断是否所有分量都为正（带容差）
+                float threshold = 0.01f;
+                bool visible = (local_cam.x() > threshold && 
+                                local_cam.y() > threshold && 
+                                local_cam.z() > threshold);
+                
+                if (visible) {
+                    valid_combs++;
+                }
+            }
+        }
     }
     
     // ============================================
-    // 步骤3：将相机位置变换到局部坐标系
+    // 步骤3：综合判断
     // ============================================
-    // 局部坐标 = T⁻¹ × (相机位置 - 原点)
-    Eigen::Vector3f local_cam = T.inverse() * (camera_pos - corner.position);
+    // 如果有超过50%的采样组合满足条件，则认为相机可以看到这个角点
+    float visibility_ratio = (total_combs > 0) ? (float)valid_combs / total_combs : 0.0f;
+    bool result = (visibility_ratio > 0.9f);
     
-    // ============================================
-    // 步骤4：判断相机是否在三个平面的正向侧
-    // ============================================
-    // 如果相机在三个平面中心的方向上，三个分量都为正
-    float threshold = 0.01f;
-    bool visible = (local_cam.x() > threshold && 
-                    local_cam.y() > threshold && 
-                    local_cam.z() > threshold);
+    std::cout << "      [可见性] 有效组合: " << valid_combs << "/" << total_combs 
+              << " (" << (visibility_ratio * 100) << "%) → " 
+              << (result ? "可见" : "不可见") << std::endl;
     
-    if (visible) {
-        std::cout << "      [可见] 局部坐标: ("
-                  << local_cam.x() << ", " << local_cam.y() << ", " << local_cam.z() << ")" << std::endl;
-    }
-    
-    return visible;
+    return result;
 }
 
 // 在 CornerClassifier 类中添加新函数
@@ -982,66 +809,115 @@ float CornerClassifier::computeCornerScoreFromVisibleCameras(const CornerPoint& 
                                                               const std::vector<Eigen::Vector3f>& camera_poses) {
     if (camera_poses.empty()) return 0.0f;
     
-    // ✅ 改进：为每个平面选择合适的参考点（不一定是中心点）
-    std::vector<Eigen::Vector3f> plane_points;
+    // 为每个平面采样多个点
+    std::vector<std::vector<Eigen::Vector3f>> all_plane_points(3);
+    std::vector<float> offsets = {-0.02f, 0.0f, 0.02f};  // 采样点偏移
     
-    // 先获取三个平面的大致方向（用于采样）
-    std::vector<Eigen::Vector3f> dirs;
-    for (int pid : corner.plane_ids) {
-        const auto& plane = planes[pid];
-        Eigen::Vector3f dir = (plane.center - corner.position).normalized();
-        dirs.push_back(dir);
-    }
-    
-    // 为每个平面选择最佳参考点
     for (size_t idx = 0; idx < corner.plane_ids.size(); idx++) {
         int pid = corner.plane_ids[idx];
         const auto& plane = planes[pid];
         
         // 获取另外两个方向
-        Eigen::Vector3f other1 = dirs[(idx + 1) % 3];
-        Eigen::Vector3f other2 = dirs[(idx + 2) % 3];
+        std::vector<Eigen::Vector3f> dirs;
+        for (int other_pid : corner.plane_ids) {
+            if (other_pid == pid) continue;
+            const auto& other_plane = planes[other_pid];
+            Eigen::Vector3f dir = (other_plane.center - corner.position).normalized();
+            dirs.push_back(dir);
+        }
         
-        Eigen::Vector3f ref_point = getValidPointInPlane(plane, corner.position, other1, other2);
-        plane_points.push_back(ref_point);
+        std::vector<Eigen::Vector3f> sampled_points;
+        
+        // 平面中心点
+        Eigen::Vector3f center_point = getValidPointInPlane(plane, corner.position, 
+                                                             dirs[0], dirs[1]);
+        sampled_points.push_back(center_point);
+        
+        // 平面内的采样点
+        Eigen::Vector3f u = plane.local_x;
+        Eigen::Vector3f v = plane.local_y;
+        PlaneExtractor extractor;
+        
+        for (float du : offsets) {
+            for (float dv : offsets) {
+                if (du == 0.0f && dv == 0.0f) continue;
+                
+                Eigen::Vector3f candidate = plane.center + u * du + v * dv;
+                if (extractor.isPointInPlaneBoundsExact(plane, candidate, 0.01f)) {
+                    sampled_points.push_back(candidate);
+                }
+            }
+        }
+        
+        all_plane_points[idx] = sampled_points;
     }
     
-    // 计算三个参考点的向量和
-    Eigen::Vector3f sum_points(0, 0, 0);
-    for (size_t i = 0; i < plane_points.size(); i++) {
-        sum_points += (plane_points[i] - corner.position);
-    }
-    sum_points.normalize();
-    
+    // 计算多个采样组合的平均评分
     float total_score = 0.0f;
     int valid_cameras = 0;
     
     for (const auto& cam_pos : camera_poses) {
-        // 检查相机是否可以看到这个角点
+        // ✅ 检查相机是否可以看到这个角点（使用严格的多点验证）
         if (!isCameraVisibleToCorner(corner, planes, cam_pos)) {
             continue;
         }
         
         valid_cameras++;
         
-        // 计算从角点到相机的向量
-        Eigen::Vector3f to_camera = (cam_pos - corner.position);
-        if (to_camera.norm() < 1e-6f) continue;
-        to_camera.normalize();
+        // 对每个采样组合计算评分
+        float comb_score_sum = 0.0f;
+        int comb_count = 0;
         
-        // 计算夹角
-        float dot = sum_points.dot(to_camera);
-        dot = std::max(-1.0f, std::min(1.0f, dot));
-        float angle_deg = std::acos(dot) * 180.0f / M_PI;
+        for (size_t i = 0; i < all_plane_points[0].size(); i++) {
+            for (size_t j = 0; j < all_plane_points[1].size(); j++) {
+                for (size_t k = 0; k < all_plane_points[2].size(); k++) {
+                    comb_count++;
+                    
+                    const auto& p0 = all_plane_points[0][i];
+                    const auto& p1 = all_plane_points[1][j];
+                    const auto& p2 = all_plane_points[2][k];
+                    
+                    // 计算三个采样点的向量和
+                    Eigen::Vector3f v0 = (p0 - corner.position).normalized();
+                    Eigen::Vector3f v1 = (p1 - corner.position).normalized();
+                    Eigen::Vector3f v2 = (p2 - corner.position).normalized();
+                    
+                    Eigen::Vector3f sum_vec = v0 + v1 + v2;
+                    sum_vec.normalize();
+                    
+                    // 计算从角点到相机的向量
+                    Eigen::Vector3f to_camera = (cam_pos - corner.position);
+                    if (to_camera.norm() < 1e-6f) continue;
+                    to_camera.normalize();
+                    
+                    // 计算夹角相似度
+                    float dot = sum_vec.dot(to_camera);
+                    dot = std::max(-1.0f, std::min(1.0f, dot));
+                    
+                    comb_score_sum += dot;
+                }
+            }
+        }
         
-        // 贡献分数
-        float similarity = std::cos(angle_deg * M_PI / 180.0f);
-        total_score += similarity;
+        if (comb_count > 0) {
+            total_score += comb_score_sum / comb_count;
+        }
     }
     
-    if (valid_cameras == 0) return 0.0f;
+    // ✅ 要求至少有3个相机可见
+    const int min_visible_cameras = 3;
+    if (valid_cameras < min_visible_cameras) {
+        std::cout << "    [评分] 可见相机数=" << valid_cameras 
+                  << " < " << min_visible_cameras << "，判定为无效" << std::endl;
+        return 0.0f;
+    }
     
-    return total_score / valid_cameras;
+    float avg_score = total_score / valid_cameras;
+    
+    std::cout << "    [评分] 有效相机数=" << valid_cameras 
+              << " (≥" << min_visible_cameras << "), 平均评分=" << avg_score << std::endl;
+    
+    return avg_score;
 }
 
 // ========== 保存角点信息到文件 ==========
@@ -1065,4 +941,544 @@ void CornerClassifier::saveCornersToFile(const std::vector<CornerPoint>& corners
     
     file.close();
     std::cout << "[CornerClassifier] 保存角点信息: " << filename << std::endl;
+}
+
+
+std::vector<CornerPoint> CornerClassifier::classifyCorners(
+    const std::vector<FinitePlane>& planes,
+    const std::vector<Eigen::Vector3f>& intersection_points,
+    const std::vector<std::tuple<int, int, int>>& intersection_plane_indices) {
+    
+    std::vector<CornerPoint> corners;
+    
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "[CornerClassifier] 角点分类" << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "总角点数: " << intersection_points.size() << std::endl;
+    std::cout << "总相机数: " << camera_poses_.size() << std::endl;
+    
+    // 输出边界过滤状态
+    std::cout << "边界过滤: " << (filter_boundary_corners_ ? "启用" : "禁用") << std::endl;
+    if (filter_boundary_corners_) {
+        std::cout << "边界距离阈值: " << boundary_margin_mm_ << " mm" << std::endl;
+    }
+    
+    // 输出模型包围盒信息
+    std::cout << "模型包围盒: X[" << cloud_bbox_min_.x() << ", " << cloud_bbox_max_.x() << "]" << std::endl;
+    std::cout << "            Y[" << cloud_bbox_min_.y() << ", " << cloud_bbox_max_.y() << "]" << std::endl;
+    std::cout << "            Z[" << cloud_bbox_min_.z() << ", " << cloud_bbox_max_.z() << "]" << std::endl;
+    std::cout << "========================================\n" << std::endl;
+    
+    int concave_count = 0;
+    int convex_count = 0;
+    int boundary_filtered_count = 0;
+    
+    for (size_t idx = 0; idx < intersection_points.size(); idx++) {
+        const auto& pt = intersection_points[idx];
+        auto [i, j, k] = intersection_plane_indices[idx];
+        
+        // 验证索引有效性
+        if (i >= (int)planes.size() || j >= (int)planes.size() || k >= (int)planes.size()) {
+            std::cerr << "[错误] 索引超出范围: " << i << "," << j << "," << k << std::endl;
+            continue;
+        }
+        
+        CornerPoint corner;
+        corner.position = pt;
+        corner.plane_ids = {i, j, k};
+        
+        std::cout << "\n[角点 " << idx << "] " << std::endl;
+        std::cout << "  位置: (" << std::fixed << std::setprecision(4)
+                  << pt.x() << ", " << pt.y() << ", " << pt.z() << ")" << std::endl;
+        std::cout << "  平面: (" << i << "," << j << "," << k << ")" << std::endl;
+        
+        // 边界过滤检查
+        bool inside_valid_region = true;
+        if (filter_boundary_corners_) {
+            inside_valid_region = isCornerInsideModel(pt, boundary_margin_mm_);
+            float dist_to_boundary = distanceToNearestBoundary(pt);
+            std::cout << "  到最近边界距离: " << dist_to_boundary * 1000 << " mm" << std::endl;
+        }
+        
+        if (!inside_valid_region) {
+            corner.is_concave = false;
+            convex_count++;
+            boundary_filtered_count++;
+            corner.confidence = 0.0f;
+            
+            // 计算外凸方向
+            Eigen::Vector3f sum_center(0, 0, 0);
+            for (int pid : corner.plane_ids) {
+                sum_center += planes[pid].center;
+            }
+            corner.inward_direction = (sum_center / 3 - corner.position).normalized();
+            
+            corners.push_back(corner);
+            std::cout << "  ❌ 判定结果: 外凸点 (边界区域被过滤)" << std::endl;
+            continue;
+        }
+        
+        // 计算三条焊缝
+        std::vector<WeldSegment> segments(3);
+        std::vector<std::pair<int, int>> plane_pairs = {
+            {i, j}, {j, k}, {k, i}
+        };
+        
+        bool valid_welds = true;
+        for (int s = 0; s < 3; s++) {
+            int pid1 = plane_pairs[s].first;
+            int pid2 = plane_pairs[s].second;
+            
+            segments[s].plane_id1 = pid1;
+            segments[s].plane_id2 = pid2;
+            segments[s].start_point = pt;
+            segments[s].end_point = computeWeldEndPoint(planes[pid1], planes[pid2], pt);
+            
+            segments[s].length = (segments[s].end_point - pt).norm();
+            if (segments[s].length < 0.005f) {
+                valid_welds = false;
+                break;
+            }
+        }
+        
+        if (!valid_welds) {
+            corner.is_concave = false;
+            convex_count++;
+            std::cout << "  ❌ 判定结果: 外凸点 (焊缝长度过短)" << std::endl;
+            corners.push_back(corner);
+            continue;
+        }
+        
+        // 使用焊缝向量验证
+        bool is_concave = isConcaveWithWeldVectors(corner, planes, camera_poses_, segments);
+        
+        corner.is_concave = is_concave;
+        corner.confidence = is_concave ? 0.9f : 0.1f;
+        
+        // 计算内凹方向
+        Eigen::Vector3f sum_dirs(0, 0, 0);
+        for (const auto& seg : segments) {
+            sum_dirs += (seg.end_point - pt).normalized();
+        }
+        corner.inward_direction = sum_dirs.normalized();
+        
+        corners.push_back(corner);
+        
+        if (is_concave) {
+            concave_count++;
+            std::cout << "  ✅ 判定结果: 内凹角 (焊缝) - 焊缝长度: ["
+                      << segments[0].length * 1000 << ", "
+                      << segments[1].length * 1000 << ", "
+                      << segments[2].length * 1000 << "] mm" << std::endl;
+        } else {
+            convex_count++;
+            std::cout << "  ❌ 判定结果: 外凸角 (边角)" << std::endl;
+        }
+    }
+    
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "[角点统计]" << std::endl;
+    std::cout << "  内凹(焊缝): " << concave_count << std::endl;
+    std::cout << "  外凸(边角): " << convex_count << std::endl;
+    if (filter_boundary_corners_) {
+        std::cout << "  边界过滤: " << boundary_filtered_count << std::endl;
+    }
+    std::cout << "========================================\n" << std::endl;
+    
+    saveCornersToFile(corners, "corners_info.txt");
+    
+    return corners;
+}
+
+
+// ========== 统计有多少相机可以看到这个内凹角 ==========
+int CornerClassifier::countCamerasSeeingConcaveCorner(const CornerPoint& corner,
+                                                       const std::vector<FinitePlane>& planes,
+                                                       const std::vector<Eigen::Vector3f>& camera_poses,
+                                                       bool use_multi_sample) {
+    int visible_count = 0;
+    int total_cameras = camera_poses.size();
+    
+    std::cout << "    [相机可见性检查] 共 " << total_cameras << " 个相机" << std::endl;
+    
+    for (size_t cam_idx = 0; cam_idx < camera_poses.size(); cam_idx++) {
+        const auto& cam_pos = camera_poses[cam_idx];
+        
+        std::cout << "      相机 " << cam_idx << ": ";
+        
+        bool visible = isCameraInsideCornerMultiSample(corner, planes, cam_pos);
+        
+        if (visible) {
+            visible_count++;
+            std::cout << " ✓ 可见" << std::endl;
+        } else {
+            std::cout << " ✗ 不可见" << std::endl;
+        }
+    }
+    
+    std::cout << "    [统计] 可见相机数: " << visible_count << "/" << total_cameras << std::endl;
+    
+    return visible_count;
+}
+
+
+// ========== 多点采样验证：每个平面采样多个点，所有组合都必须满足条件 ==========
+// ========== 改进版：从点云中智能采样（避免重复、确保边界内）==========
+// ========== 唯一判定函数：从点云中随机采样，所有组合都必须满足条件 ==========
+bool CornerClassifier::isCameraInsideCornerMultiSample(const CornerPoint& corner,
+                                                        const std::vector<FinitePlane>& planes,
+                                                        const Eigen::Vector3f& camera_pos) {
+    // 采样参数：每个平面采样多少个点
+    int num_samples_per_plane = 8;  // 每个平面采样8个点，增加采样密度
+    
+    // 为每个平面收集多个采样点（只从点云中采样）
+    std::vector<std::vector<Eigen::Vector3f>> all_plane_samples(3);
+    
+    for (size_t idx = 0; idx < corner.plane_ids.size(); idx++) {
+        int pid = corner.plane_ids[idx];
+        const auto& plane = planes[pid];
+        
+        if (!plane.cloud || plane.cloud->points.empty()) {
+            std::cout << "      [错误] 平面 " << pid << " 点云为空，无法采样" << std::endl;
+            return false;
+        }
+        
+        const auto& cloud_points = plane.cloud->points;
+        int total_points = cloud_points.size();
+        
+        // 随机采样不重复的点
+        std::vector<Eigen::Vector3f> sampled_points;
+        std::set<int> used_indices;
+        
+        // 初始化随机种子
+        static bool seed_initialized = false;
+        if (!seed_initialized) {
+            std::srand(static_cast<unsigned int>(std::time(nullptr)));
+            seed_initialized = true;
+        }
+        
+        // 采样 num_samples_per_plane 个不重复的点
+        int samples_to_take = std::min(num_samples_per_plane, total_points);
+        while (sampled_points.size() < (size_t)samples_to_take && used_indices.size() < (size_t)total_points) {
+            int random_idx = std::rand() % total_points;
+            if (used_indices.find(random_idx) != used_indices.end()) {
+                continue;
+            }
+            used_indices.insert(random_idx);
+            
+            const auto& p = cloud_points[random_idx];
+            sampled_points.push_back(Eigen::Vector3f(p.x, p.y, p.z));
+        }
+        
+        if (sampled_points.empty()) {
+            std::cout << "      [错误] 平面 " << pid << " 无法采样到有效点" << std::endl;
+            return false;
+        }
+        
+        all_plane_samples[idx] = sampled_points;
+        
+        std::cout << "      [采样] 平面 " << pid << " 从 " << total_points 
+                  << " 个点中采样 " << sampled_points.size() << " 个点" << std::endl;
+    }
+    
+    // 确保每个平面至少有1个采样点
+    for (int i = 0; i < 3; i++) {
+        if (all_plane_samples[i].empty()) {
+            std::cout << "      [错误] 平面 " << corner.plane_ids[i] << " 没有有效采样点" << std::endl;
+            return false;
+        }
+    }
+    
+    // 遍历所有采样组合（每个平面选一个点）
+    int total_combs = 0;
+    int valid_combs = 0;
+    int invalid_matrix_combs = 0;
+    
+    for (size_t i = 0; i < all_plane_samples[0].size(); i++) {
+        for (size_t j = 0; j < all_plane_samples[1].size(); j++) {
+            for (size_t k = 0; k < all_plane_samples[2].size(); k++) {
+                total_combs++;
+                
+                const auto& p0 = all_plane_samples[0][i];
+                const auto& p1 = all_plane_samples[1][j];
+                const auto& p2 = all_plane_samples[2][k];
+                
+                Eigen::Vector3f dir0 = (p0 - corner.position).normalized();
+                Eigen::Vector3f dir1 = (p1 - corner.position).normalized();
+                Eigen::Vector3f dir2 = (p2 - corner.position).normalized();
+                
+                // 构建变换矩阵
+                Eigen::Matrix3f T;
+                T.col(0) = dir0;
+                T.col(1) = dir1;
+                T.col(2) = dir2;
+                
+                // 检查矩阵是否可逆
+                float det = T.determinant();
+                if (std::abs(det) < 1e-6f) {
+                    invalid_matrix_combs++;
+                    continue;
+                }
+                
+                // 变换相机位置到局部坐标系
+                Eigen::Vector3f local_cam = T.inverse() * (camera_pos - corner.position);
+                
+                // 严格要求：三个分量都必须大于阈值
+                float threshold = 0.01f;  // 防止边缘点入侵
+                if (local_cam.x() > threshold && 
+                    local_cam.y() > threshold && 
+                    local_cam.z() > threshold) {
+                    valid_combs++;
+                }
+            }
+        }
+    }
+    
+    int valid_total_combs = total_combs - invalid_matrix_combs;
+    
+    // 严格要求：所有有效组合都必须满足条件（100%）
+    bool all_valid = (valid_total_combs > 0) && (valid_combs == valid_total_combs);
+    
+    float valid_percent = (valid_total_combs > 0) ? (100.0f * valid_combs / valid_total_combs) : 0.0f;
+    std::cout << "      [可见性判定] 总组合=" << total_combs 
+              << ", 有效组合=" << valid_total_combs
+              << ", 满足条件=" << valid_combs
+              << " (" << std::fixed << std::setprecision(1) << valid_percent << "%) → "
+              << (all_valid ? "✓ 相机可见（内凹角）" : "✗ 相机不可见（外凸角）") << std::endl;
+    
+    return all_valid;
+}
+
+// 在 CornerClassifier 类中添加边界过滤函数
+// 检查角点是否在模型内部（距离边界有一定距离）
+bool CornerClassifier::isCornerInsideModel(const Eigen::Vector3f& corner, float margin_mm) {
+    if (!cloud_ || cloud_->points.empty()) return true;
+    
+    float margin = margin_mm / 1000.0f;  // 转换为米
+    
+    // 检查角点是否离包围盒边界太近
+    bool too_close_to_boundary = 
+        (corner.x() - cloud_bbox_min_.x() < margin) ||
+        (cloud_bbox_max_.x() - corner.x() < margin) ||
+        (corner.y() - cloud_bbox_min_.y() < margin) ||
+        (cloud_bbox_max_.y() - corner.y() < margin) ||
+        (corner.z() - cloud_bbox_min_.z() < margin) ||
+        (cloud_bbox_max_.z() - corner.z() < margin);
+    
+    if (too_close_to_boundary) {
+        std::cout << "  [边界过滤] 角点距离边界太近（< " << margin_mm << "mm），判定为外凸点" << std::endl;
+        return false;
+    }
+    
+    return true;
+}
+
+// 计算角点到最近边界的距离
+float CornerClassifier::distanceToNearestBoundary(const Eigen::Vector3f& corner) {
+    float dx = std::min(corner.x() - cloud_bbox_min_.x(), cloud_bbox_max_.x() - corner.x());
+    float dy = std::min(corner.y() - cloud_bbox_min_.y(), cloud_bbox_max_.y() - corner.y());
+    float dz = std::min(corner.z() - cloud_bbox_min_.z(), cloud_bbox_max_.z() - corner.z());
+    return std::min({dx, dy, dz});
+}
+
+// // ========== 核心函数：检查相机是否从角点内部可见 ==========
+// // 以角点为原点，三个平面中心方向为基，检查相机坐标是否三个分量都为正
+// bool CornerClassifier::isCameraInsideCorner(const CornerPoint& corner,
+//                                              const std::vector<FinitePlane>& planes,
+//                                              const Eigen::Vector3f& camera_pos) {
+//     // ============================================
+//     // 步骤1：为每个平面获取多个采样点
+//     // ============================================
+//     std::vector<Eigen::Vector3f> plane_centers;
+    
+//     for (int pid : corner.plane_ids) {
+//         const auto& plane = planes[pid];
+        
+//         // 获取另外两个平面方向（用于选择采样方向）
+//         std::vector<Eigen::Vector3f> other_dirs;
+//         for (int other_pid : corner.plane_ids) {
+//             if (other_pid == pid) continue;
+//             const auto& other_plane = planes[other_pid];
+//             Eigen::Vector3f dir = (other_plane.center - corner.position).normalized();
+//             other_dirs.push_back(dir);
+//         }
+        
+//         // 获取一个有效的平面内点（不一定是中心）
+//         Eigen::Vector3f point_in_plane = getValidPointInPlane(plane, corner.position, 
+//                                                                other_dirs[0], other_dirs[1]);
+//         plane_centers.push_back(point_in_plane);
+//     }
+    
+//     // ============================================
+//     // 步骤2：构建局部坐标系（三个方向向量）
+//     // ============================================
+//     Eigen::Vector3f dir0 = (plane_centers[0] - corner.position).normalized();
+//     Eigen::Vector3f dir1 = (plane_centers[1] - corner.position).normalized();
+//     Eigen::Vector3f dir2 = (plane_centers[2] - corner.position).normalized();
+    
+//     // 构建变换矩阵 T（列向量为基向量）
+//     Eigen::Matrix3f T;
+//     T.col(0) = dir0;
+//     T.col(1) = dir1;
+//     T.col(2) = dir2;
+    
+//     // 检查矩阵是否可逆
+//     float det = T.determinant();
+//     if (std::abs(det) < 1e-6f) {
+//         std::cout << "      [错误] 矩阵不可逆，三个方向共面" << std::endl;
+//         return false;
+//     }
+    
+//     // ============================================
+//     // 步骤3：将相机位置变换到局部坐标系
+//     // ============================================
+//     Eigen::Vector3f local_cam = T.inverse() * (camera_pos - corner.position);
+    
+//     // ============================================
+//     // 步骤4：检查是否三个分量都为正（内凹角可见性）
+//     // ============================================
+//     float threshold = 0.01f;  // 防止边缘点入侵
+//     bool all_positive = (local_cam.x() > threshold && 
+//                          local_cam.y() > threshold && 
+//                          local_cam.z() > threshold);
+    
+//     if (all_positive) {
+//         std::cout << "      [可见] 局部坐标: ("
+//                   << std::fixed << std::setprecision(4)
+//                   << local_cam.x() << ", " << local_cam.y() << ", " << local_cam.z() << ")" << std::endl;
+//     }
+    
+//     return all_positive;
+// }
+
+
+// 计算从角点出发的焊缝终点（交线的最远点）
+Eigen::Vector3f CornerClassifier::computeWeldEndPoint(const FinitePlane& p1, 
+                                                        const FinitePlane& p2,
+                                                        const Eigen::Vector3f& corner_point) {
+    // 计算两平面交线
+    Eigen::Vector3f direction, point_on_line;
+    PlaneExtractor extractor;
+    extractor.computePlaneIntersectionLine(p1, p2, direction, point_on_line);
+    
+    // 将角点投影到交线上，得到焊缝起点参数
+    float t_corner = (corner_point - point_on_line).dot(direction);
+    
+    // 确定交线的有效范围（在两个平面的边界内）
+    std::vector<float> t_values;
+    
+    // 采样平面的边界点，投影到交线上
+    auto addBoundaryPoints = [&](const FinitePlane& plane) {
+        std::vector<Eigen::Vector3f> boundary_pts;
+        boundary_pts.push_back(Eigen::Vector3f(plane.min_x, plane.min_y, plane.min_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.min_x, plane.min_y, plane.max_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.min_x, plane.max_y, plane.min_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.min_x, plane.max_y, plane.max_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.max_x, plane.min_y, plane.min_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.max_x, plane.min_y, plane.max_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.max_x, plane.max_y, plane.min_z));
+        boundary_pts.push_back(Eigen::Vector3f(plane.max_x, plane.max_y, plane.max_z));
+        
+        for (const auto& pt : boundary_pts) {
+            float t = (pt - point_on_line).dot(direction);
+            t_values.push_back(t);
+        }
+    };
+    
+    addBoundaryPoints(p1);
+    addBoundaryPoints(p2);
+    
+    if (t_values.empty()) return corner_point;
+    
+    // 找到离角点最远的有效端点
+    float t_min = *std::min_element(t_values.begin(), t_values.end());
+    float t_max = *std::max_element(t_values.begin(), t_values.end());
+    
+    // 选择离角点最远的端点
+    float dist_to_min = std::abs(t_corner - t_min);
+    float dist_to_max = std::abs(t_corner - t_max);
+    
+    float t_end = (dist_to_min > dist_to_max) ? t_min : t_max;
+    Eigen::Vector3f end_point = point_on_line + t_end * direction;
+    
+    return end_point;
+}
+
+// 使用三条焊缝向量判定内凹角
+bool CornerClassifier::isConcaveWithWeldVectors(const CornerPoint& corner,
+                                                 const std::vector<FinitePlane>& planes,
+                                                 const std::vector<Eigen::Vector3f>& camera_poses,
+                                                 const std::vector<WeldSegment>& weld_segments) {
+    
+    if (weld_segments.size() != 3) return false;
+    
+    // 步骤1：使用三条焊缝向量构建局部坐标系
+    Eigen::Vector3f v0 = (weld_segments[0].end_point - corner.position).normalized();
+    Eigen::Vector3f v1 = (weld_segments[1].end_point - corner.position).normalized();
+    Eigen::Vector3f v2 = (weld_segments[2].end_point - corner.position).normalized();
+    
+    Eigen::Matrix3f T;
+    T.col(0) = v0;
+    T.col(1) = v1;
+    T.col(2) = v2;
+    
+    if (std::abs(T.determinant()) < 1e-6f) return false;
+    
+    // 步骤2：统计满足条件的相机
+    int valid_cameras = 0;
+    
+    for (const auto& cam_pos : camera_poses) {
+        Eigen::Vector3f local_cam = T.inverse() * (cam_pos - corner.position);
+        
+        float threshold = 0.01f;
+        bool all_positive = (local_cam.x() > threshold && 
+                             local_cam.y() > threshold && 
+                             local_cam.z() > threshold);
+        
+        if (!all_positive) continue;
+        
+        // 步骤3：验证焊缝终点距离条件
+        bool distance_condition = true;
+        for (const auto& seg : weld_segments) {
+            // 相机到焊缝终点的距离
+            float dist_to_end = (cam_pos - seg.end_point).norm();
+            
+            // 在相交的两个平面上采样点
+            const auto& plane1 = planes[seg.plane_id1];
+            const auto& plane2 = planes[seg.plane_id2];
+            
+            // 检查相机到平面上任意点的距离是否都小于到焊缝终点的距离
+            // 简化：检查到平面中心的距离
+            float dist_to_plane1 = (cam_pos - plane1.center).norm();
+            float dist_to_plane2 = (cam_pos - plane2.center).norm();
+            
+            if (dist_to_end < dist_to_plane1 * 0.8f || dist_to_end < dist_to_plane2 * 0.8f) {
+                distance_condition = false;
+                break;
+            }
+        }
+        
+        if (distance_condition) {
+            valid_cameras++;
+        }
+    }
+    
+    // 至少2个相机满足条件才认为是内凹角
+    return valid_cameras >= 2;
+}
+
+// 计算收缩后的包围盒
+void CornerClassifier::computeShrunkBBox(float shrink_margin_mm) {
+    float shrink = shrink_margin_mm / 1000.0f;  // 转换为米
+    
+    shrunk_bbox_min_ = cloud_bbox_min_ + Eigen::Vector3f(shrink, shrink, shrink);
+    shrunk_bbox_max_ = cloud_bbox_max_ - Eigen::Vector3f(shrink, shrink, shrink);
+    
+    std::cout << "[包围盒] 原始: [" << cloud_bbox_min_.x() << ", " << cloud_bbox_max_.x() << "]"
+              << " x [" << cloud_bbox_min_.y() << ", " << cloud_bbox_max_.y() << "]"
+              << " x [" << cloud_bbox_min_.z() << ", " << cloud_bbox_max_.z() << "]" << std::endl;
+    std::cout << "[包围盒] 收缩" << shrink_margin_mm << "mm后: ["
+              << shrunk_bbox_min_.x() << ", " << shrunk_bbox_max_.x() << "]"
+              << " x [" << shrunk_bbox_min_.y() << ", " << shrunk_bbox_max_.y() << "]"
+              << " x [" << shrunk_bbox_min_.z() << ", " << shrunk_bbox_max_.z() << "]" << std::endl;
 }
